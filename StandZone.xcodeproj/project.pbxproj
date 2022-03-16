@@ -1,0 +1,1163 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A3CFBB1A27E24E1900110D92 /* StandZoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB1927E24E1900110D92 /* StandZoneApp.swift */; };
+		A3CFBB1C27E24E1900110D92 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB1B27E24E1900110D92 /* ContentView.swift */; };
+		A3CFBB1E27E24E1A00110D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CFBB1D27E24E1A00110D92 /* Assets.xcassets */; };
+		A3CFBB2127E24E1A00110D92 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CFBB2027E24E1A00110D92 /* Preview Assets.xcassets */; };
+		A3CFBB2B27E24E1A00110D92 /* StandZoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB2A27E24E1A00110D92 /* StandZoneTests.swift */; };
+		A3CFBB3527E24E1B00110D92 /* StandZoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB3427E24E1B00110D92 /* StandZoneUITests.swift */; };
+		A3CFBB3727E24E1B00110D92 /* StandZoneUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB3627E24E1B00110D92 /* StandZoneUITestsLaunchTests.swift */; };
+		A3CFBB3B27E24E1B00110D92 /* StandZone WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A3CFBB3A27E24E1B00110D92 /* StandZone WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A3CFBB4027E24E1C00110D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CFBB3F27E24E1C00110D92 /* Assets.xcassets */; };
+		A3CFBB4627E24E1C00110D92 /* StandZone WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A3CFBB4527E24E1C00110D92 /* StandZone WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A3CFBB4B27E24E1C00110D92 /* StandZoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB4A27E24E1C00110D92 /* StandZoneApp.swift */; };
+		A3CFBB4D27E24E1C00110D92 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB4C27E24E1C00110D92 /* ContentView.swift */; };
+		A3CFBB4F27E24E1C00110D92 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB4E27E24E1C00110D92 /* NotificationController.swift */; };
+		A3CFBB5127E24E1C00110D92 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB5027E24E1C00110D92 /* NotificationView.swift */; };
+		A3CFBB5327E24E1C00110D92 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB5227E24E1C00110D92 /* ComplicationController.swift */; };
+		A3CFBB5527E24E1D00110D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CFBB5427E24E1D00110D92 /* Assets.xcassets */; };
+		A3CFBB5827E24E1D00110D92 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CFBB5727E24E1D00110D92 /* Preview Assets.xcassets */; };
+		A3CFBB6427E24E1D00110D92 /* StandZone_WatchKit_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB6327E24E1D00110D92 /* StandZone_WatchKit_AppTests.swift */; };
+		A3CFBB6E27E24E1D00110D92 /* StandZone_WatchKit_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB6D27E24E1D00110D92 /* StandZone_WatchKit_AppUITests.swift */; };
+		A3CFBB7027E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB6F27E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A3CFBB2727E24E1A00110D92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CFBB0E27E24E1800110D92 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3CFBB1527E24E1900110D92;
+			remoteInfo = StandZone;
+		};
+		A3CFBB3127E24E1B00110D92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CFBB0E27E24E1800110D92 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3CFBB1527E24E1900110D92;
+			remoteInfo = StandZone;
+		};
+		A3CFBB3C27E24E1B00110D92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CFBB0E27E24E1800110D92 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3CFBB3927E24E1B00110D92;
+			remoteInfo = "StandZone WatchKit App";
+		};
+		A3CFBB4727E24E1C00110D92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CFBB0E27E24E1800110D92 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3CFBB4427E24E1C00110D92;
+			remoteInfo = "StandZone WatchKit Extension";
+		};
+		A3CFBB6027E24E1D00110D92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CFBB0E27E24E1800110D92 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3CFBB4427E24E1C00110D92;
+			remoteInfo = "StandZone WatchKit Extension";
+		};
+		A3CFBB6A27E24E1D00110D92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3CFBB0E27E24E1800110D92 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3CFBB3927E24E1B00110D92;
+			remoteInfo = "StandZone WatchKit App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A3CFBB7627E24E1D00110D92 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A3CFBB4627E24E1C00110D92 /* StandZone WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB7A27E24E1D00110D92 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A3CFBB3B27E24E1B00110D92 /* StandZone WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A3CFBB1627E24E1900110D92 /* StandZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CFBB1927E24E1900110D92 /* StandZoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneApp.swift; sourceTree = "<group>"; };
+		A3CFBB1B27E24E1900110D92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A3CFBB1D27E24E1A00110D92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3CFBB2027E24E1A00110D92 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A3CFBB2627E24E1A00110D92 /* StandZoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StandZoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CFBB2A27E24E1A00110D92 /* StandZoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneTests.swift; sourceTree = "<group>"; };
+		A3CFBB3027E24E1A00110D92 /* StandZoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StandZoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CFBB3427E24E1B00110D92 /* StandZoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneUITests.swift; sourceTree = "<group>"; };
+		A3CFBB3627E24E1B00110D92 /* StandZoneUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A3CFBB3A27E24E1B00110D92 /* StandZone WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StandZone WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CFBB3F27E24E1C00110D92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3CFBB4527E24E1C00110D92 /* StandZone WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "StandZone WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CFBB4A27E24E1C00110D92 /* StandZoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneApp.swift; sourceTree = "<group>"; };
+		A3CFBB4C27E24E1C00110D92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A3CFBB4E27E24E1C00110D92 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		A3CFBB5027E24E1C00110D92 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		A3CFBB5227E24E1C00110D92 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		A3CFBB5427E24E1D00110D92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3CFBB5727E24E1D00110D92 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A3CFBB5927E24E1D00110D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3CFBB5A27E24E1D00110D92 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		A3CFBB5F27E24E1D00110D92 /* StandZone WatchKit AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StandZone WatchKit AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CFBB6327E24E1D00110D92 /* StandZone_WatchKit_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZone_WatchKit_AppTests.swift; sourceTree = "<group>"; };
+		A3CFBB6927E24E1D00110D92 /* StandZone WatchKit AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StandZone WatchKit AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CFBB6D27E24E1D00110D92 /* StandZone_WatchKit_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZone_WatchKit_AppUITests.swift; sourceTree = "<group>"; };
+		A3CFBB6F27E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZone_WatchKit_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A3CFBB1327E24E1900110D92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB2327E24E1A00110D92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB2D27E24E1A00110D92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB4227E24E1C00110D92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB5C27E24E1D00110D92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB6627E24E1D00110D92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A3CFBB0D27E24E1800110D92 = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB1827E24E1900110D92 /* StandZone */,
+				A3CFBB2927E24E1A00110D92 /* StandZoneTests */,
+				A3CFBB3327E24E1B00110D92 /* StandZoneUITests */,
+				A3CFBB3E27E24E1B00110D92 /* StandZone WatchKit App */,
+				A3CFBB4927E24E1C00110D92 /* StandZone WatchKit Extension */,
+				A3CFBB6227E24E1D00110D92 /* StandZone WatchKit AppTests */,
+				A3CFBB6C27E24E1D00110D92 /* StandZone WatchKit AppUITests */,
+				A3CFBB1727E24E1900110D92 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A3CFBB1727E24E1900110D92 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB1627E24E1900110D92 /* StandZone.app */,
+				A3CFBB2627E24E1A00110D92 /* StandZoneTests.xctest */,
+				A3CFBB3027E24E1A00110D92 /* StandZoneUITests.xctest */,
+				A3CFBB3A27E24E1B00110D92 /* StandZone WatchKit App.app */,
+				A3CFBB4527E24E1C00110D92 /* StandZone WatchKit Extension.appex */,
+				A3CFBB5F27E24E1D00110D92 /* StandZone WatchKit AppTests.xctest */,
+				A3CFBB6927E24E1D00110D92 /* StandZone WatchKit AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A3CFBB1827E24E1900110D92 /* StandZone */ = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB1927E24E1900110D92 /* StandZoneApp.swift */,
+				A3CFBB1B27E24E1900110D92 /* ContentView.swift */,
+				A3CFBB1D27E24E1A00110D92 /* Assets.xcassets */,
+				A3CFBB1F27E24E1A00110D92 /* Preview Content */,
+			);
+			path = StandZone;
+			sourceTree = "<group>";
+		};
+		A3CFBB1F27E24E1A00110D92 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB2027E24E1A00110D92 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A3CFBB2927E24E1A00110D92 /* StandZoneTests */ = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB2A27E24E1A00110D92 /* StandZoneTests.swift */,
+			);
+			path = StandZoneTests;
+			sourceTree = "<group>";
+		};
+		A3CFBB3327E24E1B00110D92 /* StandZoneUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB3427E24E1B00110D92 /* StandZoneUITests.swift */,
+				A3CFBB3627E24E1B00110D92 /* StandZoneUITestsLaunchTests.swift */,
+			);
+			path = StandZoneUITests;
+			sourceTree = "<group>";
+		};
+		A3CFBB3E27E24E1B00110D92 /* StandZone WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB3F27E24E1C00110D92 /* Assets.xcassets */,
+			);
+			path = "StandZone WatchKit App";
+			sourceTree = "<group>";
+		};
+		A3CFBB4927E24E1C00110D92 /* StandZone WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB4A27E24E1C00110D92 /* StandZoneApp.swift */,
+				A3CFBB4C27E24E1C00110D92 /* ContentView.swift */,
+				A3CFBB4E27E24E1C00110D92 /* NotificationController.swift */,
+				A3CFBB5027E24E1C00110D92 /* NotificationView.swift */,
+				A3CFBB5227E24E1C00110D92 /* ComplicationController.swift */,
+				A3CFBB5427E24E1D00110D92 /* Assets.xcassets */,
+				A3CFBB5927E24E1D00110D92 /* Info.plist */,
+				A3CFBB5A27E24E1D00110D92 /* PushNotificationPayload.apns */,
+				A3CFBB5627E24E1D00110D92 /* Preview Content */,
+			);
+			path = "StandZone WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		A3CFBB5627E24E1D00110D92 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB5727E24E1D00110D92 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A3CFBB6227E24E1D00110D92 /* StandZone WatchKit AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB6327E24E1D00110D92 /* StandZone_WatchKit_AppTests.swift */,
+			);
+			path = "StandZone WatchKit AppTests";
+			sourceTree = "<group>";
+		};
+		A3CFBB6C27E24E1D00110D92 /* StandZone WatchKit AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A3CFBB6D27E24E1D00110D92 /* StandZone_WatchKit_AppUITests.swift */,
+				A3CFBB6F27E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift */,
+			);
+			path = "StandZone WatchKit AppUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A3CFBB1527E24E1900110D92 /* StandZone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3CFBB7B27E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZone" */;
+			buildPhases = (
+				A3CFBB1227E24E1900110D92 /* Sources */,
+				A3CFBB1327E24E1900110D92 /* Frameworks */,
+				A3CFBB1427E24E1900110D92 /* Resources */,
+				A3CFBB7A27E24E1D00110D92 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3CFBB3D27E24E1B00110D92 /* PBXTargetDependency */,
+			);
+			name = StandZone;
+			productName = StandZone;
+			productReference = A3CFBB1627E24E1900110D92 /* StandZone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A3CFBB2527E24E1A00110D92 /* StandZoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3CFBB7E27E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZoneTests" */;
+			buildPhases = (
+				A3CFBB2227E24E1A00110D92 /* Sources */,
+				A3CFBB2327E24E1A00110D92 /* Frameworks */,
+				A3CFBB2427E24E1A00110D92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3CFBB2827E24E1A00110D92 /* PBXTargetDependency */,
+			);
+			name = StandZoneTests;
+			productName = StandZoneTests;
+			productReference = A3CFBB2627E24E1A00110D92 /* StandZoneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A3CFBB2F27E24E1A00110D92 /* StandZoneUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3CFBB8127E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZoneUITests" */;
+			buildPhases = (
+				A3CFBB2C27E24E1A00110D92 /* Sources */,
+				A3CFBB2D27E24E1A00110D92 /* Frameworks */,
+				A3CFBB2E27E24E1A00110D92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3CFBB3227E24E1B00110D92 /* PBXTargetDependency */,
+			);
+			name = StandZoneUITests;
+			productName = StandZoneUITests;
+			productReference = A3CFBB3027E24E1A00110D92 /* StandZoneUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A3CFBB3927E24E1B00110D92 /* StandZone WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3CFBB7727E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZone WatchKit App" */;
+			buildPhases = (
+				A3CFBB3827E24E1B00110D92 /* Resources */,
+				A3CFBB7627E24E1D00110D92 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3CFBB4827E24E1C00110D92 /* PBXTargetDependency */,
+			);
+			name = "StandZone WatchKit App";
+			productName = "StandZone WatchKit App";
+			productReference = A3CFBB3A27E24E1B00110D92 /* StandZone WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		A3CFBB4427E24E1C00110D92 /* StandZone WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3CFBB7327E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZone WatchKit Extension" */;
+			buildPhases = (
+				A3CFBB4127E24E1C00110D92 /* Sources */,
+				A3CFBB4227E24E1C00110D92 /* Frameworks */,
+				A3CFBB4327E24E1C00110D92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "StandZone WatchKit Extension";
+			productName = "StandZone WatchKit Extension";
+			productReference = A3CFBB4527E24E1C00110D92 /* StandZone WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		A3CFBB5E27E24E1D00110D92 /* StandZone WatchKit AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3CFBB8427E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZone WatchKit AppTests" */;
+			buildPhases = (
+				A3CFBB5B27E24E1D00110D92 /* Sources */,
+				A3CFBB5C27E24E1D00110D92 /* Frameworks */,
+				A3CFBB5D27E24E1D00110D92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3CFBB6127E24E1D00110D92 /* PBXTargetDependency */,
+			);
+			name = "StandZone WatchKit AppTests";
+			productName = "StandZone WatchKit AppTests";
+			productReference = A3CFBB5F27E24E1D00110D92 /* StandZone WatchKit AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A3CFBB6827E24E1D00110D92 /* StandZone WatchKit AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3CFBB8727E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZone WatchKit AppUITests" */;
+			buildPhases = (
+				A3CFBB6527E24E1D00110D92 /* Sources */,
+				A3CFBB6627E24E1D00110D92 /* Frameworks */,
+				A3CFBB6727E24E1D00110D92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3CFBB6B27E24E1D00110D92 /* PBXTargetDependency */,
+			);
+			name = "StandZone WatchKit AppUITests";
+			productName = "StandZone WatchKit AppUITests";
+			productReference = A3CFBB6927E24E1D00110D92 /* StandZone WatchKit AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A3CFBB0E27E24E1800110D92 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					A3CFBB1527E24E1900110D92 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					A3CFBB2527E24E1A00110D92 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = A3CFBB1527E24E1900110D92;
+					};
+					A3CFBB2F27E24E1A00110D92 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = A3CFBB1527E24E1900110D92;
+					};
+					A3CFBB3927E24E1B00110D92 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					A3CFBB4427E24E1C00110D92 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					A3CFBB5E27E24E1D00110D92 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = A3CFBB4427E24E1C00110D92;
+					};
+					A3CFBB6827E24E1D00110D92 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = A3CFBB3927E24E1B00110D92;
+					};
+				};
+			};
+			buildConfigurationList = A3CFBB1127E24E1800110D92 /* Build configuration list for PBXProject "StandZone" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A3CFBB0D27E24E1800110D92;
+			productRefGroup = A3CFBB1727E24E1900110D92 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A3CFBB1527E24E1900110D92 /* StandZone */,
+				A3CFBB2527E24E1A00110D92 /* StandZoneTests */,
+				A3CFBB2F27E24E1A00110D92 /* StandZoneUITests */,
+				A3CFBB3927E24E1B00110D92 /* StandZone WatchKit App */,
+				A3CFBB4427E24E1C00110D92 /* StandZone WatchKit Extension */,
+				A3CFBB5E27E24E1D00110D92 /* StandZone WatchKit AppTests */,
+				A3CFBB6827E24E1D00110D92 /* StandZone WatchKit AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A3CFBB1427E24E1900110D92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3CFBB2127E24E1A00110D92 /* Preview Assets.xcassets in Resources */,
+				A3CFBB1E27E24E1A00110D92 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB2427E24E1A00110D92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB2E27E24E1A00110D92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB3827E24E1B00110D92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3CFBB4027E24E1C00110D92 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB4327E24E1C00110D92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3CFBB5827E24E1D00110D92 /* Preview Assets.xcassets in Resources */,
+				A3CFBB5527E24E1D00110D92 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB5D27E24E1D00110D92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB6727E24E1D00110D92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A3CFBB1227E24E1900110D92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3CFBB1C27E24E1900110D92 /* ContentView.swift in Sources */,
+				A3CFBB1A27E24E1900110D92 /* StandZoneApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB2227E24E1A00110D92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3CFBB2B27E24E1A00110D92 /* StandZoneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB2C27E24E1A00110D92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3CFBB3527E24E1B00110D92 /* StandZoneUITests.swift in Sources */,
+				A3CFBB3727E24E1B00110D92 /* StandZoneUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB4127E24E1C00110D92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3CFBB4F27E24E1C00110D92 /* NotificationController.swift in Sources */,
+				A3CFBB4D27E24E1C00110D92 /* ContentView.swift in Sources */,
+				A3CFBB5327E24E1C00110D92 /* ComplicationController.swift in Sources */,
+				A3CFBB4B27E24E1C00110D92 /* StandZoneApp.swift in Sources */,
+				A3CFBB5127E24E1C00110D92 /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB5B27E24E1D00110D92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3CFBB6427E24E1D00110D92 /* StandZone_WatchKit_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3CFBB6527E24E1D00110D92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3CFBB7027E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift in Sources */,
+				A3CFBB6E27E24E1D00110D92 /* StandZone_WatchKit_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A3CFBB2827E24E1A00110D92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3CFBB1527E24E1900110D92 /* StandZone */;
+			targetProxy = A3CFBB2727E24E1A00110D92 /* PBXContainerItemProxy */;
+		};
+		A3CFBB3227E24E1B00110D92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3CFBB1527E24E1900110D92 /* StandZone */;
+			targetProxy = A3CFBB3127E24E1B00110D92 /* PBXContainerItemProxy */;
+		};
+		A3CFBB3D27E24E1B00110D92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3CFBB3927E24E1B00110D92 /* StandZone WatchKit App */;
+			targetProxy = A3CFBB3C27E24E1B00110D92 /* PBXContainerItemProxy */;
+		};
+		A3CFBB4827E24E1C00110D92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3CFBB4427E24E1C00110D92 /* StandZone WatchKit Extension */;
+			targetProxy = A3CFBB4727E24E1C00110D92 /* PBXContainerItemProxy */;
+		};
+		A3CFBB6127E24E1D00110D92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3CFBB4427E24E1C00110D92 /* StandZone WatchKit Extension */;
+			targetProxy = A3CFBB6027E24E1D00110D92 /* PBXContainerItemProxy */;
+		};
+		A3CFBB6B27E24E1D00110D92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A3CFBB3927E24E1B00110D92 /* StandZone WatchKit App */;
+			targetProxy = A3CFBB6A27E24E1D00110D92 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A3CFBB7127E24E1D00110D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A3CFBB7227E24E1D00110D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A3CFBB7427E24E1D00110D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StandZone WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "StandZone WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "StandZone WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.andrew.yifanlan.StandZone.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		A3CFBB7527E24E1D00110D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StandZone WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "StandZone WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "StandZone WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.andrew.yifanlan.StandZone.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		A3CFBB7827E24E1D00110D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = StandZone_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "StandZone WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = edu.cmu.andrew.yifanlan.StandZone;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.andrew.yifanlan.StandZone.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		A3CFBB7927E24E1D00110D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = StandZone_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "StandZone WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = edu.cmu.andrew.yifanlan.StandZone;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.andrew.yifanlan.StandZone.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		A3CFBB7C27E24E1D00110D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StandZone/Preview Content\"";
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.andrew.yifanlan.StandZone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A3CFBB7D27E24E1D00110D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"StandZone/Preview Content\"";
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.andrew.yifanlan.StandZone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A3CFBB7F27E24E1D00110D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.andrew.yifanlan.StandZoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StandZone.app/StandZone";
+			};
+			name = Debug;
+		};
+		A3CFBB8027E24E1D00110D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.andrew.yifanlan.StandZoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StandZone.app/StandZone";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A3CFBB8227E24E1D00110D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.andrew.yifanlan.StandZoneUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StandZone;
+			};
+			name = Debug;
+		};
+		A3CFBB8327E24E1D00110D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.andrew.yifanlan.StandZoneUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StandZone;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A3CFBB8527E24E1D00110D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cmu.andrew.yifanlan.StandZone-WatchKit-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StandZone WatchKit Extension.appex/StandZone WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		A3CFBB8627E24E1D00110D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cmu.andrew.yifanlan.StandZone-WatchKit-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StandZone WatchKit Extension.appex/StandZone WatchKit Extension";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		A3CFBB8827E24E1D00110D92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cmu.andrew.yifanlan.StandZone-WatchKit-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "StandZone WatchKit App";
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		A3CFBB8927E24E1D00110D92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2XWA88W42G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cmu.andrew.yifanlan.StandZone-WatchKit-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "StandZone WatchKit App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A3CFBB1127E24E1800110D92 /* Build configuration list for PBXProject "StandZone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3CFBB7127E24E1D00110D92 /* Debug */,
+				A3CFBB7227E24E1D00110D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3CFBB7327E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZone WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3CFBB7427E24E1D00110D92 /* Debug */,
+				A3CFBB7527E24E1D00110D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3CFBB7727E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZone WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3CFBB7827E24E1D00110D92 /* Debug */,
+				A3CFBB7927E24E1D00110D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3CFBB7B27E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3CFBB7C27E24E1D00110D92 /* Debug */,
+				A3CFBB7D27E24E1D00110D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3CFBB7E27E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3CFBB7F27E24E1D00110D92 /* Debug */,
+				A3CFBB8027E24E1D00110D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3CFBB8127E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZoneUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3CFBB8227E24E1D00110D92 /* Debug */,
+				A3CFBB8327E24E1D00110D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3CFBB8427E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZone WatchKit AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3CFBB8527E24E1D00110D92 /* Debug */,
+				A3CFBB8627E24E1D00110D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3CFBB8727E24E1D00110D92 /* Build configuration list for PBXNativeTarget "StandZone WatchKit AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3CFBB8827E24E1D00110D92 /* Debug */,
+				A3CFBB8927E24E1D00110D92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A3CFBB0E27E24E1800110D92 /* Project object */;
+}
