@@ -46,8 +46,7 @@ struct RegisterView: View {
 
                 ContinueButton(content: "Continue")
                     .onTapGesture {
-                        myController.updateEmail(newEmail: email)
-                        myController.updatePassword(newPassword: password)
+                        myController.updateAccountInfo(newEmail: email, newPassword: password)
                         myController.updateScreen(newScreen: 3)
                     }
             }

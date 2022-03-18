@@ -9,7 +9,7 @@ import SwiftUI
 
 class StandZoneController: ObservableObject {
     @Published private var screen : Int = 0
-    @Published private var user = UserModel(password: "", email: "", name: "", gender: "", frequencyGoal: 0, timeGoal: 0, wakeUpTime: Date(), sleepTime: Date())
+    @Published private var user = UserModel()
     
     func getScreen() -> Int{
         return screen
@@ -21,70 +21,28 @@ class StandZoneController: ObservableObject {
         screen = newScreen
     }
     
-    func getEmail() -> String {
-        return user.email
+    
+    func getUserInfo() -> UserModel {
+        return user
     }
     
-    func updateEmail(newEmail: String) {
-        user.email = newEmail
+    func updateAccountInfo(newEmail: String, newPassword: String) {
+        user.updateEmail(newEmail: newEmail)
+        user.updatePassword(newPassword: newPassword)
     }
     
-    
-    func getName() -> String {
-        return user.name
+    func updateBasicInfo(newName: String, newGender: String) {
+        user.updateName(newName: newName)
+        user.updateGender(newGender: newGender)
     }
     
-    func updateName(newName: String) {
-        user.name = newName
+    func updateNotification(newWakeUpTime: Date, newSleepTime: Date) {
+        user.updateWakeUpTime(newTime: newWakeUpTime)
+        user.updateSleepTime(newTime: newSleepTime)
     }
     
-    func getGender() -> String {
-        return user.gender
-    }
-    
-    func updateGender(newGender: String) {
-        user.gender = newGender
-    }
-    
-    func getPassword() -> String {
-        return user.password
-    }
-    
-    func updatePassword(newPassword: String) {
-        user.password = newPassword
-    }
-    
-    func getFrequencyGoal() -> Int{
-        return user.frequencyGoal
-    }
-    
-    func updateFrequencyGoal(newGoal: Int) {
-        user.frequencyGoal = newGoal
-    }
-    
-    func getTimeGoal() -> Int {
-        return user.timeGoal
-    }
-    
-    func updateTimeGoal(newGoal: Int) {
-        user.timeGoal = newGoal
-    }
-    
-    func getWakeUpTime() -> Date {
-        return user.wakeUpTime
-    }
-    
-    func updateWakeUpTime(newTime: Date) {
-        print("update wake up time")
-        user.wakeUpTime = newTime
-    }
-    
-    func getSleepTime() -> Date {
-        return user.sleepTime
-    }
-    
-    func updateSleepTime(newTime: Date) {
-        print("update sleep time")
-        user.sleepTime = newTime
+    func updateGoal(newFrequency: Int, newTime: Int) {
+        user.updateFrequencyGoal(newGoal: newFrequency)
+        user.updateTimeGoal(newGoal: newTime)
     }
 }

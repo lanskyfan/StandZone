@@ -10,7 +10,6 @@ import SwiftUI
 struct RegisterView1: View {
     @ObservedObject var myController: StandZoneController
     @State private var nickName: String = ""
-    @State private var password: String = ""
     @State private var gender: String = ""
     var body: some View {
         ZStack (alignment: .top){
@@ -40,9 +39,7 @@ struct RegisterView1: View {
                     .frame(height: 40)
                 ContinueButton(content: "Continue")
                     .onTapGesture {
-                        myController.updateName(newName: nickName)
-                        myController.updatePassword(newPassword: password)
-                        myController.updateGender(newGender: gender)
+                        myController.updateBasicInfo(newName: nickName, newGender: gender)
                         myController.updateScreen(newScreen: 4)
                     }
                 Spacer()

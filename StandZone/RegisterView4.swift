@@ -31,6 +31,9 @@ struct RegisterView4: View {
                 Spacer()
                     .frame(height: 40)
                 ContinueButton(content: "Continue")
+                    .onTapGesture {
+                        myController.updateGoal(newFrequency: frequency, newTime: time)
+                    }
                 Spacer()
                     .frame(height: 60)
             }
