@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RegisterView4: View {
+    @ObservedObject var myController: StandZoneController
+    @State private var frequency: Int = 0;
+    @State private var time: Int = 0;
     var body: some View {
 
         ZStack (alignment: .top) {
@@ -23,8 +26,8 @@ struct RegisterView4: View {
                 Text("Set Daily Goal").bold().font(.title)
                 Spacer()
                     .frame(height: 40)
-                frequencyStepperView()
-                timeStepperView()
+                frequencyStepperView(frequency: $frequency)
+                timeStepperView(time: $time)
                 Spacer()
                     .frame(height: 40)
                 ContinueButton(content: "Continue")
@@ -40,18 +43,17 @@ struct RegisterView4: View {
 
 struct RegisterView4_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView4()
+        RegisterView4(myController: StandZoneController())
     }
 }
 
 struct frequencyStepperView: View {
-    @State var stepperValue: Int = 0
-
+    @Binding var frequency: Int
     var body: some View {
         HStack {
             Text("Stand Frequency")
             VStack {
-                Stepper("\(stepperValue)", value: $stepperValue)
+                Stepper("\(frequency)", value: $frequency)
             }.padding()
         }
 
@@ -59,13 +61,12 @@ struct frequencyStepperView: View {
 }
 
 struct timeStepperView: View {
-    @State var stepperValue: Int = 0
-
+    @Binding var time: Int
     var body: some View {
         HStack {
             Text("Standing time (min)")
             VStack {
-                Stepper("\(stepperValue)", value: $stepperValue)
+                Stepper("\(time)", value: $time)
             }.padding()
         }
     }

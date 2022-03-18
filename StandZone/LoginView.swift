@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    @ObservedObject var myController: StandZoneController
     @State private var email: String = ""
     @State private var password: String = ""
     var body: some View {
@@ -42,6 +43,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(myController: StandZoneController())
     }
 }

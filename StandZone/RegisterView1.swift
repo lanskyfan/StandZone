@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct RegisterView1: View {
+    @ObservedObject var myController: StandZoneController
     @State private var nickName: String = ""
     @State private var password: String = ""
+    @State private var gender: String = ""
     var body: some View {
         ZStack (alignment: .top){
             Image("background1")
@@ -25,18 +27,24 @@ struct RegisterView1: View {
                 VStack {
                     HStack {
                         Image(systemName: "person.fill").font(.system(size: 30))
-                        Text("Nickname").bold()
+                        Text("Nickname").bold().disableAutocorrection(true)
                     }
                     TextField(text: $nickName, prompt: Text("Required")) {
                         Text("Username")
-                    }.padding().foregroundColor(.white)
+                    }.padding()
 
 
                 }.textFieldStyle(.roundedBorder)
-                GenderView()
+                GenderView(gender: $gender)
                 Spacer()
                     .frame(height: 40)
                 ContinueButton(content: "Continue")
+                    .onTapGesture {
+                        myController.updateName(newName: nickName)
+                        myController.updatePassword(newPassword: password)
+                        myController.updateGender(newGender: gender)
+                        myController.updateScreen(newScreen: 4)
+                    }
                 Spacer()
                     .frame(height: 60)
             }
@@ -75,6 +83,7 @@ struct ProgressCircle : View {
 }
 
 struct GenderView: View {
+    @Binding var gender: String
     var body: some View {
         HStack {
             Image(systemName: "person.2.fill").font(.system(size: 30))
@@ -86,11 +95,17 @@ struct GenderView: View {
                 shape.fill().foregroundColor(.white).frame(height: 60)
                 Text("Male").bold()
             }
+            .onTapGesture {
+                gender = "Male"
+            }
             ZStack {
                 let shape = RoundedRectangle(cornerRadius: 10)
                 shape.fill().foregroundColor(.white)
                     .frame(height: 60)
                 Text("Female").bold()
+            }
+            .onTapGesture {
+                gender = "Female"
             }
         }.padding()
     }
@@ -98,6 +113,6 @@ struct GenderView: View {
 
 struct RegisterView1_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView1()
+        RegisterView1(myController: StandZoneController())
     }
 }

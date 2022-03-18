@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @ObservedObject var myController: StandZoneController
     @State private var email: String = ""
     @State private var password: String = ""
     
@@ -29,7 +30,7 @@ struct RegisterView: View {
                 VStack {
                     HStack {
                         Image(systemName: "person.fill").font(.system(size: 30))
-                        Text("Email Address").bold()
+                        Text("Email Address").bold().disableAutocorrection(true)
                     }
                     TextField(text: $email, prompt: Text("Required")) {
                         Text("Username")
@@ -44,6 +45,11 @@ struct RegisterView: View {
                 }.textFieldStyle(.roundedBorder)
 
                 ContinueButton(content: "Continue")
+                    .onTapGesture {
+                        myController.updateEmail(newEmail: email)
+                        myController.updatePassword(newPassword: password)
+                        myController.updateScreen(newScreen: 3)
+                    }
             }
         }
 
@@ -68,6 +74,6 @@ struct ContinueButton: View {
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView()
+        RegisterView(myController: StandZoneController())
     }
 }

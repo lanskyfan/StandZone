@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InitialView: View {
-    @Binding var screen: Int
+    @ObservedObject var myController: StandZoneController
     var body: some View {
         ZStack {
             Image("background1")
@@ -19,11 +19,11 @@ struct InitialView: View {
                 Text("Welcome to Stand Zone").bold().font(.title)
                 Text("keep standing and live a healthy life")
                 VStack (spacing: 20){
-                    ButtonView(screen: $screen, nextScreen: -1, content: "LOG IN WITH FACEBOOK")
-                    ButtonView(screen: $screen, nextScreen: -1, content: "LOG IN WITH GOOGLE")
-                    ButtonView(screen: $screen, nextScreen: 1, content: "CREATE AN ACCOUNT")
-                    ButtonView(screen: $screen, nextScreen: 2, content: "LOG IN WITH EXISTING ACCOUNT")
-                    ButtonView(screen: $screen, nextScreen: 3, content: "CONTINUE WITHOUT ACCOUNT", myColor: .gray)
+                    ButtonView(myController: myController, nextScreen: -1, content: "LOG IN WITH FACEBOOK")
+                    ButtonView(myController: myController, nextScreen: -1, content: "LOG IN WITH GOOGLE")
+                    ButtonView(myController: myController, nextScreen: 1, content: "CREATE AN ACCOUNT")
+                    ButtonView(myController: myController, nextScreen: 2, content: "LOG IN WITH EXISTING ACCOUNT")
+                    ButtonView(myController: myController, nextScreen: 3, content: "CONTINUE WITHOUT ACCOUNT", myColor: .gray)
                 }.padding()
 
             }.padding()
@@ -35,7 +35,7 @@ struct InitialView: View {
 
 
 struct ButtonView: View {
-    @Binding var screen: Int
+    @ObservedObject var myController : StandZoneController
     var nextScreen: Int
     var content: String
     var myColor: Color = .green1
@@ -47,7 +47,7 @@ struct ButtonView: View {
             Text(content)
         }
         .onTapGesture {
-            screen = nextScreen
+            myController.updateScreen(newScreen: nextScreen)
         }
     }
 }
@@ -60,9 +60,9 @@ extension Color {
     static let blue1 = Color("MyBlue1")
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    @State var screen = 1
-//    static var previews: some View {
-//        InitialView(screen: $screen)
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    @State var screen = 1
+    static var previews: some View {
+        InitialView(myController: StandZoneController())
+    }
+}

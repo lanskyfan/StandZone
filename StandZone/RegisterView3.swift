@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegisterView3: View {
+    @ObservedObject var myController: StandZoneController
     var body: some View {
         ZStack {
             Image("background1")
@@ -20,6 +21,9 @@ struct RegisterView3: View {
                 Text("We will always pay attention to your standing and remind you to stand at the right time")
                 VStack (spacing: 20){
                     ButtonView2(content: "Agree")
+                        .onTapGesture {
+                            myController.updateScreen(newScreen: 6)
+                        }
                     ButtonView2(content: "Disagree", myColor: .white)
                 }.padding()
 
@@ -40,14 +44,12 @@ struct ButtonView2: View {
             shape.fill().foregroundColor(myColor).frame(width: 300, height: 40)
             Text(content)
         }
-        .onTapGesture {
-        }
     }
 }
 
 
 struct RegisterView3_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView3()
+        RegisterView3(myController: StandZoneController())
     }
 }

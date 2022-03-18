@@ -11,7 +11,7 @@ import SwiftUI
 struct StandZoneApp: App {
     var body: some Scene {
         WindowGroup {
-            mainView()
+            SwitchView(myController: StandZoneController())
         }
     }
 }

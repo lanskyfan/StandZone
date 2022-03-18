@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct RegisterView2: View {
-    @State private var nickName: String = ""
-    @State private var password: String = ""
+    @ObservedObject var myController: StandZoneController
+    @State private var wakeUpTime: Date = Date()
+    @State private var sleepTime: Date = Date()
     var body: some View {
         ZStack (alignment: .top) {
             Image("background1")
@@ -24,10 +25,15 @@ struct RegisterView2: View {
                 Text("Notification Schedule").bold().font(.title)
                 Spacer()
                     .frame(height: 40)
-                TimeView()
+                TimeView(wakeUpTime: $wakeUpTime, sleepTime: $sleepTime)
                 Spacer()
                     .frame(height: 40)
                 ContinueButton(content: "Continue")
+                    .onTapGesture {
+                        myController.updateWakeUpTime(newTime: wakeUpTime)
+                        myController.updateSleepTime(newTime: sleepTime)
+                        myController.updateScreen(newScreen: 5)
+                    }
                 Spacer()
                     .frame(height: 60)
             }
@@ -38,16 +44,11 @@ struct RegisterView2: View {
     }
 }
 
-struct RegisterView2_Previews: PreviewProvider {
-    static var previews: some View {
-        RegisterView2()
-    }
-}
 
 struct TimeView: View {
     
-    @State private var currentDate = Date()
-    
+    @Binding var wakeUpTime: Date
+    @Binding var sleepTime: Date
     var body: some View {
         VStack {
             HStack {
@@ -57,17 +58,23 @@ struct TimeView: View {
             }
             HStack {
                 VStack {
-                    DatePicker("", selection: $currentDate, displayedComponents: [.hourAndMinute])
+                    DatePicker("", selection: $wakeUpTime, displayedComponents: [.hourAndMinute])
                     .labelsHidden()
                 }.padding()
                 Text("To")
                 VStack {
-                    DatePicker("", selection: $currentDate, displayedComponents: [.hourAndMinute])
+                    DatePicker("", selection: $sleepTime, displayedComponents: [.hourAndMinute])
                     .labelsHidden()
                 }.padding()
             }
         }
 
 
+    }
+}
+
+struct RegisterView2_Previews: PreviewProvider {
+    static var previews: some View {
+        RegisterView2(myController: StandZoneController())
     }
 }
