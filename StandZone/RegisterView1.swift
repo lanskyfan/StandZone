@@ -26,11 +26,11 @@ struct RegisterView1: View {
                 VStack {
                     HStack {
                         Image(systemName: "person.fill").font(.system(size: 30))
-                        Text("Nickname").bold().disableAutocorrection(true)
+                        Text("Nickname").bold()
                     }
                     TextField(text: $nickName, prompt: Text("Required")) {
                         Text("Username")
-                    }.padding()
+                    }.padding().disableAutocorrection(true)
 
 
                 }.textFieldStyle(.roundedBorder)
@@ -40,7 +40,7 @@ struct RegisterView1: View {
                 ContinueButton(content: "Continue")
                     .onTapGesture {
                         myController.updateBasicInfo(newName: nickName, newGender: gender)
-                        myController.updateScreen(newScreen: 4)
+                        myController.updateScreen(newScreen: Screen.registerView2)
                     }
                 Spacer()
                     .frame(height: 60)

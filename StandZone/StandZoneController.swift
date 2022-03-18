@@ -8,14 +8,14 @@
 import SwiftUI
 
 class StandZoneController: ObservableObject {
-    @Published private var screen : Int = 0
+    @Published private var screen = Screen.initialView
     @Published private var user = UserModel()
     
-    func getScreen() -> Int{
+    func getScreen() -> Screen{
         return screen
     }
     
-    func updateScreen(newScreen: Int) {
+    func updateScreen(newScreen: Screen) {
 //        objectWillChange.send()
         print("My new screen is \(newScreen)")
         screen = newScreen
@@ -45,4 +45,18 @@ class StandZoneController: ObservableObject {
         user.updateFrequencyGoal(newGoal: newFrequency)
         user.updateTimeGoal(newGoal: newTime)
     }
+    
+    
+
+}
+
+enum Screen {
+    case initialView
+    case registerView
+    case registerView1
+    case registerView2
+    case registerView3
+    case registerView4
+    case logInView
+    case homeView
 }

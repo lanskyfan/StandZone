@@ -31,7 +31,7 @@ struct RegisterView2: View {
                 ContinueButton(content: "Continue")
                     .onTapGesture {
                         myController.updateNotification(newWakeUpTime: wakeUpTime, newSleepTime: sleepTime)
-                        myController.updateScreen(newScreen: 5)
+                        myController.updateScreen(newScreen: Screen.registerView3)
                     }
                 Spacer()
                     .frame(height: 60)

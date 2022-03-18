@@ -11,23 +11,24 @@ struct SwitchView: View {
     @ObservedObject var myController: StandZoneController
 
     var body: some View {
-        if myController.getScreen() == 0 {
+        switch myController.getScreen() {
+        case Screen.initialView:
             InitialView(myController: myController)
-        } else if myController.getScreen() == 1{
-            RegisterView(myController: myController)
-        } else if myController.getScreen() == 2 {
+        case Screen.logInView:
             LoginView(myController: myController)
-        } else if myController.getScreen() == 3 {
+        case Screen.registerView:
+            RegisterView(myController: myController)
+        case Screen.registerView1:
             RegisterView1(myController: myController)
-        } else if myController.getScreen() == 4 {
+        case Screen.registerView2:
             RegisterView2(myController: myController)
-        } else if myController.getScreen() == 5 {
+        case Screen.registerView3:
             RegisterView3(myController: myController)
-        } else if myController.getScreen() == 6 {
+        case Screen.registerView4:
             RegisterView4(myController: myController)
-        }
-        else {
-            // Main page
+        case Screen.homeView:
+            HomeView(myController: myController)
+        
         }
     }
 }

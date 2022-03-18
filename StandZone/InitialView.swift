@@ -19,11 +19,12 @@ struct InitialView: View {
                 Text("Welcome to Stand Zone").bold().font(.title)
                 Text("keep standing and live a healthy life")
                 VStack (spacing: 20){
-                    ButtonView(myController: myController, nextScreen: -1, content: "LOG IN WITH FACEBOOK")
-                    ButtonView(myController: myController, nextScreen: -1, content: "LOG IN WITH GOOGLE")
-                    ButtonView(myController: myController, nextScreen: 1, content: "CREATE AN ACCOUNT")
-                    ButtonView(myController: myController, nextScreen: 2, content: "LOG IN WITH EXISTING ACCOUNT")
-                    ButtonView(myController: myController, nextScreen: 3, content: "CONTINUE WITHOUT ACCOUNT", myColor: .gray)
+                    // Need to update
+                    ButtonView(myController: myController, nextScreen: Screen.registerView, content: "LOG IN WITH FACEBOOK")
+                    ButtonView(myController: myController, nextScreen: Screen.registerView, content: "LOG IN WITH GOOGLE")
+                    ButtonView(myController: myController, nextScreen: Screen.registerView, content: "CREATE AN ACCOUNT")
+                    ButtonView(myController: myController, nextScreen: Screen.logInView, content: "LOG IN WITH EXISTING ACCOUNT")
+                    ButtonView(myController: myController, nextScreen: Screen.registerView1, content: "CONTINUE WITHOUT ACCOUNT", myColor: .gray)
                 }.padding()
 
             }.padding()
@@ -36,7 +37,7 @@ struct InitialView: View {
 
 struct ButtonView: View {
     @ObservedObject var myController : StandZoneController
-    var nextScreen: Int
+    var nextScreen: Screen
     var content: String
     var myColor: Color = .green1
     

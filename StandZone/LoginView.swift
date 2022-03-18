@@ -25,7 +25,7 @@ struct LoginView: View {
                     }
                     TextField(text: $email, prompt: Text("Required")) {
                         Text("Username")
-                    }.padding().foregroundColor(.white)
+                    }.padding().disableAutocorrection(true)
                     HStack {
                         Image(systemName: "key.fill").font(.system(size: 30))
                         Text("Password").bold()
@@ -36,6 +36,9 @@ struct LoginView: View {
                 }.textFieldStyle(.roundedBorder)
 
                 ContinueButton(content: "Continue")
+                    .onTapGesture {
+                        myController.updateScreen(newScreen: Screen.homeView)
+                    }
             }
         }
     }

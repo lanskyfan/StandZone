@@ -16,6 +16,7 @@
 		A37BCEDD27E3DDEF00CD629C /* RegisterView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCEDC27E3DDEF00CD629C /* RegisterView4.swift */; };
 		A37BCEDF27E433A200CD629C /* StandZoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCEDE27E433A200CD629C /* StandZoneController.swift */; };
 		A37BCEE127E43A5900CD629C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCEE027E43A5900CD629C /* UserModel.swift */; };
+		A394978A27E4E639003CE542 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A394978927E4E639003CE542 /* HomeView.swift */; };
 		A3CFBB1A27E24E1900110D92 /* StandZoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB1927E24E1900110D92 /* StandZoneApp.swift */; };
 		A3CFBB1C27E24E1900110D92 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB1B27E24E1900110D92 /* InitialView.swift */; };
 		A3CFBB1E27E24E1A00110D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CFBB1D27E24E1A00110D92 /* Assets.xcassets */; };
@@ -118,6 +119,7 @@
 		A37BCEDC27E3DDEF00CD629C /* RegisterView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView4.swift; sourceTree = "<group>"; };
 		A37BCEDE27E433A200CD629C /* StandZoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneController.swift; sourceTree = "<group>"; };
 		A37BCEE027E43A5900CD629C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		A394978927E4E639003CE542 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A3CFBB1627E24E1900110D92 /* StandZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CFBB1927E24E1900110D92 /* StandZoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneApp.swift; sourceTree = "<group>"; };
 		A3CFBB1B27E24E1900110D92 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				A37BCEDC27E3DDEF00CD629C /* RegisterView4.swift */,
 				A37BCEDE27E433A200CD629C /* StandZoneController.swift */,
 				A37BCEE027E43A5900CD629C /* UserModel.swift */,
+				A394978927E4E639003CE542 /* HomeView.swift */,
 			);
 			path = StandZone;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				A37BCED727E3A79F00CD629C /* RegisterView1.swift in Sources */,
 				A37BCEDD27E3DDEF00CD629C /* RegisterView4.swift in Sources */,
 				A37BCED527E3A0A200CD629C /* SwitchView.swift in Sources */,
+				A394978A27E4E639003CE542 /* HomeView.swift in Sources */,
 				A3CFBB1A27E24E1900110D92 /* StandZoneApp.swift in Sources */,
 				A37BCEE127E43A5900CD629C /* UserModel.swift in Sources */,
 			);

@@ -22,7 +22,7 @@ struct RegisterView3: View {
                 VStack (spacing: 20){
                     ButtonView2(content: "Agree")
                         .onTapGesture {
-                            myController.updateScreen(newScreen: 6)
+                            myController.updateScreen(newScreen: Screen.registerView4)
                         }
                     ButtonView2(content: "Disagree", myColor: .white)
                 }.padding()

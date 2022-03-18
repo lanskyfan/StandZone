@@ -30,11 +30,11 @@ struct RegisterView: View {
                 VStack {
                     HStack {
                         Image(systemName: "person.fill").font(.system(size: 30))
-                        Text("Email Address").bold().disableAutocorrection(true)
+                        Text("Email Address").bold()
                     }
                     TextField(text: $email, prompt: Text("Required")) {
                         Text("Username")
-                    }.padding()
+                    }.padding().disableAutocorrection(true)
                     HStack {
                         Image(systemName: "key.fill").font(.system(size: 30))
                         Text("Password").bold()
@@ -47,7 +47,7 @@ struct RegisterView: View {
                 ContinueButton(content: "Continue")
                     .onTapGesture {
                         myController.updateAccountInfo(newEmail: email, newPassword: password)
-                        myController.updateScreen(newScreen: 3)
+                        myController.updateScreen(newScreen: Screen.registerView1)
                     }
             }
         }
