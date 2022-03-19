@@ -18,6 +18,8 @@
 		A37BCEDF27E433A200CD629C /* StandZoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCEDE27E433A200CD629C /* StandZoneController.swift */; };
 		A37BCEE127E43A5900CD629C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCEE027E43A5900CD629C /* UserModel.swift */; };
 		A394978A27E4E639003CE542 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A394978927E4E639003CE542 /* HomeView.swift */; };
+		A3BC6C8027E59CE200120DF7 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = A3BC6C7F27E59CE200120DF7 /* SwiftUICharts */; };
+		A3BC6C8227E652A800120DF7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC6C8127E652A800120DF7 /* MainView.swift */; };
 		A3CFBB1A27E24E1900110D92 /* StandZoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB1927E24E1900110D92 /* StandZoneApp.swift */; };
 		A3CFBB1C27E24E1900110D92 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB1B27E24E1900110D92 /* InitialView.swift */; };
 		A3CFBB1E27E24E1A00110D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CFBB1D27E24E1A00110D92 /* Assets.xcassets */; };
@@ -122,6 +124,7 @@
 		A37BCEDE27E433A200CD629C /* StandZoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneController.swift; sourceTree = "<group>"; };
 		A37BCEE027E43A5900CD629C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		A394978927E4E639003CE542 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A3BC6C8127E652A800120DF7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A3CFBB1627E24E1900110D92 /* StandZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CFBB1927E24E1900110D92 /* StandZoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneApp.swift; sourceTree = "<group>"; };
 		A3CFBB1B27E24E1900110D92 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -156,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3BC6C8027E59CE200120DF7 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +247,7 @@
 				A37BCEE027E43A5900CD629C /* UserModel.swift */,
 				A394978927E4E639003CE542 /* HomeView.swift */,
 				A3706CF227E5887C006F9C33 /* HomeView1.swift */,
+				A3BC6C8127E652A800120DF7 /* MainView.swift */,
 			);
 			path = StandZone;
 			sourceTree = "<group>";
@@ -339,6 +344,9 @@
 				A3CFBB3D27E24E1B00110D92 /* PBXTargetDependency */,
 			);
 			name = StandZone;
+			packageProductDependencies = (
+				A3BC6C7F27E59CE200120DF7 /* SwiftUICharts */,
+			);
 			productName = StandZone;
 			productReference = A3CFBB1627E24E1900110D92 /* StandZone.app */;
 			productType = "com.apple.product-type.application";
@@ -495,6 +503,9 @@
 				Base,
 			);
 			mainGroup = A3CFBB0D27E24E1800110D92;
+			packageReferences = (
+				A3BC6C7E27E59CE200120DF7 /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
+			);
 			productRefGroup = A3CFBB1727E24E1900110D92 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -573,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A37BCED127E38A0F00CD629C /* RegisterView.swift in Sources */,
+				A3BC6C8227E652A800120DF7 /* MainView.swift in Sources */,
 				A37BCEDB27E3D62E00CD629C /* RegisterView3.swift in Sources */,
 				A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */,
 				A3CFBB1C27E24E1900110D92 /* InitialView.swift in Sources */,
@@ -1202,6 +1214,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A3BC6C7E27E59CE200120DF7 /* XCRemoteSwiftPackageReference "SwiftUICharts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mecid/SwiftUICharts.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.6.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A3BC6C7F27E59CE200120DF7 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3BC6C7E27E59CE200120DF7 /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A3CFBB0E27E24E1800110D92 /* Project object */;
 }

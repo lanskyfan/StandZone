@@ -27,7 +27,7 @@ struct HomeView: View {
             }
             DigitView()
             Spacer()
-                MiddleView()
+                MiddleView(myController: myController)
 //                BottomView()
 
         }
@@ -97,41 +97,16 @@ struct DigitView: View {
 
 
 struct MiddleView: View {
+    @ObservedObject var myController: StandZoneController
     var body: some View {
         VStack(spacing: 0.0) {
             Image("background3")
                 .resizable()
                 .scaledToFill()
                 .frame(height: 250)
-                BottomView()
         }
 
 
     }
     
-}
-
-
-
-
-struct BottomView: View {
-    var body: some View {
-        ZStack {
-            let shape = Rectangle()
-            shape.fill().foregroundColor(.green1)
-                .edgesIgnoringSafeArea(.all)
-                .frame(maxHeight: 80)
-
-            HStack {
-                Image(systemName: "person.badge.clock").font(.system(size: 50)).foregroundColor(.white)
-                Image(systemName: "waveform.path.ecg.rectangle").font(.system(size: 50)).foregroundColor(.white)
-                Image(systemName: "gamecontroller").font(.system(size: 50)).foregroundColor(.white)
-                Image(systemName: "gearshape").font(.system(size: 50)).foregroundColor(.white)
-
-            }
-        }
-        .edgesIgnoringSafeArea(.all)
-
-
-    }
 }
