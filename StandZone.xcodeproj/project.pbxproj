@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3706CF227E5887C006F9C33 /* HomeView1.swift */; };
 		A37BCED127E38A0F00CD629C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED027E38A0F00CD629C /* RegisterView.swift */; };
 		A37BCED327E3936E00CD629C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED227E3936E00CD629C /* LoginView.swift */; };
 		A37BCED527E3A0A200CD629C /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED427E3A0A200CD629C /* SwitchView.swift */; };
@@ -110,6 +111,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A3706CF227E5887C006F9C33 /* HomeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView1.swift; sourceTree = "<group>"; };
 		A37BCED027E38A0F00CD629C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A37BCED227E3936E00CD629C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A37BCED427E3A0A200CD629C /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				A37BCEDE27E433A200CD629C /* StandZoneController.swift */,
 				A37BCEE027E43A5900CD629C /* UserModel.swift */,
 				A394978927E4E639003CE542 /* HomeView.swift */,
+				A3706CF227E5887C006F9C33 /* HomeView1.swift */,
 			);
 			path = StandZone;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 			files = (
 				A37BCED127E38A0F00CD629C /* RegisterView.swift in Sources */,
 				A37BCEDB27E3D62E00CD629C /* RegisterView3.swift in Sources */,
+				A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */,
 				A3CFBB1C27E24E1900110D92 /* InitialView.swift in Sources */,
 				A37BCED327E3936E00CD629C /* LoginView.swift in Sources */,
 				A37BCEDF27E433A200CD629C /* StandZoneController.swift in Sources */,
