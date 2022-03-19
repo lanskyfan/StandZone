@@ -11,7 +11,8 @@ struct HomeView1: View {
     @ObservedObject var myController: StandZoneController
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Hello, World!")
+        Text("Hello, World!")
     }
 }
 
