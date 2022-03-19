@@ -59,4 +59,5 @@ enum Screen {
     case registerView4
     case logInView
     case homeView
+    case homeView1
 }

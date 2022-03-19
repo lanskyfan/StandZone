@@ -28,7 +28,8 @@ struct SwitchView: View {
             RegisterView4(myController: myController)
         case Screen.homeView:
             HomeView(myController: myController)
-        
+        case Screen.homeView1:
+            HomeView1(myController: myController)
         }
     }
 }
