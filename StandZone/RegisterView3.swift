@@ -22,10 +22,20 @@ struct RegisterView3: View {
                 VStack (spacing: 20){
                     NavigationLink(destination: RegisterView4(myController: myController)) {
                         ButtonView2(content: "Agree")
+                        .onTapGesture {
+                            myController.updateIsNotify(isNotify: true)
+                        }
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    NavigationLink(destination: RegisterView4(myController: myController)) {
+
+                        ButtonView2(content: "Disagree", myColor: .white)
+                            .onTapGesture {
+                                myController.updateIsNotify(isNotify: false)
+                            }
                     }
                     .buttonStyle(PlainButtonStyle())
 
-                    ButtonView2(content: "Disagree", myColor: .white)
                 }.padding()
 
             }.padding()

@@ -9,8 +9,6 @@ import SwiftUI
 
 struct RegisterView2: View {
     @ObservedObject var myController: StandZoneController
-    @State private var wakeUpTime: Date = Date()
-    @State private var sleepTime: Date = Date()
     var body: some View {
         ZStack (alignment: .top) {
             Image("background1")
@@ -25,7 +23,7 @@ struct RegisterView2: View {
                 Text("Notification Schedule").bold().font(.title)
                 Spacer()
                     .frame(height: 40)
-                TimeView(wakeUpTime: $wakeUpTime, sleepTime: $sleepTime)
+                TimeView(myController: myController)
                 Spacer()
                     .frame(height: 40)
                 NavigationLink(destination: RegisterView3(myController: myController)) {
@@ -44,9 +42,9 @@ struct RegisterView2: View {
 
 
 struct TimeView: View {
-    
-    @Binding var wakeUpTime: Date
-    @Binding var sleepTime: Date
+    var myController: StandZoneController
+    @State var wakeUpTime = Date()
+    @State var sleepTime = Date()
     var body: some View {
         VStack {
             HStack {
@@ -58,11 +56,17 @@ struct TimeView: View {
                 VStack {
                     DatePicker("", selection: $wakeUpTime, displayedComponents: [.hourAndMinute])
                     .labelsHidden()
+                    .onChange(of: wakeUpTime) {newValue in
+                        myController.updateWakeUpTime(newWakeUpTime: wakeUpTime)
+                    }
                 }.padding()
                 Text("To")
                 VStack {
                     DatePicker("", selection: $sleepTime, displayedComponents: [.hourAndMinute])
                     .labelsHidden()
+                    .onChange(of: sleepTime) {newValue in
+                        myController.updateSleepTime(newSleepTime: sleepTime)
+                    }
                 }.padding()
             }
         }

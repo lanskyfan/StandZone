@@ -35,9 +35,10 @@ struct LoginView: View {
                     }.padding()
                 }.textFieldStyle(.roundedBorder)
 
-                NavigationLink(destination:  MainView(newController: myController)) {
-                    ContinueButton(content: "Continue")
-                }
+                ContinueButton(content: "Continue")
+                    .onTapGesture {
+                        myController.updateScreen(newScreen: Screen.mainView)
+                    }
             }
         }
     }
