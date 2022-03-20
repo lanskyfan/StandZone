@@ -36,8 +36,13 @@ class StandZoneController: ObservableObject {
         user.updateGender(newGender: newGender)
     }
     
-    func updateNotification(newWakeUpTime: Date, newSleepTime: Date) {
+    func updateWakeUpTime(newWakeUpTime: Date) {
+        print("update wake up time")
         user.updateWakeUpTime(newTime: newWakeUpTime)
+    }
+    
+    func updateSleepTime(newSleepTime: Date) {
+        print("update sleep time")
         user.updateSleepTime(newTime: newSleepTime)
     }
     
@@ -46,6 +51,22 @@ class StandZoneController: ObservableObject {
         user.updateTimeGoal(newGoal: newTime)
     }
     
+    func updateIsNotify(isNotify: Bool) {
+        user.updateIsNotify(newNotify: isNotify)
+    }
+    
+    
+    func updateIsNotify(newNotify: Bool) {
+        user.updateIsNotify(newNotify: newNotify)
+    }
+    
+    func updateIsRepetitiveMode(newMode: Bool) {
+        user.updateIsRepetitiveMode(newMode: newMode)
+    }
+    
+    func updateIsAppleWatchOnly(isAppleWatch: Bool) {
+        user.updateIsAppleWatchOnly(isAppleWatch: isAppleWatch)
+    }
     
 
 }

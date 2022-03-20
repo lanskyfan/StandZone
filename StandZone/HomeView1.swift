@@ -13,8 +13,19 @@ struct HomeView1: View {
 
     var body: some View {
         VStack {
+            HStack {
+                Text("Last Week").bold().font(.title).padding([.leading, .bottom])
+                Spacer()
+            }
+            HStack {
+                Text("Feb 28, 2022 to today").padding([.leading])
+                Spacer()
+            }
+            PeriodSwitcher()
             FrequencyGraph()
+                .padding()
             TimeGraph()
+                .padding()
         }
         .navigationBarTitle("4")
         .navigationBarHidden(true)
@@ -22,17 +33,47 @@ struct HomeView1: View {
     }
 }
 
-//struct PeriodSwitcher: View {
-//    var body: some View {
-//        HStack {
-//            Rectangle {
-//                ZStack {
-//                    Text("Day")
-//                }
-//            }
-//        }
-//    }
-//}
+struct PeriodSwitcher: View {
+    @State private var didTap:Bool = false
+
+      var body: some View {
+          HStack {
+              Button(action: {
+                  self.didTap = true
+              }) {
+
+              Text("Day")
+              }
+              
+              Button(action: {
+                  self.didTap = true
+              }) {
+
+              Text("Week")
+              }
+              
+              Button(action: {
+                  self.didTap = true
+              }) {
+
+              Text("Month")
+              }
+              
+              Button(action: {
+                  self.didTap = true
+              }) {
+
+              Text("Year")
+              }
+//                  .font(.system(size: 24))
+//              }
+//      //        .frame(width: 300, height: 75, alignment: .center)
+//              .padding(.all, 20)
+//              .background(didTap ? Color.blue : Color.yellow)
+          }
+
+      }
+}
 
 
 struct FrequencyGraph: View {
@@ -107,7 +148,10 @@ struct TimeGraph: View {
 
 struct HomeView1_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView1(myController: StandZoneController())
+        Group {
+            HomeView1(myController: StandZoneController())
+            HomeView1(myController: StandZoneController())
+        }
     }
 
 }

@@ -16,6 +16,9 @@ struct UserModel {
     private var timeGoal: Int?
     private var wakeUpTime: Date?
     private var sleepTime: Date?
+    private var isNotify: Bool?
+    private var isRepetitiveMode: Bool?
+    private var isAppleWatchOnly: Bool?
     
     func getEmail() -> String {
         return email!
@@ -82,5 +85,29 @@ struct UserModel {
     mutating func updateSleepTime(newTime: Date) {
         print("update sleep time")
         sleepTime = newTime
+    }
+    
+    func getIsNotify() -> Bool {
+        return isNotify!
+    }
+    
+    mutating func updateIsNotify(newNotify: Bool) {
+        isNotify = newNotify
+    }
+    
+    func getIsRepetitiveMode() -> Bool {
+        return isRepetitiveMode!
+    }
+    
+    mutating func updateIsRepetitiveMode(newMode: Bool) {
+        isRepetitiveMode = newMode
+    }
+    
+    func getIsAppleWatchOnly() -> Bool {
+        return isAppleWatchOnly!
+    }
+    
+    mutating func updateIsAppleWatchOnly(isAppleWatch: Bool) {
+        isAppleWatchOnly = isAppleWatch
     }
 }

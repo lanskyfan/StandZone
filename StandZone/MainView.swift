@@ -14,7 +14,7 @@ struct MainView: View {
         UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().unselectedItemTintColor = UIColor.white
 
-//        UITabBar.appearance().barTintColor = UIColor(Color("tab_background"))
+        UITabBar.appearance().barTintColor = UIColor(Color.green1)
         myController = newController
     }
     var body: some View {
@@ -36,7 +36,7 @@ struct MainView: View {
                     Label("Friends", systemImage: "gamecontroller")
                 }
     
-            Text("Hello there")
+            HomeView3(myController: myController)
                 .tabItem {
                     Label("Setting", systemImage: "gearshape")
                 }
