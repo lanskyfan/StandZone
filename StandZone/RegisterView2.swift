@@ -28,11 +28,10 @@ struct RegisterView2: View {
                 TimeView(wakeUpTime: $wakeUpTime, sleepTime: $sleepTime)
                 Spacer()
                     .frame(height: 40)
-                ContinueButton(content: "Continue")
-                    .onTapGesture {
-                        myController.updateNotification(newWakeUpTime: wakeUpTime, newSleepTime: sleepTime)
-                        myController.updateScreen(newScreen: Screen.registerView3)
-                    }
+                NavigationLink(destination: RegisterView3(myController: myController)) {
+                    ContinueButton(content: "Continue")
+                }
+                .buttonStyle(PlainButtonStyle())
                 Spacer()
                     .frame(height: 60)
             }

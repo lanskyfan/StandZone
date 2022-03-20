@@ -44,11 +44,11 @@ struct RegisterView: View {
                     }.padding()
                 }.textFieldStyle(.roundedBorder)
 
-                ContinueButton(content: "Continue")
-                    .onTapGesture {
-                        myController.updateAccountInfo(newEmail: email, newPassword: password)
-                        myController.updateScreen(newScreen: Screen.registerView1)
-                    }
+                NavigationLink(destination: RegisterView1(myController: myController)) {
+                    ContinueButton(content: "Continue")
+                }
+                .buttonStyle(PlainButtonStyle())
+
             }
         }
 

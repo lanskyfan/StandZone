@@ -14,7 +14,7 @@ struct MainView: View {
         UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().unselectedItemTintColor = UIColor.white
 
-        UITabBar.appearance().barTintColor = UIColor(Color("tab_background"))
+//        UITabBar.appearance().barTintColor = UIColor(Color("tab_background"))
         myController = newController
     }
     var body: some View {
@@ -25,23 +25,32 @@ struct MainView: View {
                         .foregroundColor(Color.white)
 
                     }
+                .navigationBarTitle("4")
+                .navigationBarHidden(true)
 
             HomeView1(myController: myController)
                 .tabItem {
                     Label("Data", systemImage: "waveform.path.ecg.rectangle")
                 }
+                .navigationBarTitle("2")
+                .navigationBarHidden(true)
         
             Text("Hello there")
                 .badge(10)
                 .tabItem {
                     Label("Friends", systemImage: "gamecontroller")
                 }
+                .navigationBarTitle("3")
+                .navigationBarHidden(true)
     
             Text("Hello there")
                 .tabItem {
                     Label("Setting", systemImage: "gearshape")
                 }
+                .navigationBarTitle("4")
+                .navigationBarHidden(true)
         }
+
     }
 }
 

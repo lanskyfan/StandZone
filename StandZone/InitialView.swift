@@ -10,25 +10,47 @@ import SwiftUI
 struct InitialView: View {
     @ObservedObject var myController: StandZoneController
     var body: some View {
-        ZStack {
-            Image("background1")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            VStack {
-                Text("Welcome to Stand Zone").bold().font(.title)
-                Text("keep standing and live a healthy life")
-                VStack (spacing: 20){
-                    // Need to update
-                    ButtonView(myController: myController, nextScreen: Screen.registerView, content: "LOG IN WITH FACEBOOK")
-                    ButtonView(myController: myController, nextScreen: Screen.registerView, content: "LOG IN WITH GOOGLE")
-                    ButtonView(myController: myController, nextScreen: Screen.registerView, content: "CREATE AN ACCOUNT")
-                    ButtonView(myController: myController, nextScreen: Screen.logInView, content: "LOG IN WITH EXISTING ACCOUNT")
-                    ButtonView(myController: myController, nextScreen: Screen.registerView1, content: "CONTINUE WITHOUT ACCOUNT", myColor: .gray)
-                }.padding()
+        NavigationView {
+            ZStack {
+                Image("background1")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                VStack {
+                    Text("Welcome to Stand Zone").bold().font(.title)
+                    Text("keep standing and live a healthy life")
+                    VStack (spacing: 20){
+                        // Need to update
+                        NavigationLink(destination: LoginView(myController: myController)) {
+                            ButtonView(myController: myController, nextScreen: Screen.registerView, content: "LOG IN WITH FACEBOOK")
+                        }
+                        .buttonStyle(PlainButtonStyle())
 
-            }.padding()
+                        NavigationLink(destination: LoginView(myController: myController)) {
+                            ButtonView(myController: myController, nextScreen: Screen.registerView, content: "LOG IN WITH GOOGLE")
+                        }
+                        .buttonStyle(PlainButtonStyle())
+
+                        NavigationLink(destination: RegisterView(myController: myController)) {
+                            ButtonView(myController: myController, nextScreen: Screen.registerView, content: "CREATE AN ACCOUNT")
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        NavigationLink(destination: LoginView(myController: myController)) {
+                            ButtonView(myController: myController, nextScreen: Screen.logInView, content: "LOG IN WITH EXISTING ACCOUNT")
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
+                        NavigationLink(destination: RegisterView1(myController: myController)) {
+                            ButtonView(myController: myController, nextScreen: Screen.registerView1, content: "CONTINUE WITHOUT ACCOUNT", myColor: .gray)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }.padding()
+
+                }.padding()
+            }
         }
+
         
     }
 }
@@ -47,9 +69,9 @@ struct ButtonView: View {
             shape.fill().foregroundColor(myColor).frame(width: 300, height: 40)
             Text(content)
         }
-        .onTapGesture {
-            myController.updateScreen(newScreen: nextScreen)
-        }
+//        .onTapGesture {
+//            myController.updateScreen(newScreen: nextScreen)
+//        }
     }
 }
 
