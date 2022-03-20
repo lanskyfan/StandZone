@@ -30,10 +30,10 @@ struct RegisterView4: View {
                 timeStepperView(time: $time)
                 Spacer()
                     .frame(height: 40)
-                NavigationLink(destination:  MainView(newController: myController)) {
-                    ContinueButton(content: "Continue")
-                }
-
+                ContinueButton(content: "Continue")
+                    .onTapGesture {
+                        myController.updateScreen(newScreen: Screen.mainView)
+                    }
                 Spacer()
                     .frame(height: 60)
             }

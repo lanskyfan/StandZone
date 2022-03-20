@@ -23,34 +23,24 @@ struct MainView: View {
                 .tabItem {
                         Label("Overview", systemImage: "person.badge.clock")
                         .foregroundColor(Color.white)
-
                     }
-                .navigationBarTitle("4")
-                .navigationBarHidden(true)
 
             HomeView1(myController: myController)
                 .tabItem {
                     Label("Data", systemImage: "waveform.path.ecg.rectangle")
                 }
-                .navigationBarTitle("2")
-                .navigationBarHidden(true)
         
             Text("Hello there")
                 .badge(10)
                 .tabItem {
                     Label("Friends", systemImage: "gamecontroller")
                 }
-                .navigationBarTitle("3")
-                .navigationBarHidden(true)
     
             Text("Hello there")
                 .tabItem {
                     Label("Setting", systemImage: "gearshape")
                 }
-                .navigationBarTitle("4")
-                .navigationBarHidden(true)
         }
-
     }
 }
 

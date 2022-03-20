@@ -60,4 +60,5 @@ enum Screen {
     case logInView
     case homeView
     case homeView1
+    case mainView
 }
