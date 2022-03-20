@@ -19,6 +19,7 @@ struct UserModel {
     private var isNotify: Bool?
     private var isRepetitiveMode: Bool?
     private var isAppleWatchOnly: Bool?
+    private var isImportCalendar: Bool?
     
     func getEmail() -> String {
         return email!
@@ -109,5 +110,13 @@ struct UserModel {
     
     mutating func updateIsAppleWatchOnly(isAppleWatch: Bool) {
         isAppleWatchOnly = isAppleWatch
+    }
+    
+    func getIsImportCalendar() -> Bool {
+        return isImportCalendar!
+    }
+    
+    mutating func updateIsImportCalendar(importCalendar: Bool) {
+        isImportCalendar = importCalendar
     }
 }

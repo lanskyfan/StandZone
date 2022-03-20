@@ -31,8 +31,11 @@ class StandZoneController: ObservableObject {
         user.updatePassword(newPassword: newPassword)
     }
     
-    func updateBasicInfo(newName: String, newGender: String) {
+    func updateName(newName: String) {
         user.updateName(newName: newName)
+    }
+    
+    func updateGender(newGender: String) {
         user.updateGender(newGender: newGender)
     }
     
@@ -66,6 +69,10 @@ class StandZoneController: ObservableObject {
     
     func updateIsAppleWatchOnly(isAppleWatch: Bool) {
         user.updateIsAppleWatchOnly(isAppleWatch: isAppleWatch)
+    }
+    
+    func updateIsImportCalendar(isImportCalendar: Bool) {
+        user.updateIsImportCalendar(importCalendar: isImportCalendar)
     }
     
 

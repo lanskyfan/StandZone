@@ -20,22 +20,20 @@ struct RegisterView3: View {
                 Text("Get Standing reminder").bold().font(.title)
                 Text("We will always pay attention to your standing and remind you to stand at the right time")
                 VStack (spacing: 20){
-                    NavigationLink(destination: RegisterView4(myController: myController)) {
-                        ButtonView2(content: "Agree")
+                    ButtonView2(content: "Agree")
                         .onTapGesture {
                             myController.updateIsNotify(isNotify: true)
                         }
-                    }
+                    .buttonStyle(PlainButtonStyle())
+
+                    ButtonView2(content: "Disagree", myColor: .white)
+                        .onTapGesture {
+                            myController.updateIsNotify(isNotify: false)
+                        }
                     .buttonStyle(PlainButtonStyle())
                     NavigationLink(destination: RegisterView4(myController: myController)) {
-
-                        ButtonView2(content: "Disagree", myColor: .white)
-                            .onTapGesture {
-                                myController.updateIsNotify(isNotify: false)
-                            }
+                        ContinueButton(content: "Continue")
                     }
-                    .buttonStyle(PlainButtonStyle())
-
                 }.padding()
 
             }.padding()
