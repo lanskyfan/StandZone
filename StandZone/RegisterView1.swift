@@ -37,16 +37,14 @@ struct RegisterView1: View {
                 GenderView(gender: $gender)
                 Spacer()
                     .frame(height: 40)
-                ContinueButton(content: "Continue")
-                    .onTapGesture {
-                        myController.updateBasicInfo(newName: nickName, newGender: gender)
-                        myController.updateScreen(newScreen: Screen.registerView2)
-                    }
+                NavigationLink(destination: RegisterView2(myController: myController)) {
+                    ContinueButton(content: "Continue")
+                }
+                .buttonStyle(PlainButtonStyle())
                 Spacer()
                     .frame(height: 60)
             }
             .padding()
-            
             
         }
     }
