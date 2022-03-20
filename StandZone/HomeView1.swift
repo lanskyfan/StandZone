@@ -150,7 +150,6 @@ struct HomeView1_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             HomeView1(myController: StandZoneController())
-            HomeView1(myController: StandZoneController())
         }
     }
 

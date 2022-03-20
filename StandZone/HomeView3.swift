@@ -12,30 +12,35 @@ struct HomeView3: View {
     var body: some View {
         NavigationView {
 
-        ZStack {
-            Image("background1")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            ScrollView {
-                VStack {
-                    Image("head")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 120, height: 120)
-                        .clipShape(Circle())
-                        .scaledToFill()
-                        .padding()
-                    Text("Roxanne")
-                    DailyGoalView(myController: myController)
-                    ReminderView(myController: myController)
+            ZStack {
+                Image("background1")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                ScrollView {
+                    VStack {
+                        SettingTopView()
+                        DailyGoalView(myController: myController)
+                        ReminderView(myController: myController)
+                    }
                 }
             }
-        }
         }
     }
 }
 
+struct SettingTopView: View {
+    var body: some View {
+        Image("head")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 120, height: 120)
+            .clipShape(Circle())
+            .scaledToFill()
+            .padding()
+        Text("Roxanne")
+    }
+}
 struct ReminderView: View {
     @ObservedObject var myController: StandZoneController
     // TODO Update to true value
@@ -44,6 +49,7 @@ struct ReminderView: View {
     @State private var isAppleWatchOnly = true
     @State private var wakeUpTime = Date()
     @State private var sleepTime = Date()
+    @State private var isImportCalendar = true
     var body: some View {
         ZStack {
             let height = 340.0
@@ -78,6 +84,10 @@ struct ReminderView: View {
                         .onChange(of: sleepTime) {newValue in
                             myController.updateSleepTime(newSleepTime: sleepTime)
                         }
+                        Toggle("Import Calendar", isOn: $isImportCalendar)
+                            .onChange(of: isImportCalendar) { value in
+                                myController.updateIsImportCalendar(isImportCalendar: isImportCalendar)
+                            }
 
 
                     }
@@ -106,7 +116,7 @@ struct DailyGoalView: View {
                             Spacer()
                     }
                     
-                    NavigationLink(destination: DetailSettingView()) {
+                    NavigationLink(destination: DetailSettingView(myController: myController)) {
                         ZStack {
                             let shape = RoundedRectangle(cornerRadius: 10)
                             shape.fill().foregroundColor(.white).frame(height: 40)
@@ -119,7 +129,7 @@ struct DailyGoalView: View {
                         }
                     }
 
-                    NavigationLink(destination: DetailSettingView()) {
+                    NavigationLink(destination: DetailSettingView(myController: myController)) {
                         ZStack {
                             let shape = RoundedRectangle(cornerRadius: 10)
                             shape.fill().foregroundColor(.white).frame(height: 40)
