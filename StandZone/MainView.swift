@@ -30,7 +30,7 @@ struct MainView: View {
                     Label("Data", systemImage: "waveform.path.ecg.rectangle")
                 }
         
-            Text("Hello there")
+            HomeView2(newController: myController)
                 .badge(10)
                 .tabItem {
                     Label("Friends", systemImage: "gamecontroller")
