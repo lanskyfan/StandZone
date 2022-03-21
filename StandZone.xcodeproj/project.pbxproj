@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		849DA85827E8259D00DDC6DD /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DA85727E8259C00DDC6DD /* HomeView2.swift */; };
 		A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3706CF227E5887C006F9C33 /* HomeView1.swift */; };
 		A37BCED127E38A0F00CD629C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED027E38A0F00CD629C /* RegisterView.swift */; };
 		A37BCED327E3936E00CD629C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED227E3936E00CD629C /* LoginView.swift */; };
@@ -115,6 +116,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		849DA85727E8259C00DDC6DD /* HomeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView2.swift; sourceTree = "<group>"; };
 		A3706CF227E5887C006F9C33 /* HomeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView1.swift; sourceTree = "<group>"; };
 		A37BCED027E38A0F00CD629C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A37BCED227E3936E00CD629C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				A3BC6C8327E6E44500120DF7 /* HomeView3.swift */,
 				A3BC6C8127E652A800120DF7 /* MainView.swift */,
 				A397181627E6E9C500A12479 /* DetailSettingView.swift */,
+				849DA85727E8259C00DDC6DD /* HomeView2.swift */,
 			);
 			path = StandZone;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				A37BCED127E38A0F00CD629C /* RegisterView.swift in Sources */,
 				A3BC6C8227E652A800120DF7 /* MainView.swift in Sources */,
 				A37BCEDB27E3D62E00CD629C /* RegisterView3.swift in Sources */,
+				849DA85827E8259D00DDC6DD /* HomeView2.swift in Sources */,
 				A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */,
 				A3BC6C8427E6E44500120DF7 /* HomeView3.swift in Sources */,
 				A3CFBB1C27E24E1900110D92 /* InitialView.swift in Sources */,

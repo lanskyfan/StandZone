@@ -30,6 +30,8 @@ struct SwitchView: View {
             HomeView(myController: myController)
         case Screen.homeView1:
             HomeView1(myController: myController)
+        case Screen.homeView2:
+            HomeView2(newController: myController)
         case Screen.mainView:
                 MainView(newController: myController)
                 .transition(AnyTransition.opacity.animation(.linear(duration: 1)))
