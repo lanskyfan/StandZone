@@ -1,7 +1,10 @@
 <!--# Stand Zone-->
 <!--## _Sit Less, Move More!_-->
 
-![image]<img src="https://github.com/lanskyfan/StandZone/tree/main/ScreenShot/StandZone.png" alt="stand-zone" width="380" />
+<p align="center">
+ <img src="https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/StandZone.png" alt="stand-zone" width="400" />
+</p>
+
 # StandZone
 ## _Sit Less, Move More_
 
@@ -11,9 +14,13 @@ Stand Zone is a sedentary break reminder. Stand up and light up the maps and bad
  - Compete with your fiends
 
 <p align="row">
-<img src= "https://github.com/lanskyfan/StandZone/tree/main/ScreenShot/screen1.png" width="400" >
-<img src= "https://github.com/lanskyfan/StandZone/tree/main/ScreenShot/screen2.png" width="400" >
-<img src= "https://github.com/lanskyfan/StandZone/tree/main/ScreenShot/screen3.png" width="400" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen1.png" width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen2.png" width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen3.png" width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen4.png" width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen5.png" width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen6.png" width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen7.png" width="200" >
 </p>
 
 ## Features
