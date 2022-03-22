@@ -43,6 +43,7 @@
 		A3CFBB6427E24E1D00110D92 /* StandZone_WatchKit_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB6327E24E1D00110D92 /* StandZone_WatchKit_AppTests.swift */; };
 		A3CFBB6E27E24E1D00110D92 /* StandZone_WatchKit_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB6D27E24E1D00110D92 /* StandZone_WatchKit_AppUITests.swift */; };
 		A3CFBB7027E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB6F27E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift */; };
+		A3F4087727E952A600BF405C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = A3F4087627E952A600BF405C /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3F4087727E952A600BF405C /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +220,7 @@
 				A3CFBB6227E24E1D00110D92 /* StandZone WatchKit AppTests */,
 				A3CFBB6C27E24E1D00110D92 /* StandZone WatchKit AppUITests */,
 				A3CFBB1727E24E1900110D92 /* Products */,
+				A3F4087527E952A600BF405C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -335,6 +338,13 @@
 			path = "StandZone WatchKit AppUITests";
 			sourceTree = "<group>";
 		};
+		A3F4087527E952A600BF405C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -426,6 +436,9 @@
 			dependencies = (
 			);
 			name = "StandZone WatchKit Extension";
+			packageProductDependencies = (
+				A3F4087627E952A600BF405C /* SwiftUICharts */,
+			);
 			productName = "StandZone WatchKit Extension";
 			productReference = A3CFBB4527E24E1C00110D92 /* StandZone WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -1240,6 +1253,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		A3BC6C7F27E59CE200120DF7 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3BC6C7E27E59CE200120DF7 /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
+			productName = SwiftUICharts;
+		};
+		A3F4087627E952A600BF405C /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A3BC6C7E27E59CE200120DF7 /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
 			productName = SwiftUICharts;
