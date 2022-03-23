@@ -21,6 +21,8 @@ Stand Zone is a sedentary break reminder. Stand up and light up the maps and bad
 <img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen5.png" width="200" >
 <img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen6.png" width="200" >
 <img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen7.png" width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/watch1.png" width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/watch2.png" width="200" >
 </p>
 
 ## Features
