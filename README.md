@@ -6,7 +6,7 @@
 </p>
 
 # StandZone
-## _Sit Less, Move More_
+## _Sit Less, Move More！_
 
 Stand Zone is a sedentary break reminder. Stand up and light up the maps and badges!
  - Customize your standing period
