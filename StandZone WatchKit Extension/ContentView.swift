@@ -20,6 +20,10 @@ struct ContentView: View {
                     CentralTimer()
                 }
                 HStack {
+                    Text("Stand time")
+                        .foregroundColor(Color.blue)
+                }
+                HStack {
                     Text("Stand frequency")
                         .foregroundColor(Color.green)
                     Spacer()
