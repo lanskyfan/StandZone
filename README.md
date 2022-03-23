@@ -54,7 +54,9 @@ Stand Zone is a sedentary break reminder. Stand up and light up the maps and bad
 ***
 ## License
 ***
-
+## Contributors
+- Yifan Lan yifanlan@andrew.cmu.edu
+- Lu Yu luyu@andrew.cmu.edu
 
 **Free Software, Hell Yeah!**
 
