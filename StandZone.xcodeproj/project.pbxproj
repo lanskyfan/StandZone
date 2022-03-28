@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		849DA85827E8259D00DDC6DD /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DA85727E8259C00DDC6DD /* HomeView2.swift */; };
 		A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3706CF227E5887C006F9C33 /* HomeView1.swift */; };
+		A37B261D27F0D5D700DCDF70 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B261C27F0D5D700DCDF70 /* HealthData.swift */; };
+		A37B262027F0D61A00DCDF70 /* HealthKitSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B261F27F0D61A00DCDF70 /* HealthKitSupport.swift */; };
+		A37B262227F0D89E00DCDF70 /* HealthKitSupport+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B262127F0D89E00DCDF70 /* HealthKitSupport+Strings.swift */; };
+		A37B262927F0FF1400DCDF70 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37B262827F0FF1400DCDF70 /* HealthKit.framework */; };
+		A37B262D27F138CA00DCDF70 /* HealthDataTypeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B262C27F138CA00DCDF70 /* HealthDataTypeValue.swift */; };
+		A37B262F27F13EDE00DCDF70 /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B262E27F13EDE00DCDF70 /* HealthViewController.swift */; };
 		A37BCED127E38A0F00CD629C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED027E38A0F00CD629C /* RegisterView.swift */; };
 		A37BCED327E3936E00CD629C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED227E3936E00CD629C /* LoginView.swift */; };
 		A37BCED527E3A0A200CD629C /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED427E3A0A200CD629C /* SwitchView.swift */; };
@@ -119,6 +125,13 @@
 /* Begin PBXFileReference section */
 		849DA85727E8259C00DDC6DD /* HomeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView2.swift; sourceTree = "<group>"; };
 		A3706CF227E5887C006F9C33 /* HomeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView1.swift; sourceTree = "<group>"; };
+		A37B261C27F0D5D700DCDF70 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
+		A37B261F27F0D61A00DCDF70 /* HealthKitSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSupport.swift; sourceTree = "<group>"; };
+		A37B262127F0D89E00DCDF70 /* HealthKitSupport+Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthKitSupport+Strings.swift"; sourceTree = "<group>"; };
+		A37B262727F0FF1400DCDF70 /* StandZone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StandZone.entitlements; sourceTree = "<group>"; };
+		A37B262827F0FF1400DCDF70 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.4.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		A37B262C27F138CA00DCDF70 /* HealthDataTypeValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataTypeValue.swift; sourceTree = "<group>"; };
+		A37B262E27F13EDE00DCDF70 /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
 		A37BCED027E38A0F00CD629C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A37BCED227E3936E00CD629C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A37BCED427E3A0A200CD629C /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
@@ -167,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3BC6C8027E59CE200120DF7 /* SwiftUICharts in Frameworks */,
+				A37B262927F0FF1400DCDF70 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +223,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A37B261B27F0D3A200DCDF70 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A37B261C27F0D5D700DCDF70 /* HealthData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A37B261E27F0D5F800DCDF70 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A37B261F27F0D61A00DCDF70 /* HealthKitSupport.swift */,
+				A37B262127F0D89E00DCDF70 /* HealthKitSupport+Strings.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A37B262327F0D8C700DCDF70 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+				A37BCEDE27E433A200CD629C /* StandZoneController.swift */,
+				A37B262E27F13EDE00DCDF70 /* HealthViewController.swift */,
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
+		A37B262427F0F07A00DCDF70 /* RegisterView */ = {
+			isa = PBXGroup;
+			children = (
+				A37BCED027E38A0F00CD629C /* RegisterView.swift */,
+				A37BCED627E3A79F00CD629C /* RegisterView1.swift */,
+				A37BCED827E3CF6A00CD629C /* RegisterView2.swift */,
+				A37BCEDA27E3D62E00CD629C /* RegisterView3.swift */,
+				A37BCEDC27E3DDEF00CD629C /* RegisterView4.swift */,
+			);
+			path = RegisterView;
+			sourceTree = "<group>";
+		};
+		A37B262A27F1070000DCDF70 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				A3BC6C8127E652A800120DF7 /* MainView.swift */,
+				A394978927E4E639003CE542 /* HomeView.swift */,
+				A3706CF227E5887C006F9C33 /* HomeView1.swift */,
+				849DA85727E8259C00DDC6DD /* HomeView2.swift */,
+				A3BC6C8327E6E44500120DF7 /* HomeView3.swift */,
+				A397181627E6E9C500A12479 /* DetailSettingView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		A37B262B27F1387400DCDF70 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A37BCEE027E43A5900CD629C /* UserModel.swift */,
+				A37B262C27F138CA00DCDF70 /* HealthDataTypeValue.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A3CFBB0D27E24E1800110D92 = {
 			isa = PBXGroup;
 			children = (
@@ -241,25 +315,19 @@
 		A3CFBB1827E24E1900110D92 /* StandZone */ = {
 			isa = PBXGroup;
 			children = (
+				A37B262B27F1387400DCDF70 /* Model */,
+				A37B262A27F1070000DCDF70 /* HomeView */,
+				A37B262727F0FF1400DCDF70 /* StandZone.entitlements */,
+				A37B262427F0F07A00DCDF70 /* RegisterView */,
+				A37B262327F0D8C700DCDF70 /* ModelView */,
+				A37B261E27F0D5F800DCDF70 /* Utilities */,
+				A37B261B27F0D3A200DCDF70 /* Data */,
 				A3CFBB1927E24E1900110D92 /* StandZoneApp.swift */,
 				A3CFBB1B27E24E1900110D92 /* InitialView.swift */,
 				A3CFBB1D27E24E1A00110D92 /* Assets.xcassets */,
 				A3CFBB1F27E24E1A00110D92 /* Preview Content */,
-				A37BCED027E38A0F00CD629C /* RegisterView.swift */,
 				A37BCED227E3936E00CD629C /* LoginView.swift */,
 				A37BCED427E3A0A200CD629C /* SwitchView.swift */,
-				A37BCED627E3A79F00CD629C /* RegisterView1.swift */,
-				A37BCED827E3CF6A00CD629C /* RegisterView2.swift */,
-				A37BCEDA27E3D62E00CD629C /* RegisterView3.swift */,
-				A37BCEDC27E3DDEF00CD629C /* RegisterView4.swift */,
-				A37BCEDE27E433A200CD629C /* StandZoneController.swift */,
-				A37BCEE027E43A5900CD629C /* UserModel.swift */,
-				A394978927E4E639003CE542 /* HomeView.swift */,
-				A3706CF227E5887C006F9C33 /* HomeView1.swift */,
-				A3BC6C8327E6E44500120DF7 /* HomeView3.swift */,
-				A3BC6C8127E652A800120DF7 /* MainView.swift */,
-				A397181627E6E9C500A12479 /* DetailSettingView.swift */,
-				849DA85727E8259C00DDC6DD /* HomeView2.swift */,
 			);
 			path = StandZone;
 			sourceTree = "<group>";
@@ -341,6 +409,7 @@
 		A3F4087527E952A600BF405C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A37B262827F0FF1400DCDF70 /* HealthKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -606,11 +675,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A37BCED127E38A0F00CD629C /* RegisterView.swift in Sources */,
+				A37B262227F0D89E00DCDF70 /* HealthKitSupport+Strings.swift in Sources */,
 				A3BC6C8227E652A800120DF7 /* MainView.swift in Sources */,
 				A37BCEDB27E3D62E00CD629C /* RegisterView3.swift in Sources */,
+				A37B261D27F0D5D700DCDF70 /* HealthData.swift in Sources */,
 				849DA85827E8259D00DDC6DD /* HomeView2.swift in Sources */,
 				A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */,
 				A3BC6C8427E6E44500120DF7 /* HomeView3.swift in Sources */,
+				A37B262027F0D61A00DCDF70 /* HealthKitSupport.swift in Sources */,
+				A37B262D27F138CA00DCDF70 /* HealthDataTypeValue.swift in Sources */,
 				A3CFBB1C27E24E1900110D92 /* InitialView.swift in Sources */,
 				A37BCED327E3936E00CD629C /* LoginView.swift in Sources */,
 				A37BCEDF27E433A200CD629C /* StandZoneController.swift in Sources */,
@@ -619,6 +692,7 @@
 				A37BCEDD27E3DDEF00CD629C /* RegisterView4.swift in Sources */,
 				A37BCED527E3A0A200CD629C /* SwitchView.swift in Sources */,
 				A394978A27E4E639003CE542 /* HomeView.swift in Sources */,
+				A37B262F27F13EDE00DCDF70 /* HealthViewController.swift in Sources */,
 				A3CFBB1A27E24E1900110D92 /* StandZoneApp.swift in Sources */,
 				A397181727E6E9C500A12479 /* DetailSettingView.swift in Sources */,
 				A37BCEE127E43A5900CD629C /* UserModel.swift in Sources */,
@@ -939,12 +1013,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StandZone/StandZone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StandZone/Preview Content\"";
 				DEVELOPMENT_TEAM = 2XWA88W42G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow this app to share your Health data to doctors and clinicians.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Allow this app to write health data provided from your doctor or clinician.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -970,12 +1047,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StandZone/StandZone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StandZone/Preview Content\"";
 				DEVELOPMENT_TEAM = 2XWA88W42G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow this app to share your Health data to doctors and clinicians.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Allow this app to write health data provided from your doctor or clinician.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

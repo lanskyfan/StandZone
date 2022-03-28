@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import HealthKit
 
-class StandZoneController: ObservableObject {
+@MainActor class StandZoneController: ObservableObject {
     @Published private var screen = Screen.initialView
     @Published private var user = UserModel()
-    
+    var healthController = HealthViewController()
     func getScreen() -> Screen{
         return screen
     }
@@ -73,6 +74,53 @@ class StandZoneController: ObservableObject {
     
     func updateIsImportCalendar(isImportCalendar: Bool) {
         user.updateIsImportCalendar(importCalendar: isImportCalendar)
+    }
+    
+    var dataTypeIdentifier = "example"
+    
+    private func presentDataTypeSelectionView() {
+        let title = "Select Health Data Type"
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        
+        for dataType in HealthData.readDataTypes {
+            let actionTitle = getDataTypeName(for: dataType.identifier)
+            let action = UIAlertAction(title: actionTitle, style: .default) { [weak self] (action) in
+                self?.didSelectDataTypeIdentifier(dataType.identifier)
+            }
+            
+            alertController.addAction(action)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(cancel)
+        
+//        present(alertController, animated: true)
+    }
+    
+    private func didSelectDataTypeIdentifier(_ dataTypeIdentifier: String) {
+        self.dataTypeIdentifier = dataTypeIdentifier
+        
+        HealthData.requestHealthDataAccessIfNeeded(dataTypes: [self.dataTypeIdentifier]) { [weak self] (success) in
+//            if success {
+//                DispatchQueue.main.async {
+//                    self?.updateNavigationItem()
+//                }
+//
+//                if let healthQueryDataSourceProvider = self as? HealthQueryDataSource {
+//                    healthQueryDataSourceProvider.performQuery() { [weak self] in
+//                        DispatchQueue.main.async {
+//                            self?.reloadData()
+//                        }
+//                    }
+//                } else {
+//                    DispatchQueue.main.async { [weak self] in
+//                        self?.reloadData()
+//                    }
+//                }
+//            }
+        }
+        
     }
     
 
