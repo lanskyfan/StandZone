@@ -213,7 +213,7 @@ class HealthViewController: ObservableObject {
             guard let samples = samplesOrNil else { return }
             
             self.dataValues = samples.map { (sample) -> HealthDataTypeValue in
-                var dataValue = HealthDataTypeValue(startDate: sample.startDate,
+                var dataValue = HealthDataTypeValue(id: 0, startDate: sample.startDate,
                                                     endDate: sample.endDate,
                                                     value: .zero)
                 if let quantitySample = sample as? HKQuantitySample,
@@ -223,12 +223,17 @@ class HealthViewController: ObservableObject {
                 
                 return dataValue
             }
-            print("In query")
-            print(self.dataValues)
+            
+            for dataIndex in 0..<self.dataValues.count {
+                self.dataValues[dataIndex].id = dataIndex
+            }
             
         }
         
         HealthData.healthStore.execute(anchoredObjectQuery)
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+        }
     }
 }
 

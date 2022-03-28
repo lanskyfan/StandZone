@@ -55,9 +55,13 @@ private func preferredUnit(for identifier: String, sampleType: HKSampleType? = n
             unit = .count()
         case .distanceWalkingRunning, .sixMinuteWalkTestDistance:
             unit = .meter()
+        case .appleStandTime:
+            unit = .minute()
         default:
             break
         }
+    } else {
+        unit = .hour()
     }
     
     return unit

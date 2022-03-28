@@ -27,7 +27,7 @@ struct SwitchView: View {
         case Screen.registerView4:
             RegisterView4(myController: myController)
         case Screen.homeView:
-            HomeView(myController: myController)
+            HomeView(myController: myController, healthController: myController.healthController)
         case Screen.homeView1:
             HomeView1(myController: myController)
         case Screen.homeView2:

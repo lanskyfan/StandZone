@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var myController: StandZoneController
+    @ObservedObject var healthController: HealthViewController
     var body: some View {
         VStack {
             HStack {
@@ -27,7 +28,7 @@ struct HomeView: View {
             }
             DigitView()
             Spacer()
-            DataView(myController: myController)
+            DataView(myController: myController, healthController: healthController)
 
         }
 
@@ -93,6 +94,7 @@ struct DigitView: View {
 
 struct DataView: View {
     @ObservedObject var myController: StandZoneController
+    @ObservedObject var healthController: HealthViewController
     var body: some View {
         ZStack() {
             Image("background3")
@@ -105,8 +107,20 @@ struct DataView: View {
                     .foregroundColor(.white)
                     .padding()
                 ScrollView {
-                    
+                    VStack (alignment: .leading){
+                        ForEach(healthController.dataValues) {data in
+                            HStack {
+                                Text(data.getDate())
+                                    .foregroundColor(.white)
+                                Spacer()
+                                Text(String(format:" %.1f minutes", data.value))
+                                    .foregroundColor(.white)
+                            }
+
+                        }
+                    }
                 }
+                .padding(.horizontal, 30.0)
             }
         }
         .frame(height: 250)
@@ -119,6 +133,6 @@ struct DataView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(myController: StandZoneController())
+        HomeView(myController: StandZoneController(), healthController: HealthViewController())
     }
 }

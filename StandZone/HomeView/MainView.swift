@@ -21,7 +21,7 @@ struct MainView: View {
     }
     var body: some View {
         TabView {
-            HomeView(myController: myController)
+            HomeView(myController: myController, healthController: healthController)
                 .tabItem {
                         Label("Overview", systemImage: "person.badge.clock")
                         .foregroundColor(Color.white)
