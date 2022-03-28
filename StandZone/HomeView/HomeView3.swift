@@ -23,7 +23,7 @@ struct HomeView3: View {
                         DailyGoalView(myController: myController)
                         ReminderView(myController: myController)
                     }
-                }
+                } .padding(.top, 50)
             }
         }
     }

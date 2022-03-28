@@ -27,19 +27,14 @@ struct HomeView: View {
             }
             DigitView()
             Spacer()
-                MiddleView(myController: myController)
-//                BottomView()
+            DataView(myController: myController)
 
         }
 
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(myController: StandZoneController())
-    }
-}
+
 
 struct FrequencyCircle : View {
     var body: some View {
@@ -96,17 +91,34 @@ struct DigitView: View {
 }
 
 
-struct MiddleView: View {
+struct DataView: View {
     @ObservedObject var myController: StandZoneController
     var body: some View {
-        VStack(spacing: 0.0) {
+        ZStack() {
             Image("background3")
                 .resizable()
                 .scaledToFill()
                 .frame(height: 250)
+            VStack {
+                Text("Today's Record")
+                    .bold()
+                    .foregroundColor(.white)
+                    .padding()
+                ScrollView {
+                    
+                }
+            }
         }
+        .frame(height: 250)
 
 
     }
     
+}
+
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView(myController: StandZoneController())
+    }
 }

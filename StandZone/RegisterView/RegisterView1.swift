@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import HealthKit
 
 struct RegisterView1: View {
     @ObservedObject var myController: StandZoneController
@@ -23,6 +24,17 @@ struct RegisterView1: View {
                 Spacer()
                     .frame(height: 40)
                 Text("Simple settings are required for initial use").bold().font(.title)
+                    .alert("Can we get your health data", isPresented: $myController.notRequestedHealthData) {
+                        Button("Allow") {
+                            print("Requesting HealthKit authorization...")
+                            myController.requestHealthAuthorization()
+                        }
+                        
+                        Button("No", role: .cancel) {
+                            print("alert")
+                        }
+                    }
+
                 VStack {
                     HStack {
                         Image(systemName: "person.fill").font(.system(size: 30))
@@ -46,6 +58,11 @@ struct RegisterView1: View {
             }
             .padding()
             
+        }
+        .onAppear{
+            print("appear")
+            myController.getHealthAuthorizationRequestStatus()
+            print(myController.notRequestedHealthData)
         }
     }
 
