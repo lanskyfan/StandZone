@@ -44,7 +44,7 @@ struct RegisterView: View {
                     }.padding()
                 }.textFieldStyle(.roundedBorder)
 
-                NavigationLink(destination: RegisterView1(myController: myController)) {
+                NavigationLink(destination: RegisterView1(myController: myController, healthController: myController.healthController)) {
                     ContinueButton(content: "Continue")
                 }
                 .buttonStyle(PlainButtonStyle())

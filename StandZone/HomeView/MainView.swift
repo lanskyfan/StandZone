@@ -9,13 +9,15 @@ import SwiftUI
 
 struct MainView: View {
     @ObservedObject var myController: StandZoneController
-    init(newController: StandZoneController) {
+    @ObservedObject var healthController: HealthViewController
+    init(newController: StandZoneController, newHealthController: HealthViewController) {
         UITabBar.appearance().backgroundColor = UIColor(Color.green1)
         UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().unselectedItemTintColor = UIColor.white
 
         UITabBar.appearance().barTintColor = UIColor(Color.green1)
         myController = newController
+        healthController = newHealthController
     }
     var body: some View {
         TabView {
@@ -41,11 +43,16 @@ struct MainView: View {
                     Label("Setting", systemImage: "gearshape")
                 }
         }
+        .onAppear{
+            print("enter main view")
+            healthController.performQuery()
+            print(healthController.dataValues)
+        }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(newController: StandZoneController())
+        MainView(newController: StandZoneController(), newHealthController: HealthViewController())
     }
 }

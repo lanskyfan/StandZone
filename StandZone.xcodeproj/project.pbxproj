@@ -14,6 +14,7 @@
 		A37B262227F0D89E00DCDF70 /* HealthKitSupport+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B262127F0D89E00DCDF70 /* HealthKitSupport+Strings.swift */; };
 		A37B262927F0FF1400DCDF70 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37B262827F0FF1400DCDF70 /* HealthKit.framework */; };
 		A37B262D27F138CA00DCDF70 /* HealthDataTypeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B262C27F138CA00DCDF70 /* HealthDataTypeValue.swift */; };
+		A37B262F27F13EDE00DCDF70 /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B262E27F13EDE00DCDF70 /* HealthViewController.swift */; };
 		A37BCED127E38A0F00CD629C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED027E38A0F00CD629C /* RegisterView.swift */; };
 		A37BCED327E3936E00CD629C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED227E3936E00CD629C /* LoginView.swift */; };
 		A37BCED527E3A0A200CD629C /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCED427E3A0A200CD629C /* SwitchView.swift */; };
@@ -130,6 +131,7 @@
 		A37B262727F0FF1400DCDF70 /* StandZone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StandZone.entitlements; sourceTree = "<group>"; };
 		A37B262827F0FF1400DCDF70 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.4.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		A37B262C27F138CA00DCDF70 /* HealthDataTypeValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataTypeValue.swift; sourceTree = "<group>"; };
+		A37B262E27F13EDE00DCDF70 /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
 		A37BCED027E38A0F00CD629C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		A37BCED227E3936E00CD629C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A37BCED427E3A0A200CD629C /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				A37BCEDE27E433A200CD629C /* StandZoneController.swift */,
+				A37B262E27F13EDE00DCDF70 /* HealthViewController.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -261,10 +264,12 @@
 		A37B262A27F1070000DCDF70 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				A3BC6C8127E652A800120DF7 /* MainView.swift */,
 				A394978927E4E639003CE542 /* HomeView.swift */,
 				A3706CF227E5887C006F9C33 /* HomeView1.swift */,
 				849DA85727E8259C00DDC6DD /* HomeView2.swift */,
 				A3BC6C8327E6E44500120DF7 /* HomeView3.swift */,
+				A397181627E6E9C500A12479 /* DetailSettingView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -323,8 +328,6 @@
 				A3CFBB1F27E24E1A00110D92 /* Preview Content */,
 				A37BCED227E3936E00CD629C /* LoginView.swift */,
 				A37BCED427E3A0A200CD629C /* SwitchView.swift */,
-				A3BC6C8127E652A800120DF7 /* MainView.swift */,
-				A397181627E6E9C500A12479 /* DetailSettingView.swift */,
 			);
 			path = StandZone;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				A37BCEDD27E3DDEF00CD629C /* RegisterView4.swift in Sources */,
 				A37BCED527E3A0A200CD629C /* SwitchView.swift in Sources */,
 				A394978A27E4E639003CE542 /* HomeView.swift in Sources */,
+				A37B262F27F13EDE00DCDF70 /* HealthViewController.swift in Sources */,
 				A3CFBB1A27E24E1900110D92 /* StandZoneApp.swift in Sources */,
 				A397181727E6E9C500A12479 /* DetailSettingView.swift in Sources */,
 				A37BCEE127E43A5900CD629C /* UserModel.swift in Sources */,

@@ -41,7 +41,7 @@ struct InitialView: View {
                         }
                         .buttonStyle(PlainButtonStyle())
                         
-                        NavigationLink(destination: RegisterView1(myController: myController)) {
+                        NavigationLink(destination: RegisterView1(myController: myController, healthController: myController.healthController)) {
                             ButtonView(myController: myController, nextScreen: Screen.registerView1, content: "CONTINUE WITHOUT ACCOUNT", myColor: .gray)
                         }
                         .buttonStyle(PlainButtonStyle())

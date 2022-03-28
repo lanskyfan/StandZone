@@ -19,7 +19,7 @@ struct SwitchView: View {
         case Screen.registerView:
             RegisterView(myController: myController)
         case Screen.registerView1:
-            RegisterView1(myController: myController)
+            RegisterView1(myController: myController, healthController: myController.healthController)
         case Screen.registerView2:
             RegisterView2(myController: myController)
         case Screen.registerView3:
@@ -33,7 +33,7 @@ struct SwitchView: View {
         case Screen.homeView2:
             HomeView2(newController: myController)
         case Screen.mainView:
-                MainView(newController: myController)
+            MainView(newController: myController, newHealthController: myController.healthController)
                 .transition(AnyTransition.opacity.animation(.linear(duration: 1)))
         }
     }
