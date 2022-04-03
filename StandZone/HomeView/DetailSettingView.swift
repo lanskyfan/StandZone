@@ -9,6 +9,22 @@ import SwiftUI
 
 struct DetailSettingView: View {
     @ObservedObject var myController: StandZoneController
+    @State private var name: String
+    @State private var gender: Gender
+    @State private var frequency: Int
+    @State private var time: Int
+    
+    init(myController: StandZoneController) {
+        print("hello there")
+        self.myController = myController
+        _name = State(initialValue: myController.getUserInfo().getName())
+        _gender = State(initialValue: myController.getUserInfo().getGender())
+        _frequency = State(initialValue: myController.getUserInfo().getFrequencyGoal())
+        _time = State(initialValue: myController.getUserInfo().getTimeGoal())
+        print("gender is ")
+        print(myController.getUserInfo().getGender())
+    }
+    
     var body: some View {
         ZStack {
             Image("background1")
@@ -16,18 +32,24 @@ struct DetailSettingView: View {
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                SettingTopView()
-                BasicInfoView(myController: myController)
-                DailyGoalNoLinkView(myController: myController)
+                SettingTopView(myController: myController)
+                BasicInfoView(myController: myController, name: $name, gender: $gender)
+                DailyGoalNoLinkView(myController: myController, frequency: $frequency, time: $time)
             }
+        }
+        .onDisappear {
+            myController.updateName(newName: name)
+            myController.updateGender(newGender: gender)
+            myController.updateGoal(newFrequency: frequency, newTime: time)
+            print(gender)
         }
     }
 }
 
 struct BasicInfoView: View {
     @ObservedObject var myController: StandZoneController
-    @State private var name = "Roxanne"
-    @State private var gender = "Female"
+    @Binding var name: String
+    @Binding var gender: Gender
     var body: some View {
 
             ZStack {
@@ -61,15 +83,14 @@ struct BasicInfoView: View {
                         HStack {
                             Text("Gender")
                             Spacer()
-                            TextField(text: $gender, prompt: Text("Required")) {
-                                Text("Gender")
-                            }.disableAutocorrection(true)
-                                .multilineTextAlignment(.trailing)
-                                .frame(width: 100)                        }
+                            Picker("Gender", selection: $gender) {
+                                Text("Male").tag(Gender.Male)
+                                Text("Female").tag(Gender.Female)
+                            }
+                        }
                         .padding()
                     }
 
-                    
                 }
                 .padding()
 
@@ -80,8 +101,8 @@ struct BasicInfoView: View {
 
 struct DailyGoalNoLinkView: View {
     @ObservedObject var myController: StandZoneController
-    @State private var frequency = "12"
-    @State private var time = "120"
+    @Binding var frequency: Int
+    @Binding var time: Int
     var body: some View {
 
             ZStack {
@@ -99,12 +120,11 @@ struct DailyGoalNoLinkView: View {
                         HStack {
                             Text("Standing frequency")
                             Spacer()
-                            TextField(text: $frequency, prompt: Text("Required")) {
-                                Text("Username")
-                            }.disableAutocorrection(true)
-                                .multilineTextAlignment(.trailing)
-                                .frame(width: 100)
-                                .keyboardType(.numberPad)
+                            Picker("", selection: $frequency){
+                                ForEach(1...12, id:\.self){ i in
+                                    Text(String(i))
+                                }
+                            }.labelsHidden()
                             
                         }
                         .padding()
@@ -114,14 +134,13 @@ struct DailyGoalNoLinkView: View {
                         let shape = RoundedRectangle(cornerRadius: 10)
                         shape.fill().foregroundColor(.white).frame(height: 40)
                         HStack {
-                            Text("Standing time")
+                            Text("Standing time (minutes)")
                             Spacer()
-                            TextField(text: $time, prompt: Text("Required")) {
-                                Text("Username")
-                            }.disableAutocorrection(true)
-                                .multilineTextAlignment(.trailing)
-                                .frame(width: 100)
-                                .keyboardType(.numberPad)
+                            Picker("", selection: $time){
+                                ForEach(1...24, id:\.self){ i in
+                                    Text(String(i * 5))
+                                }
+                            }.labelsHidden()
                             
                         }
                         .padding()

@@ -13,7 +13,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Hello Roxanne").bold()
+                Text("Hello " + myController.getUserInfo().getName()).bold()
                 Spacer()
             }
             .padding()

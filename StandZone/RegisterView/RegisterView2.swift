@@ -10,6 +10,8 @@ import SwiftUI
 struct RegisterView2: View {
     @ObservedObject var myController: StandZoneController
     @State private var isImportCalendar = false
+    @State var wakeUpTime = Date()
+    @State var sleepTime = Date()
     var body: some View {
         ZStack (alignment: .top) {
             Image("background1")
@@ -24,7 +26,7 @@ struct RegisterView2: View {
                 Text("Notification Schedule").bold().font(.title)
                 Spacer()
                     .frame(height: 40)
-                TimeView(myController: myController)
+                TimeView(myController: myController, wakeUpTime: $wakeUpTime, sleepTime: $sleepTime)
                 Toggle("Import Calendar", isOn: $isImportCalendar)
                     .onChange(of: isImportCalendar) { value in
                         myController.updateIsImportCalendar(isImportCalendar: isImportCalendar)
@@ -37,6 +39,11 @@ struct RegisterView2: View {
                 NavigationLink(destination: RegisterView3(myController: myController)) {
                     ContinueButton(content: "Continue")
                 }
+                .simultaneousGesture(TapGesture().onEnded{
+                    myController.updateIsImportCalendar(isImportCalendar: isImportCalendar)
+                    myController.updateWakeUpTime(newWakeUpTime: wakeUpTime)
+                    myController.updateSleepTime(newSleepTime: sleepTime)
+                })
                 .buttonStyle(PlainButtonStyle())
                 Spacer()
                     .frame(height: 60)
@@ -51,8 +58,8 @@ struct RegisterView2: View {
 
 struct TimeView: View {
     var myController: StandZoneController
-    @State var wakeUpTime = Date()
-    @State var sleepTime = Date()
+    @Binding var wakeUpTime: Date
+    @Binding var sleepTime: Date
     var body: some View {
         VStack {
             HStack {

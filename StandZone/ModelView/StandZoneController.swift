@@ -12,8 +12,16 @@ import HealthKit
     @Published private var screen = Screen.initialView
     @Published private var user = UserModel()
     var healthController = HealthViewController()
+    
+    init() {
+        // For testing purpose
+        user.updateLogIn(newLogin: false)
+    }
     func getScreen() -> Screen{
-        return screen
+        if (user.getIsLogIn() == true) {
+            return Screen.mainView
+        }
+        return Screen.initialView
     }
     
     func updateScreen(newScreen: Screen) {
@@ -22,6 +30,9 @@ import HealthKit
         screen = newScreen
     }
     
+    func updateLogIn(newLogIn: Bool) {
+        user.updateLogIn(newLogin: newLogIn)
+    }
     
     func getUserInfo() -> UserModel {
         return user
@@ -36,7 +47,7 @@ import HealthKit
         user.updateName(newName: newName)
     }
     
-    func updateGender(newGender: String) {
+    func updateGender(newGender: Gender) {
         user.updateGender(newGender: newGender)
     }
     
@@ -138,4 +149,9 @@ enum Screen {
     case homeView1
     case mainView
     case homeView2
+}
+
+enum Gender: String {
+    case Male = "Male"
+    case Female = "Female"
 }

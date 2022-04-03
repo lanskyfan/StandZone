@@ -26,13 +26,15 @@ struct RegisterView4: View {
                 Text("Set Daily Goal").bold().font(.title)
                 Spacer()
                     .frame(height: 40)
-                frequencyStepperView(frequency: $frequency)
-                timeStepperView(time: $time)
+                frequencyStepperView(frequency: $frequency, time: $time)
+//                timeStepperView(time: $time)
                 Spacer()
                     .frame(height: 40)
                 ContinueButton(content: "Continue")
                     .onTapGesture {
+                        myController.updateGoal(newFrequency: frequency, newTime: time)
                         myController.updateScreen(newScreen: Screen.mainView)
+                        myController.updateLogIn(newLogIn: true)
                     }
                 Spacer()
                     .frame(height: 60)
@@ -52,12 +54,38 @@ struct RegisterView4_Previews: PreviewProvider {
 
 struct frequencyStepperView: View {
     @Binding var frequency: Int
+    @Binding var time: Int
     var body: some View {
-        HStack {
-            Text("Stand Frequency")
-            VStack {
-                Stepper("\(frequency)", value: $frequency)
-            }.padding()
+        ZStack {
+            let shape = RoundedRectangle(cornerRadius: 10)
+            shape.fill().foregroundColor(.white).frame(height: 40)
+            HStack {
+                Text("Standing frequency")
+                Spacer()
+                Picker("", selection: $frequency){
+                    ForEach(1...12, id:\.self){ i in
+                        Text(String(i))
+                    }
+                }.labelsHidden()
+                
+            }
+            .padding()
+        }
+
+        ZStack {
+            let shape = RoundedRectangle(cornerRadius: 10)
+            shape.fill().foregroundColor(.white).frame(height: 40)
+            HStack {
+                Text("Standing time (minutes)")
+                Spacer()
+                Picker("", selection: $time){
+                    ForEach(1...24, id:\.self){ i in
+                        Text(String(i * 5))
+                    }
+                }.labelsHidden()
+                
+            }
+            .padding()
         }
 
     }

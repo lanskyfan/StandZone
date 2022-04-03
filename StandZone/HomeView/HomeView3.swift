@@ -19,7 +19,7 @@ struct HomeView3: View {
                     .edgesIgnoringSafeArea(.all)
                 ScrollView {
                     VStack {
-                        SettingTopView()
+                        SettingTopView(myController: myController)
                         DailyGoalView(myController: myController)
                         ReminderView(myController: myController)
                     }
@@ -30,6 +30,7 @@ struct HomeView3: View {
 }
 
 struct SettingTopView: View {
+    @ObservedObject var myController: StandZoneController
     var body: some View {
         Image("head")
             .resizable()
@@ -38,21 +39,31 @@ struct SettingTopView: View {
             .clipShape(Circle())
             .scaledToFill()
             .padding()
-        Text("Roxanne")
+        Text(myController.getUserInfo().getName())
     }
 }
 struct ReminderView: View {
     @ObservedObject var myController: StandZoneController
-    // TODO Update to true value
-    @State private var isNotify = true
-    @State private var isRepetitiveMode = true
-    @State private var isAppleWatchOnly = true
-    @State private var wakeUpTime = Date()
-    @State private var sleepTime = Date()
-    @State private var isImportCalendar = true
+    @State private var isNotify: Bool
+    @State private var isRepetitiveMode: Bool
+    @State private var isAppleWatchOnly: Bool
+    @State private var wakeUpTime: Date
+    @State private var sleepTime: Date
+    @State private var isImportCalendar: Bool
+    
+    init(myController: StandZoneController) {
+        self.myController = myController
+        _isNotify = State(initialValue: myController.getUserInfo().getIsNotify())
+        _isRepetitiveMode = State(initialValue: myController.getUserInfo().getIsRepetitiveMode())
+        _isAppleWatchOnly = State(initialValue: myController.getUserInfo().getIsAppleWatchOnly())
+        _wakeUpTime = State(initialValue: myController.getUserInfo().getWakeUpTime())
+        _sleepTime = State(initialValue: myController.getUserInfo().getSleepTime())
+        _isImportCalendar = State(initialValue:myController.getUserInfo().getIsImportCalendar())
+    }
+    
     var body: some View {
         ZStack {
-            let height = 340.0
+            let height = 400.0
             let shape = RoundedRectangle(cornerRadius: 10)
             shape.fill().foregroundColor(.green2).frame(height: height)
             VStack {
@@ -88,6 +99,10 @@ struct ReminderView: View {
                             .onChange(of: isImportCalendar) { value in
                                 myController.updateIsImportCalendar(isImportCalendar: isImportCalendar)
                             }
+                        Text("")
+                        Text("")
+                        Text("")
+                        Text("")
 
 
                     }
@@ -123,7 +138,7 @@ struct DailyGoalView: View {
                             HStack {
                                 Text("Standing frequency")
                                 Spacer()
-                                Text("12  >")
+                                Text(String(myController.getUserInfo().getFrequencyGoal()) + "  >")
                             }
                             .padding()
                         }
@@ -136,7 +151,7 @@ struct DailyGoalView: View {
                             HStack {
                                 Text("Standing time")
                                 Spacer()
-                                Text("120 min  >")
+                                Text(String(myController.getUserInfo().getTimeGoal() * 5) + "min  >")
                             }
                             .padding()
                         }
