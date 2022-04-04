@@ -38,6 +38,7 @@ struct LoginView: View {
                 ContinueButton(content: "Continue")
                     .onTapGesture {
                         myController.updateScreen(newScreen: Screen.mainView)
+                        myController.updateLogIn(newLogIn: true)
                     }
             }
         }

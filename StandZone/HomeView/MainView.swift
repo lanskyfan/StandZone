@@ -12,9 +12,7 @@ struct MainView: View {
     @ObservedObject var healthController: HealthViewController
     init(newController: StandZoneController, newHealthController: HealthViewController) {
         UITabBar.appearance().backgroundColor = UIColor(Color.green1)
-        UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().unselectedItemTintColor = UIColor.white
-
         UITabBar.appearance().barTintColor = UIColor(Color.green1)
         myController = newController
         healthController = newHealthController
@@ -27,7 +25,7 @@ struct MainView: View {
                         .foregroundColor(Color.white)
                     }
 
-            HomeView1(myController: myController)
+            HomeView1(myController: myController, healthController: healthController)
                 .tabItem {
                     Label("Data", systemImage: "waveform.path.ecg.rectangle")
                 }
@@ -45,8 +43,9 @@ struct MainView: View {
         }
         .onAppear{
             print("enter main view")
-            healthController.performQuery()
-            print(healthController.dataValues)
+            healthController.updateHealthData()
+            print("success")
+
         }
     }
 }

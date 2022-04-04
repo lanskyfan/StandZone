@@ -12,7 +12,7 @@ struct RegisterView1: View {
     @ObservedObject var myController: StandZoneController
     @ObservedObject var healthController: HealthViewController
     @State private var nickName: String = ""
-    @State private var gender: String = ""
+    @State private var gender: Gender = Gender.Male
     var body: some View {
         ZStack (alignment: .top){
             Image("background1")
@@ -53,6 +53,11 @@ struct RegisterView1: View {
                 NavigationLink(destination: RegisterView2(myController: myController)) {
                     ContinueButton(content: "Continue")
                 }
+                .simultaneousGesture(TapGesture().onEnded{
+                    myController.updateName(newName: nickName)
+                    print("update gender = " + "\(gender)")
+                    myController.updateGender(newGender: gender)
+                })
                 .buttonStyle(PlainButtonStyle())
                 Spacer()
                     .frame(height: 60)
@@ -61,7 +66,6 @@ struct RegisterView1: View {
             
         }
         .onAppear{
-            print("appear")
             healthController.getHealthAuthorizationRequestStatus()
             print(healthController.notRequestedHealthData)
         }
@@ -96,31 +100,19 @@ struct ProgressCircle : View {
 }
 
 struct GenderView: View {
-    @Binding var gender: String
+    @Binding var gender: Gender
     var body: some View {
         HStack {
             Image(systemName: "person.2.fill").font(.system(size: 30))
             Text("Gender").bold()
         }
-        HStack {
-            ZStack {
-                let shape = RoundedRectangle(cornerRadius: 10)
-                shape.fill().foregroundColor(.white).frame(height: 60)
-                Text("Male").bold()
+        List {
+            Picker("Gender", selection: $gender) {
+                Text("Male").tag(Gender.Male)
+                Text("Female").tag(Gender.Female)
             }
-            .onTapGesture {
-                gender = "Male"
-            }
-            ZStack {
-                let shape = RoundedRectangle(cornerRadius: 10)
-                shape.fill().foregroundColor(.white)
-                    .frame(height: 60)
-                Text("Female").bold()
-            }
-            .onTapGesture {
-                gender = "Female"
-            }
-        }.padding()
+            .pickerStyle(.menu)
+        }
     }
 }
 

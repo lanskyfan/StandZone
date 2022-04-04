@@ -34,7 +34,7 @@ struct RegisterView: View {
                     }
                     TextField(text: $email, prompt: Text("Required")) {
                         Text("Username")
-                    }.padding().disableAutocorrection(true)
+                    }.padding().disableAutocorrection(true).autocapitalization(.none)
                     HStack {
                         Image(systemName: "key.fill").font(.system(size: 30))
                         Text("Password").bold()
@@ -47,6 +47,9 @@ struct RegisterView: View {
                 NavigationLink(destination: RegisterView1(myController: myController, healthController: myController.healthController)) {
                     ContinueButton(content: "Continue")
                 }
+                .simultaneousGesture(TapGesture().onEnded{
+                    myController.updateAccountInfo(newEmail: email, newPassword: password)
+                })
                 .buttonStyle(PlainButtonStyle())
 
             }

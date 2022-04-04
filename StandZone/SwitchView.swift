@@ -29,7 +29,7 @@ struct SwitchView: View {
         case Screen.homeView:
             HomeView(myController: myController, healthController: myController.healthController)
         case Screen.homeView1:
-            HomeView1(myController: myController)
+            HomeView1(myController: myController, healthController: HealthViewController())
         case Screen.homeView2:
             HomeView2(newController: myController)
         case Screen.mainView:
