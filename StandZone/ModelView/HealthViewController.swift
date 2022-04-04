@@ -10,6 +10,13 @@ import HealthKit
 
 
 class HealthViewController: ObservableObject {
+    
+    
+    var statisticsData: [(dataTypeIdentifier: String, values: [Double])] = []
+
+    
+    
+    
     var dataValues: [HealthDataTypeValue] = []
     var dataTypeIdentifier = HKQuantityTypeIdentifier.appleStandTime.rawValue
     // MARK: - Button Selectors
@@ -184,7 +191,7 @@ class HealthViewController: ObservableObject {
     
     
     
-    var queryPredicate: NSPredicate? = nil
+    var queryPredicate: NSPredicate? = createPredicate(type: StatisticsType.Day)
     var queryAnchor: HKQueryAnchor? = nil
     var queryLimit: Int = HKObjectQueryNoLimit
 
@@ -231,6 +238,66 @@ class HealthViewController: ObservableObject {
         }
         
         HealthData.healthStore.execute(anchoredObjectQuery)
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+        }
+    }
+    
+    func injectData() {
+        statisticsData = [(dataTypeIdentifier, [])]
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+        }
+    }
+    
+    func produceStatistics() -> [Double] {
+        var result: [Double] = []
+        let item = statisticsData[0]
+            for value in item.values {
+                result.append(value)
+            }
+        return result
+    }
+    
+    func performStatisticsQuery() {
+        print("query")
+        // Create a query for each data type.
+        for (index, item) in statisticsData.enumerated() {
+            // Set dates
+            let now = Date()
+            let startDate = getLastWeekStartDate()
+            let endDate = now
+            let predicate = createPredicate(type: StatisticsType.Week)
+            let dateInterval = DateComponents(day: 1)
+            
+            // Process data.
+//            let statisticsOptions = getStatisticsOptions(for: item.dataTypeIdentifier)
+            let statisticsOptions: HKStatisticsOptions = .cumulativeSum
+            let initialResultsHandler: (HKStatisticsCollection) -> Void = { (statisticsCollection) in
+                var values: [Double] = []
+                statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { (statistics, stop) in
+                    let statisticsQuantity = getStatisticsQuantity(for: statistics, with: statisticsOptions)
+                    if let unit = preferredUnit(for: item.dataTypeIdentifier),
+                        let value = statisticsQuantity?.doubleValue(for: unit) {
+                        values.append(value)
+                    } else {
+                        values.append(0.0)
+                    }
+                }
+                
+                self.statisticsData[index].values = values
+                
+            }
+            
+            // Fetch statistics.
+            HealthData.fetchStatistics(with: HKQuantityTypeIdentifier(rawValue: item.dataTypeIdentifier),
+                                       predicate: predicate,
+                                       options: statisticsOptions,
+                                       startDate: startDate,
+                                       interval: dateInterval,
+                                       completion: initialResultsHandler)
+        }
+        // Results come back on a background thread. Dispatch UI updates to the main thread.
         DispatchQueue.main.async {
             self.objectWillChange.send()
         }

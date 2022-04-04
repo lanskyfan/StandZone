@@ -47,6 +47,7 @@ struct UserModel {
     
     
     func getName() -> String {
+        
         if (defaults.object(forKey:name) == nil) {
             defaults.set("", forKey: name)
         }

@@ -15,14 +15,11 @@ struct DetailSettingView: View {
     @State private var time: Int
     
     init(myController: StandZoneController) {
-        print("hello there")
         self.myController = myController
         _name = State(initialValue: myController.getUserInfo().getName())
         _gender = State(initialValue: myController.getUserInfo().getGender())
         _frequency = State(initialValue: myController.getUserInfo().getFrequencyGoal())
         _time = State(initialValue: myController.getUserInfo().getTimeGoal())
-        print("gender is ")
-        print(myController.getUserInfo().getGender())
     }
     
     var body: some View {

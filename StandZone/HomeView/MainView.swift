@@ -27,7 +27,7 @@ struct MainView: View {
                         .foregroundColor(Color.white)
                     }
 
-            HomeView1(myController: myController)
+            HomeView1(myController: myController, healthController: healthController)
                 .tabItem {
                     Label("Data", systemImage: "waveform.path.ecg.rectangle")
                 }
@@ -47,6 +47,10 @@ struct MainView: View {
             print("enter main view")
             healthController.performQuery()
             print(healthController.dataValues)
+            healthController.injectData()
+            healthController.performStatisticsQuery()
+            print("success")
+
         }
     }
 }
