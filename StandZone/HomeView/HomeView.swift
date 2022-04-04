@@ -23,10 +23,10 @@ struct HomeView: View {
                     .resizable()
                     .frame(width: 146.0, height: 146.0)
                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                FrequencyCircle()
-                TimeCircle()
+                FrequencyCircle(myController: myController, healthController: healthController)
+                TimeCircle(myController: myController, healthController: healthController)
             }
-            DigitView()
+            DigitView(myController: myController, healthController: healthController)
             Spacer()
             DataView(myController: myController, healthController: healthController)
 
@@ -38,6 +38,8 @@ struct HomeView: View {
 
 
 struct FrequencyCircle : View {
+    @ObservedObject var myController: StandZoneController
+    @ObservedObject var healthController: HealthViewController
     var body: some View {
         HStack {
             Circle()
@@ -52,6 +54,8 @@ struct FrequencyCircle : View {
 }
 
 struct TimeCircle : View {
+    @ObservedObject var myController: StandZoneController
+    @ObservedObject var healthController: HealthViewController
     var body: some View {
         HStack {
             Circle()
@@ -68,6 +72,8 @@ struct TimeCircle : View {
 
 
 struct DigitView: View {
+    @ObservedObject var myController: StandZoneController
+    @ObservedObject var healthController: HealthViewController
     var body: some View {
         HStack {
             ZStack {
@@ -75,7 +81,7 @@ struct DigitView: View {
                 shape.fill().foregroundColor(.green1).frame(height: 60)
                 VStack {
                     Text("Stand Frequency").bold()
-                    Text("6/12").bold()
+                    Text(String(healthController.todayStandHour.count - 1) + "/" + String(myController.getUserInfo().getFrequencyGoal())).bold()
                 }
             }
             ZStack {
@@ -84,7 +90,7 @@ struct DigitView: View {
                     .frame(height: 60)
                 VStack {
                     Text("Stand Time").bold()
-                    Text("90/120 mins")
+                    Text(String(healthController.todayStandTimeTotal) + "/" + String(myController.getUserInfo().getTimeGoal() * 5)).bold()
                 }
             }
         }.padding()
@@ -108,7 +114,7 @@ struct DataView: View {
                     .padding()
                 ScrollView {
                     VStack (alignment: .leading){
-                        ForEach(healthController.dataValues) {data in
+                        ForEach(healthController.todayStandTime) {data in
                             HStack {
                                 Text(data.getDate())
                                     .foregroundColor(.white)

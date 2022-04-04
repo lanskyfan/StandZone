@@ -68,7 +68,7 @@ struct ReminderView: View {
             shape.fill().foregroundColor(.green2).frame(height: height)
             VStack {
                 HStack{
-                    Text("Reminder")
+                    Text("Reminder").foregroundColor(.white)
                     Spacer()
                 }
                 ZStack {
@@ -127,7 +127,7 @@ struct DailyGoalView: View {
                     shape.fill().foregroundColor(.green2).frame(height: 160)
                 VStack {
                     HStack {
-                            Text("Daily Goal").foregroundColor(.black)
+                            Text("Daily Goal").foregroundColor(.white)
                             Spacer()
                     }
                     

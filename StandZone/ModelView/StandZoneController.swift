@@ -15,7 +15,7 @@ import HealthKit
     
     init() {
         // For testing purpose
-        user.updateLogIn(newLogin: false)
+//        user.updateLogIn(newLogin: false)
     }
     func getScreen() -> Screen{
         if (user.getIsLogIn() == true) {

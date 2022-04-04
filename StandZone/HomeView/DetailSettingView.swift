@@ -54,7 +54,7 @@ struct BasicInfoView: View {
                     shape.fill().foregroundColor(.green2).frame(height: 160)
                 VStack {
                     HStack {
-                            Text("Basic Information").foregroundColor(.black)
+                            Text("Basic Information").foregroundColor(.white)
                             Spacer()
                     }
                     
@@ -104,10 +104,10 @@ struct DailyGoalNoLinkView: View {
 
             ZStack {
                     let shape = RoundedRectangle(cornerRadius: 10)
-                    shape.fill().foregroundColor(.green2).frame(height: 160)
+                    shape.fill().foregroundColor(.green2).frame(height: 180)
                 VStack {
                     HStack {
-                            Text("Daily Goal").foregroundColor(.black)
+                            Text("Daily Goal").foregroundColor(.white)
                             Spacer()
                     }
                     

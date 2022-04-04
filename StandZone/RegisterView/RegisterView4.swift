@@ -32,7 +32,7 @@ struct RegisterView4: View {
                     .frame(height: 40)
                 ContinueButton(content: "Continue")
                     .onTapGesture {
-                        myController.updateGoal(newFrequency: frequency, newTime: time)
+                        myController.updateGoal(newFrequency: frequency, newTime: time * 5)
                         myController.updateScreen(newScreen: Screen.mainView)
                         myController.updateLogIn(newLogIn: true)
                     }

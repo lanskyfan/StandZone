@@ -95,7 +95,7 @@ func createPredicate(type: StatisticsType) -> NSPredicate {
     var startDate: Date
     switch type {
     case .Day:
-        startDate = endDate
+        startDate = Calendar.current.date(byAdding: .day, value: -1, to: endDate)!
     case .Week:
         startDate = getLastWeekStartDate(from: endDate)
     case .Month:
