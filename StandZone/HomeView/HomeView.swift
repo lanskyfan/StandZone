@@ -43,7 +43,7 @@ struct FrequencyCircle : View {
     var body: some View {
         HStack {
             Circle()
-               .trim(from: 0.25, to: 1.0)
+                .trim(from: CGFloat(1 - CGFloat(healthController.todayStandHourCount) / CGFloat(myController.getUserInfo().getFrequencyGoal())), to: 1.0)
                .rotation(.degrees(-90))
                .stroke(Color.green1 ,style: StrokeStyle(lineWidth: 8, lineCap: .butt))
                .frame(width: 150, height: 150)
@@ -59,7 +59,7 @@ struct TimeCircle : View {
     var body: some View {
         HStack {
             Circle()
-               .trim(from: 0.4, to: 1.0)
+                .trim(from:CGFloat(1 - CGFloat(healthController.todayStandTimeTotal) / CGFloat(myController.getUserInfo().getTimeGoal() * 5)), to: 1.0)
                .rotation(.degrees(-90))
                .stroke(Color.blue1 ,style: StrokeStyle(lineWidth: 8, lineCap: .butt))
                .frame(width: 134, height: 134)
@@ -81,7 +81,7 @@ struct DigitView: View {
                 shape.fill().foregroundColor(.green1).frame(height: 60)
                 VStack {
                     Text("Stand Frequency").bold()
-                    Text(String(healthController.todayStandHour.count - 1) + "/" + String(myController.getUserInfo().getFrequencyGoal())).bold()
+                    Text(String(healthController.todayStandHourCount) + "/" + String(myController.getUserInfo().getFrequencyGoal())).bold()
                 }
             }
             ZStack {

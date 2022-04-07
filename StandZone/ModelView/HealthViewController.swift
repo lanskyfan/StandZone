@@ -19,6 +19,7 @@ class HealthViewController: ObservableObject {
     
     var todayStandTime: [HealthDataTypeValue] = []
     var todayStandHour: [HealthDataTypeValue] = []
+    var todayStandHourCount: Int = 0
     var todayStandTimeTotal: Double = 0.0
     let standTimeIdentifier = HKQuantityTypeIdentifier.appleStandTime.rawValue
     let standHourIdentifier = HKCategoryTypeIdentifier.appleStandHour.rawValue
@@ -248,6 +249,7 @@ class HealthViewController: ObservableObject {
             for dataIndex in 0..<self.todayStandHour.count {
                 self.todayStandHour[dataIndex].id = dataIndex
             }
+            self.todayStandHourCount = self.todayStandHour.count
             
         }
         
