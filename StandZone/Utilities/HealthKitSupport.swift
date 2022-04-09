@@ -86,31 +86,32 @@ func createAnchorDate() -> Date {
 
 /// This is commonly used for date intervals so that we get the last seven days worth of data,
 /// because we assume today (`Date()`) is providing data as well.
-func getLastWeekStartDate(from date: Date = Date()) -> Date {
-    return Calendar.current.date(byAdding: .day, value: -6, to: date)!
-}
 
-func createPredicate(type: StatisticsType) -> NSPredicate {
-    let endDate: Date = Date()
-    var startDate: Date
+func getStartingDate(from date: Date = Date(), type: StatisticsType) -> Date{
+    var result: Date = Date()
+    let calendar = Calendar.current
     switch type {
     case .Day:
-        startDate = Calendar.current.date(byAdding: .day, value: -1, to: endDate)!
+        result = calendar.startOfDay(for: date)
     case .Week:
-        startDate = getLastWeekStartDate(from: endDate)
+        let prev = Calendar.current.date(byAdding: .day, value: -6, to: date)!
+        result = calendar.startOfDay(for: prev)
     case .Month:
-        startDate = getLastWeekStartDate(from: endDate)
+        let prev = Calendar.current.date(byAdding: .month, value: -1, to: date)!
+        result = calendar.startOfDay(for: prev)
     case .Year:
-        startDate = getLastWeekStartDate(from: endDate)
+        let prev = Calendar.current.date(byAdding: .year, value: -1, to: date)!
+        result = calendar.startOfDay(for: prev)
     }
-    return HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+    return result
 }
 
-
-func createLastWeekPredicate(from endDate: Date = Date()) -> NSPredicate {
-    let startDate = getLastWeekStartDate(from: endDate)
-    return HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+func getEndDate() -> Date {
+    let today: Date = Date()
+    let calendar = Calendar.current
+    return calendar.date(bySettingHour: 23, minute: 59, second: 59, of: today)!
 }
+
 
 /// Return the most preferred `HKStatisticsOptions` for a data type identifier. Defaults to `.discreteAverage`.
 func getStatisticsOptions(for dataTypeIdentifier: String) -> HKStatisticsOptions {
