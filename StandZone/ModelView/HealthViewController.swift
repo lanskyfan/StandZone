@@ -41,7 +41,7 @@ class HealthViewController: ObservableObject {
         self.performTodayStandHourQuery(dataTypeIdentifier: standHourIdentifier)
         print(self.todayStandTime)
         print(self.todayStandHour)
-        self.performStatisticsQuery(type: StatisticsType.Week)
+        self.performStatisticsQuery(type: StatisticsType.Day)
         print(self.statisticsDisplay)
     }
     
@@ -206,9 +206,6 @@ class HealthViewController: ObservableObject {
     
     
     
-    var queryPredicate: NSPredicate? = createPredicate(type: StatisticsType.Day)
-    var queryAnchor: HKQueryAnchor? = nil
-    var queryLimit: Int = HKObjectQueryNoLimit
 
 
     // MARK: - HealthQueryDataSource
@@ -224,6 +221,12 @@ class HealthViewController: ObservableObject {
     
     func performTodayStandHourQuery(dataTypeIdentifier: String) {
         self.objectWillChange.send()
+        let startDate: Date = getStartingDate(type: StatisticsType.Day)
+        let endDate = getEndDate()
+        let queryPredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+        let queryAnchor: HKQueryAnchor? = nil
+        let queryLimit: Int = HKObjectQueryNoLimit
+
         guard let sampleType = getSampleType(for: dataTypeIdentifier) else { return }
         
         let anchoredObjectQuery = HKAnchoredObjectQuery(type: sampleType,
@@ -262,6 +265,12 @@ class HealthViewController: ObservableObject {
     
     func performTodayStandTimeQuery(dataTypeIdentifier: String) {
         self.objectWillChange.send()
+        let startDate: Date = getStartingDate(type: StatisticsType.Day)
+        let endDate = getEndDate()
+        let queryPredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+        let queryAnchor: HKQueryAnchor? = nil
+        let queryLimit: Int = HKObjectQueryNoLimit
+
         guard let sampleType = getSampleType(for: dataTypeIdentifier) else { return }
         
         let anchoredObjectQuery = HKAnchoredObjectQuery(type: sampleType,
@@ -321,9 +330,14 @@ class HealthViewController: ObservableObject {
         let dateFormatter = DateFormatter()
         switch type {
         case .Day:
-            dateFormatter.dateFormat = "E"
             for value in self.statisticsData {
-                statisticsDisplay.append((dateFormatter.string(from: value.startDate), value.value))
+                let calendar = Calendar.current
+                let hour = calendar.component(.hour, from: value.startDate)
+                if hour % 4 == 0 {
+                    statisticsDisplay.append((String(hour), value.value))
+                } else {
+                    statisticsDisplay.append(("", value.value))
+                }
             }
         case .Week:
             dateFormatter.dateFormat = "E"
@@ -343,9 +357,14 @@ class HealthViewController: ObservableObject {
             }
 
         case .Year:
-            dateFormatter.dateFormat = "E"
             for value in self.statisticsData {
-                statisticsDisplay.append((dateFormatter.string(from: value.startDate), value.value))
+                let calendar = Calendar.current
+                let month = calendar.component(.month, from: value.startDate)
+                if month % 2 == 0 {
+                    statisticsDisplay.append((String(month), value.value))
+                } else {
+                    statisticsDisplay.append(("", value.value))
+                }
             }
         }
         
@@ -361,10 +380,20 @@ class HealthViewController: ObservableObject {
         // Create a query for each data type.
         let startDate: Date = getStartingDate(type: type)
             // Set dates
-            let endDate = Date()
-            let predicate = createPredicate(type: type)
-            let dateInterval = DateComponents(day: 1)
-            
+        let endDate = getEndDate()
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+        let dateInterval: DateComponents
+        switch type {
+        case .Day:
+            dateInterval = DateComponents(hour: 1)
+        case .Week:
+            dateInterval = DateComponents(day: 1)
+        case .Month:
+            dateInterval = DateComponents(day: 1)
+        case .Year:
+            dateInterval = DateComponents(month: 1)
+        }
+        
             // Process data.
 //            let statisticsOptions = getStatisticsOptions(for: item.dataTypeIdentifier)
             let statisticsOptions: HKStatisticsOptions = .cumulativeSum

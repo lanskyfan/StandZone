@@ -86,30 +86,32 @@ func createAnchorDate() -> Date {
 
 /// This is commonly used for date intervals so that we get the last seven days worth of data,
 /// because we assume today (`Date()`) is providing data as well.
-func getLastWeekStartDate(from date: Date = Date()) -> Date {
-    return Calendar.current.date(byAdding: .day, value: -6, to: date)!
-}
 
 func getStartingDate(from date: Date = Date(), type: StatisticsType) -> Date{
     var result: Date = Date()
+    let calendar = Calendar.current
     switch type {
     case .Day:
-        result = Calendar.current.date(byAdding: .day, value: -6, to: date)!
+        result = calendar.startOfDay(for: date)
     case .Week:
-        result = Calendar.current.date(byAdding: .day, value: -6, to: date)!
+        let prev = Calendar.current.date(byAdding: .day, value: -6, to: date)!
+        result = calendar.startOfDay(for: prev)
     case .Month:
-        result = Calendar.current.date(byAdding: .month, value: -1, to: date)!
+        let prev = Calendar.current.date(byAdding: .month, value: -1, to: date)!
+        result = calendar.startOfDay(for: prev)
     case .Year:
-        result = Calendar.current.date(byAdding: .month, value: -1, to: date)!
+        let prev = Calendar.current.date(byAdding: .year, value: -1, to: date)!
+        result = calendar.startOfDay(for: prev)
     }
     return result
 }
 
-func createPredicate(type: StatisticsType) -> NSPredicate {
-    let endDate: Date = Date()
-    let startDate: Date = getStartingDate(type: type)
-    return HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+func getEndDate() -> Date {
+    let today: Date = Date()
+    let calendar = Calendar.current
+    return calendar.date(bySettingHour: 23, minute: 59, second: 59, of: today)!
 }
+
 
 /// Return the most preferred `HKStatisticsOptions` for a data type identifier. Defaults to `.discreteAverage`.
 func getStatisticsOptions(for dataTypeIdentifier: String) -> HKStatisticsOptions {
