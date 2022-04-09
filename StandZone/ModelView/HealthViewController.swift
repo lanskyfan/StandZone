@@ -7,15 +7,15 @@
 
 import SwiftUI
 import HealthKit
+import SwiftUICharts
 
 
 class HealthViewController: ObservableObject {
     
     
-    var statisticsData: [(dataTypeIdentifier: String, values: [Double])] = []
-
-    
-    
+//    var statisticsData: [(dataTypeIdentifier: String, values: [Double])] = []
+    var statisticsData: [HealthDataTypeValue] = []
+    var statisticsDisplay: [(label: String, value: Double)] = []
     
     var todayStandTime: [HealthDataTypeValue] = []
     var todayStandHour: [HealthDataTypeValue] = []
@@ -41,8 +41,8 @@ class HealthViewController: ObservableObject {
         self.performTodayStandHourQuery(dataTypeIdentifier: standHourIdentifier)
         print(self.todayStandTime)
         print(self.todayStandHour)
-        self.injectData()
-        self.performStatisticsQuery()
+        self.performStatisticsQuery(type: StatisticsType.Week)
+        print(self.statisticsDisplay)
     }
     
     func getHealthAuthorizationRequestStatus() {
@@ -297,60 +297,101 @@ class HealthViewController: ObservableObject {
         }
     }
     
-    func injectData() {
-        statisticsData = [(standTimeIdentifier, [])]
-        DispatchQueue.main.async {
-            self.objectWillChange.send()
+    func generateDataPoint(type: StatisticsType) -> [DataPoint]{
+        //        let highIntensity = Legend(color: .orange, label: "High Intensity", order: 5)
+        //        let buildFitness = Legend(color: .yellow, label: "Build Fitness", order: 4)
+//                let fatBurning = Legend(color: .green, label: "Fat Burning", order: 3)
+//                let warmUp = Legend(color: .blue, label: "Warm Up", order: 2)
+        let low = Legend(color: .gray, label: "Low", order: 1)
+        var points: [DataPoint] = []
+        print("call function")
+        let data = produceStatistics(type: type)
+        for point in data {
+            points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: low))
         }
+        return points
     }
     
-    func produceStatistics() -> [Double] {
-        var result: [Double] = []
-        let item = statisticsData[0]
-            for value in item.values {
-                result.append(value)
+    
+    func produceStatistics(type: StatisticsType) ->  [(label: String, value: Double)] {
+        print("produce statistics")
+        print("statistics data len = ")
+        print(statisticsData.count)
+        statisticsDisplay = []
+        let dateFormatter = DateFormatter()
+        switch type {
+        case .Day:
+            dateFormatter.dateFormat = "E"
+            for value in self.statisticsData {
+                statisticsDisplay.append((dateFormatter.string(from: value.startDate), value.value))
             }
-        return result
+        case .Week:
+            dateFormatter.dateFormat = "E"
+            for value in self.statisticsData {
+                statisticsDisplay.append((dateFormatter.string(from: value.startDate), value.value))
+            }
+        case .Month:
+            for value in self.statisticsData {
+                let calendar = Calendar.current
+                let components = calendar.dateComponents([.day], from: value.startDate)
+                let dayOfMonth = components.day
+                if dayOfMonth! % 5 == 0 {
+                    statisticsDisplay.append((String(dayOfMonth!), value.value))
+                } else {
+                    statisticsDisplay.append(("", value.value))
+                }
+            }
+
+        case .Year:
+            dateFormatter.dateFormat = "E"
+            for value in self.statisticsData {
+                statisticsDisplay.append((dateFormatter.string(from: value.startDate), value.value))
+            }
+        }
+        
+        return statisticsDisplay
+
     }
     
-    func performStatisticsQuery() {
-        print("query")
+    
+    func performStatisticsQuery(type: StatisticsType) {
+        self.objectWillChange.send()
+        statisticsData = []
+        print(" statistics query")
         // Create a query for each data type.
-        for (index, item) in statisticsData.enumerated() {
+        let startDate: Date = getStartingDate(type: type)
             // Set dates
-            let now = Date()
-            let startDate = getLastWeekStartDate()
-            let endDate = now
-            let predicate = createPredicate(type: StatisticsType.Week)
+            let endDate = Date()
+            let predicate = createPredicate(type: type)
             let dateInterval = DateComponents(day: 1)
             
             // Process data.
 //            let statisticsOptions = getStatisticsOptions(for: item.dataTypeIdentifier)
             let statisticsOptions: HKStatisticsOptions = .cumulativeSum
             let initialResultsHandler: (HKStatisticsCollection) -> Void = { (statisticsCollection) in
-                var values: [Double] = []
                 statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { (statistics, stop) in
                     let statisticsQuantity = getStatisticsQuantity(for: statistics, with: statisticsOptions)
-                    if let unit = preferredUnit(for: item.dataTypeIdentifier),
+                    if let unit = preferredUnit(for: self.standTimeIdentifier),
                         let value = statisticsQuantity?.doubleValue(for: unit) {
-                        values.append(value)
+                        self.statisticsData.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: value))
                     } else {
-                        values.append(0.0)
+                        self.statisticsData.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: 0))
                     }
                 }
-                
-                self.statisticsData[index].values = values
-                
+                for dataIndex in 0..<self.statisticsData.count {
+                    print("yes")
+                    self.statisticsData[dataIndex].id = dataIndex
+                }
             }
             
             // Fetch statistics.
-            HealthData.fetchStatistics(with: HKQuantityTypeIdentifier(rawValue: item.dataTypeIdentifier),
+            HealthData.fetchStatistics(with: HKQuantityTypeIdentifier(rawValue: self.standTimeIdentifier),
                                        predicate: predicate,
                                        options: statisticsOptions,
                                        startDate: startDate,
                                        interval: dateInterval,
                                        completion: initialResultsHandler)
-        }
+
         // Results come back on a background thread. Dispatch UI updates to the main thread.
         DispatchQueue.main.async {
             self.objectWillChange.send()

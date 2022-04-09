@@ -90,25 +90,24 @@ func getLastWeekStartDate(from date: Date = Date()) -> Date {
     return Calendar.current.date(byAdding: .day, value: -6, to: date)!
 }
 
-func createPredicate(type: StatisticsType) -> NSPredicate {
-    let endDate: Date = Date()
-    var startDate: Date
+func getStartingDate(from date: Date = Date(), type: StatisticsType) -> Date{
+    var result: Date = Date()
     switch type {
     case .Day:
-        startDate = Calendar.current.date(byAdding: .day, value: -1, to: endDate)!
+        result = Calendar.current.date(byAdding: .day, value: -6, to: date)!
     case .Week:
-        startDate = getLastWeekStartDate(from: endDate)
+        result = Calendar.current.date(byAdding: .day, value: -6, to: date)!
     case .Month:
-        startDate = getLastWeekStartDate(from: endDate)
+        result = Calendar.current.date(byAdding: .month, value: -1, to: date)!
     case .Year:
-        startDate = getLastWeekStartDate(from: endDate)
+        result = Calendar.current.date(byAdding: .month, value: -1, to: date)!
     }
-    return HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+    return result
 }
 
-
-func createLastWeekPredicate(from endDate: Date = Date()) -> NSPredicate {
-    let startDate = getLastWeekStartDate(from: endDate)
+func createPredicate(type: StatisticsType) -> NSPredicate {
+    let endDate: Date = Date()
+    let startDate: Date = getStartingDate(type: type)
     return HKQuery.predicateForSamples(withStart: startDate, end: endDate)
 }
 
