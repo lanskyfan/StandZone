@@ -7,6 +7,7 @@
 
 import SwiftUI
 import HealthKit
+import SwiftUICharts
 
 @MainActor class StandZoneController: ObservableObject {
     @Published private var screen = Screen.initialView
@@ -132,6 +133,26 @@ import HealthKit
 //            }
         }
         
+    }
+    
+    
+    func generateDataPoint(type: StatisticsType) -> [DataPoint]{
+        //        let highIntensity = Legend(color: .orange, label: "High Intensity", order: 5)
+        //        let buildFitness = Legend(color: .yellow, label: "Build Fitness", order: 4)
+                let fatBurning = Legend(color: .green, label: "Fat Burning", order: 3)
+//                let warmUp = Legend(color: .blue, label: "Warm Up", order: 2)
+        let low = Legend(color: .gray, label: "Low", order: 1)
+        var points: [DataPoint] = []
+        print("generateDataPoint")
+        let data = healthController.produceStatistics(type: type)
+        for point in data {
+            if (point.value >= Double(getUserInfo().getTimeGoal() * 5)) {
+                points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: fatBurning))
+            } else {
+                points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: low))
+            }
+        }
+        return points
     }
     
 
