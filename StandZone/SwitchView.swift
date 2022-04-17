@@ -31,7 +31,7 @@ struct SwitchView: View {
         case Screen.homeView1:
             HomeView1(myController: myController, healthController: HealthViewController())
         case Screen.homeView2:
-            HomeView2(newController: myController)
+            HomeView2(newController: myController, newHealthController: HealthViewController())
         case Screen.mainView:
             MainView(newController: myController, newHealthController: myController.healthController)
                 .transition(AnyTransition.opacity.animation(.linear(duration: 1)))

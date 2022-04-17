@@ -54,7 +54,6 @@ class HealthViewController: ObservableObject {
             
             return
         }
-        print("step1 complete")
         healthStore.getRequestStatusForAuthorization(toShare: shareTypes, read: readTypes) { (authorizationRequestStatus, error) in
             
             var status: String = ""
@@ -64,13 +63,12 @@ class HealthViewController: ObservableObject {
                 switch authorizationRequestStatus {
                 case .shouldRequest:
                     self.notRequestedHealthData = true
-                    
                     status = "The application has not yet requested authorization for all of the specified data types."
                 case .unknown:
+                    self.notRequestedHealthData = true
                     status = "The authorization request status could not be determined because an error occurred."
                 case .unnecessary:
                     self.notRequestedHealthData = false
-                    
                     status = "The application has already requested authorization for the specified data types. "
                     status += self.createAuthorizationStatusDescription(for: self.shareTypes)
                 default:
@@ -136,7 +134,6 @@ class HealthViewController: ObservableObject {
     
     
     func requestHealthAuthorization() {
-        objectWillChange.send()
         print("Requesting HealthKit authorization...")
         
         if !HKHealthStore.isHealthDataAvailable() {
@@ -152,15 +149,8 @@ class HealthViewController: ObservableObject {
                 status = "HealthKit Authorization Error: \(error.localizedDescription)"
             } else {
                 if success {
-                    if !self.notRequestedHealthData {
-                        status = "You've already requested access to health data. "
-                    } else {
-                        status = "HealthKit authorization request was successful! "
-                    }
-                    
+                    status = "HealthKit authorization request was successful! "
                     status += self.createAuthorizationStatusDescription(for: self.shareTypes)
-                    
-                    self.notRequestedHealthData = false
                 } else {
                     status = "HealthKit authorization did not complete successfully."
                 }

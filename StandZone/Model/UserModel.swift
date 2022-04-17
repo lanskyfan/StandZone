@@ -8,6 +8,7 @@
 import Foundation
 
 struct UserModel {
+    private var isSetting = "IsSetting"
     private var isLogin = "IslogIn"
     private var password: String = "Password"
     private var email: String = "Email"
@@ -32,6 +33,17 @@ struct UserModel {
     
     func updateLogIn(newLogin: Bool) {
         defaults.set(newLogin, forKey: isLogin)
+    }
+    
+    func getIsSetting() -> Bool {
+        if (defaults.object(forKey:isSetting) == nil) {
+            defaults.set(false, forKey: isSetting)
+        }
+        return defaults.object(forKey:isSetting) as! Bool
+    }
+    
+    func updateIsSetting(newSetting: Bool) {
+        defaults.set(newSetting, forKey: isSetting)
     }
     
     func getEmail() -> String {

@@ -39,6 +39,7 @@ struct LoginView: View {
                     .onTapGesture {
                         myController.updateScreen(newScreen: Screen.mainView)
                         myController.updateLogIn(newLogIn: true)
+                        myController.updateSetting(newSetting: true)
                     }
             }
         }
