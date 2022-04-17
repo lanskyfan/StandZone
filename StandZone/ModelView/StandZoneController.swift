@@ -8,12 +8,13 @@
 import SwiftUI
 import HealthKit
 import SwiftUICharts
+import EventKit
 
 @MainActor class StandZoneController: ObservableObject {
     @Published private var screen = Screen.initialView
     @Published private var user = UserModel()
     var healthController = HealthViewController()
-    
+    var eventStore = EKEventStore()
     init() {
         // For testing purpose
 //        user.updateLogIn(newLogin: false)
@@ -85,7 +86,18 @@ import SwiftUICharts
     }
     
     func updateIsImportCalendar(isImportCalendar: Bool) {
-        user.updateIsImportCalendar(importCalendar: isImportCalendar)
+        self.objectWillChange.send()
+        var isPermitted: Bool = false
+        if (isImportCalendar) {
+            let accessResult = AccessCalendar()
+            isPermitted = accessResult.success
+            eventStore = accessResult.store
+            if (isPermitted) {
+                user.updateIsImportCalendar(importCalendar: isImportCalendar)
+            } else {
+                user.updateIsImportCalendar(importCalendar: false)
+            }
+        }
     }
     
     var dataTypeIdentifier = "example"
@@ -155,6 +167,57 @@ import SwiftUICharts
         return points
     }
     
+    func AccessCalendar () -> (success: Bool, store: EKEventStore){
+        // Initialize the store.
+        let eventStore = EKEventStore()
+        var success: Bool = false
+        
+        let handler: (Bool, Error?) -> Void = {
+            (granted, error) in
+                // Handle the response to the request.
+                if (granted) && (error == nil) {
+                    print("Permission allowed")
+                    success = true
+                    
+                } else{
+                    print("failed to save event with error : \(String(describing: error)) or access not granted")
+                    success = false
+                }
+        }
+
+        // Request access to reminders.
+        eventStore.requestAccess(to: .event, completion: handler)
+        return (success, eventStore)
+    }
+    
+    func hasEvent(store: EKEventStore) -> Bool {
+        // Get the appropriate calendar.
+        let calendar = Calendar.current
+        
+        // Create the start date components
+        var thisMinuteComponents = DateComponents()
+        thisMinuteComponents.minute = 0
+        let thisMinute = calendar.date(byAdding: thisMinuteComponents, to: Date())
+        
+        // Create the end date components
+        var tenMinuteLaterComponents = DateComponents()
+        tenMinuteLaterComponents.minute = 10
+        let tenMinuteLater = calendar.date(byAdding: tenMinuteLaterComponents, to: Date())
+        
+        // Create the predicate from the event store's instance method.
+        var predicate: NSPredicate? = nil
+        if let aNow = thisMinute, let aLater = tenMinuteLater {
+            predicate = store.predicateForEvents(withStart: aNow, end: aLater, calendars: nil)
+        }
+
+        // Fetch all events that match the predicate.
+        var events: [EKEvent]? = nil
+        if let aPredicate = predicate {
+            events = store.events(matching: aPredicate)
+        }
+        
+        return events != nil
+    }
 
 }
 
