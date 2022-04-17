@@ -17,10 +17,10 @@ import EventKit
     var eventStore = EKEventStore()
     init() {
         // For testing purpose
-//        user.updateLogIn(newLogin: false)
+        user.updateLogIn(newLogin: false)
     }
     func getScreen() -> Screen{
-        if (user.getIsLogIn() == true) {
+        if (user.getIsSetting() == true) {
             return Screen.mainView
         }
         return Screen.initialView
@@ -34,6 +34,10 @@ import EventKit
     
     func updateLogIn(newLogIn: Bool) {
         user.updateLogIn(newLogin: newLogIn)
+    }
+    
+    func updateSetting(newSetting: Bool) {
+        user.updateIsSetting(newSetting: newSetting)
     }
     
     func getUserInfo() -> UserModel {

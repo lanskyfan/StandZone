@@ -49,6 +49,7 @@ struct RegisterView: View {
                 }
                 .simultaneousGesture(TapGesture().onEnded{
                     myController.updateAccountInfo(newEmail: email, newPassword: password)
+                    myController.updateLogIn(newLogIn: true)
                 })
                 .buttonStyle(PlainButtonStyle())
 

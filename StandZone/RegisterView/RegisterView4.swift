@@ -34,7 +34,7 @@ struct RegisterView4: View {
                     .onTapGesture {
                         myController.updateGoal(newFrequency: frequency, newTime: time * 5)
                         myController.updateScreen(newScreen: Screen.mainView)
-                        myController.updateLogIn(newLogIn: true)
+                        myController.updateSetting(newSetting: true)
                     }
                 Spacer()
                     .frame(height: 60)
