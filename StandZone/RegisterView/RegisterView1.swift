@@ -25,7 +25,7 @@ struct RegisterView1: View {
                 Spacer()
                     .frame(height: 40)
                 Text("Simple settings are required for initial use").bold().font(.title)
-                    .alert("Can we get your health data", isPresented: $healthController.notRequestedHealthData) {
+                    .alert("We'll get your steps and standing time from Apple Health", isPresented: $healthController.notRequestedHealthData) {
                         Button("Allow") {
                             print("Requesting HealthKit authorization...")
                             myController.healthController.requestHealthAuthorization()
@@ -47,7 +47,7 @@ struct RegisterView1: View {
 
 
                 }.textFieldStyle(.roundedBorder)
-                GenderView(gender: $gender)
+//                GenderView(gender: $gender)
                 Spacer()
                     .frame(height: 40)
                 NavigationLink(destination: RegisterView2(myController: myController)) {

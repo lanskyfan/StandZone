@@ -1,5 +1,5 @@
 //
-//  DetailSettingView.swift
+//  GoalSettingView.swift
 //  StandZone
 //
 //  Created by yifanlan on 3/20/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DetailSettingView: View {
+struct GoalSettingView: View {
     @ObservedObject var myController: StandZoneController
     @State private var name: String
     @State private var gender: Gender
@@ -131,11 +131,11 @@ struct DailyGoalNoLinkView: View {
                         let shape = RoundedRectangle(cornerRadius: 10)
                         shape.fill().foregroundColor(.white).frame(height: 40)
                         HStack {
-                            Text("Standing time (minutes)")
+                            Text("Standing time")
                             Spacer()
                             Picker("", selection: $time){
                                 ForEach(1...24, id:\.self){ i in
-                                    Text(String(i * 5))
+                                    Text(String(i * 5) + " min")
                                 }
                             }.labelsHidden()
                             
@@ -153,6 +153,6 @@ struct DailyGoalNoLinkView: View {
 
 struct DetailSettingView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailSettingView(myController: StandZoneController())
+        GoalSettingView(myController: StandZoneController())
     }
 }
