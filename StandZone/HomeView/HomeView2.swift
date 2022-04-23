@@ -49,7 +49,7 @@ struct HomeView2: View {
 //                Spacer()
             } else {
                 if myController.getUserInfo().getIsLogIn() == false {
-                    InitialView(myController: myController)
+                    AccountView(myController: myController)
                 } else {
                     rankView()
                 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		849DA85827E8259D00DDC6DD /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DA85727E8259C00DDC6DD /* HomeView2.swift */; };
+		A3682DF528105D1800E9F8BF /* NoDisturbSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3682DF428105D1800E9F8BF /* NoDisturbSettingView.swift */; };
 		A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3706CF227E5887C006F9C33 /* HomeView1.swift */; };
 		A37B261D27F0D5D700DCDF70 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B261C27F0D5D700DCDF70 /* HealthData.swift */; };
 		A37B262027F0D61A00DCDF70 /* HealthKitSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B261F27F0D61A00DCDF70 /* HealthKitSupport.swift */; };
@@ -25,7 +26,7 @@
 		A37BCEDF27E433A200CD629C /* StandZoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCEDE27E433A200CD629C /* StandZoneController.swift */; };
 		A37BCEE127E43A5900CD629C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCEE027E43A5900CD629C /* UserModel.swift */; };
 		A394978A27E4E639003CE542 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A394978927E4E639003CE542 /* HomeView.swift */; };
-		A397181727E6E9C500A12479 /* DetailSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A397181627E6E9C500A12479 /* DetailSettingView.swift */; };
+		A397181727E6E9C500A12479 /* GoalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A397181627E6E9C500A12479 /* GoalSettingView.swift */; };
 		A3BC6C8027E59CE200120DF7 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = A3BC6C7F27E59CE200120DF7 /* SwiftUICharts */; };
 		A3BC6C8227E652A800120DF7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC6C8127E652A800120DF7 /* MainView.swift */; };
 		A3BC6C8427E6E44500120DF7 /* HomeView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC6C8327E6E44500120DF7 /* HomeView3.swift */; };
@@ -49,6 +50,7 @@
 		A3CFBB6427E24E1D00110D92 /* StandZone_WatchKit_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB6327E24E1D00110D92 /* StandZone_WatchKit_AppTests.swift */; };
 		A3CFBB6E27E24E1D00110D92 /* StandZone_WatchKit_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB6D27E24E1D00110D92 /* StandZone_WatchKit_AppUITests.swift */; };
 		A3CFBB7027E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB6F27E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift */; };
+		A3DB2831280CCD69001B33F2 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DB2830280CCD69001B33F2 /* AccountView.swift */; };
 		A3F4087727E952A600BF405C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = A3F4087627E952A600BF405C /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +126,7 @@
 
 /* Begin PBXFileReference section */
 		849DA85727E8259C00DDC6DD /* HomeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView2.swift; sourceTree = "<group>"; };
+		A3682DF428105D1800E9F8BF /* NoDisturbSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDisturbSettingView.swift; sourceTree = "<group>"; };
 		A3706CF227E5887C006F9C33 /* HomeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView1.swift; sourceTree = "<group>"; };
 		A37B261C27F0D5D700DCDF70 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		A37B261F27F0D61A00DCDF70 /* HealthKitSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSupport.swift; sourceTree = "<group>"; };
@@ -142,7 +145,7 @@
 		A37BCEDE27E433A200CD629C /* StandZoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneController.swift; sourceTree = "<group>"; };
 		A37BCEE027E43A5900CD629C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		A394978927E4E639003CE542 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		A397181627E6E9C500A12479 /* DetailSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSettingView.swift; sourceTree = "<group>"; };
+		A397181627E6E9C500A12479 /* GoalSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingView.swift; sourceTree = "<group>"; };
 		A3BC6C8127E652A800120DF7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A3BC6C8327E6E44500120DF7 /* HomeView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView3.swift; sourceTree = "<group>"; };
 		A3CFBB1627E24E1900110D92 /* StandZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +175,7 @@
 		A3CFBB6927E24E1D00110D92 /* StandZone WatchKit AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StandZone WatchKit AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3CFBB6D27E24E1D00110D92 /* StandZone_WatchKit_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZone_WatchKit_AppUITests.swift; sourceTree = "<group>"; };
 		A3CFBB6F27E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZone_WatchKit_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A3DB2830280CCD69001B33F2 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3682DF328105CC400E9F8BF /* DetailSettingView */ = {
+			isa = PBXGroup;
+			children = (
+				A397181627E6E9C500A12479 /* GoalSettingView.swift */,
+				A3682DF428105D1800E9F8BF /* NoDisturbSettingView.swift */,
+			);
+			path = DetailSettingView;
+			sourceTree = "<group>";
+		};
 		A37B261B27F0D3A200DCDF70 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,7 +282,6 @@
 				A3706CF227E5887C006F9C33 /* HomeView1.swift */,
 				849DA85727E8259C00DDC6DD /* HomeView2.swift */,
 				A3BC6C8327E6E44500120DF7 /* HomeView3.swift */,
-				A397181627E6E9C500A12479 /* DetailSettingView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -315,6 +327,8 @@
 		A3CFBB1827E24E1900110D92 /* StandZone */ = {
 			isa = PBXGroup;
 			children = (
+				A3682DF328105CC400E9F8BF /* DetailSettingView */,
+				A3DB2832280CCD81001B33F2 /* OtherView */,
 				A37B262B27F1387400DCDF70 /* Model */,
 				A37B262A27F1070000DCDF70 /* HomeView */,
 				A37B262727F0FF1400DCDF70 /* StandZone.entitlements */,
@@ -323,11 +337,8 @@
 				A37B261E27F0D5F800DCDF70 /* Utilities */,
 				A37B261B27F0D3A200DCDF70 /* Data */,
 				A3CFBB1927E24E1900110D92 /* StandZoneApp.swift */,
-				A3CFBB1B27E24E1900110D92 /* InitialView.swift */,
 				A3CFBB1D27E24E1A00110D92 /* Assets.xcassets */,
 				A3CFBB1F27E24E1A00110D92 /* Preview Content */,
-				A37BCED227E3936E00CD629C /* LoginView.swift */,
-				A37BCED427E3A0A200CD629C /* SwitchView.swift */,
 			);
 			path = StandZone;
 			sourceTree = "<group>";
@@ -404,6 +415,17 @@
 				A3CFBB6F27E24E1D00110D92 /* StandZone_WatchKit_AppUITestsLaunchTests.swift */,
 			);
 			path = "StandZone WatchKit AppUITests";
+			sourceTree = "<group>";
+		};
+		A3DB2832280CCD81001B33F2 /* OtherView */ = {
+			isa = PBXGroup;
+			children = (
+				A3DB2830280CCD69001B33F2 /* AccountView.swift */,
+				A3CFBB1B27E24E1900110D92 /* InitialView.swift */,
+				A37BCED227E3936E00CD629C /* LoginView.swift */,
+				A37BCED427E3A0A200CD629C /* SwitchView.swift */,
+			);
+			path = OtherView;
 			sourceTree = "<group>";
 		};
 		A3F4087527E952A600BF405C /* Frameworks */ = {
@@ -678,10 +700,12 @@
 				A37B262227F0D89E00DCDF70 /* HealthKitSupport+Strings.swift in Sources */,
 				A3BC6C8227E652A800120DF7 /* MainView.swift in Sources */,
 				A37BCEDB27E3D62E00CD629C /* RegisterView3.swift in Sources */,
+				A3682DF528105D1800E9F8BF /* NoDisturbSettingView.swift in Sources */,
 				A37B261D27F0D5D700DCDF70 /* HealthData.swift in Sources */,
 				849DA85827E8259D00DDC6DD /* HomeView2.swift in Sources */,
 				A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */,
 				A3BC6C8427E6E44500120DF7 /* HomeView3.swift in Sources */,
+				A3DB2831280CCD69001B33F2 /* AccountView.swift in Sources */,
 				A37B262027F0D61A00DCDF70 /* HealthKitSupport.swift in Sources */,
 				A37B262D27F138CA00DCDF70 /* HealthDataTypeValue.swift in Sources */,
 				A3CFBB1C27E24E1900110D92 /* InitialView.swift in Sources */,
@@ -694,7 +718,7 @@
 				A394978A27E4E639003CE542 /* HomeView.swift in Sources */,
 				A37B262F27F13EDE00DCDF70 /* HealthViewController.swift in Sources */,
 				A3CFBB1A27E24E1900110D92 /* StandZoneApp.swift in Sources */,
-				A397181727E6E9C500A12479 /* DetailSettingView.swift in Sources */,
+				A397181727E6E9C500A12479 /* GoalSettingView.swift in Sources */,
 				A37BCEE127E43A5900CD629C /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

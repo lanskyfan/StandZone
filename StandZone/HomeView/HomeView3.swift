@@ -95,11 +95,21 @@ struct ReminderView: View {
                         .onChange(of: sleepTime) {newValue in
                             myController.updateSleepTime(newSleepTime: sleepTime)
                         }
+                        
+                        NavigationLink(destination: NoDisturbSettingView(myController: myController)) {
+                            ZStack {
+                                HStack {
+                                    Text("No disturb mode")
+                                    Spacer()
+                                    Text(myController.getNoDisturbModeText() + "  >")
+                                }
+                            }
+                        }
+                        
                         Toggle("Import Calendar", isOn: $isImportCalendar)
                             .onChange(of: isImportCalendar) { value in
                                 myController.updateIsImportCalendar(isImportCalendar: isImportCalendar)
                             }
-                        Text("")
                         Text("")
                         Text("")
                         Text("")
@@ -131,7 +141,7 @@ struct DailyGoalView: View {
                             Spacer()
                     }
                     
-                    NavigationLink(destination: DetailSettingView(myController: myController)) {
+                    NavigationLink(destination: GoalSettingView(myController: myController)) {
                         ZStack {
                             let shape = RoundedRectangle(cornerRadius: 10)
                             shape.fill().foregroundColor(.white).frame(height: 40)
@@ -144,7 +154,7 @@ struct DailyGoalView: View {
                         }
                     }
 
-                    NavigationLink(destination: DetailSettingView(myController: myController)) {
+                    NavigationLink(destination: GoalSettingView(myController: myController)) {
                         ZStack {
                             let shape = RoundedRectangle(cornerRadius: 10)
                             shape.fill().foregroundColor(.white).frame(height: 40)
