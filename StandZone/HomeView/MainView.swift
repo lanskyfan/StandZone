@@ -30,7 +30,7 @@ struct MainView: View {
                     Label("Data", systemImage: "waveform.path.ecg.rectangle")
                 }
         
-            HomeView2(newController: myController)
+            HomeView2(newController: myController, newHealthController: healthController)
                 .badge(10)
                 .tabItem {
                     Label("Friends", systemImage: "gamecontroller")
@@ -43,9 +43,19 @@ struct MainView: View {
         }
         .onAppear{
             print("enter main view")
+            healthController.getHealthAuthorizationRequestStatus()
+            print(healthController.notRequestedHealthData)
             healthController.updateHealthData()
-            print("success")
-
+        }
+        .alert("Can we get your health data", isPresented: $healthController.notRequestedHealthData) {
+            Button("Allow") {
+                print("Requesting HealthKit authorization...")
+                myController.healthController.requestHealthAuthorization()
+            }
+            
+            Button("No", role: .cancel) {
+                print("alert")
+            }
         }
     }
 }

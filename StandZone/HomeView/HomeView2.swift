@@ -25,11 +25,13 @@ class User {
 
 struct HomeView2: View {
     @ObservedObject var myController: StandZoneController
-    init(newController: StandZoneController) {
+    @ObservedObject var healthController: HealthViewController
+    init(newController: StandZoneController, newHealthController: HealthViewController) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.green1)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.green1)], for: .normal)
         myController = newController
+        healthController = newHealthController
     }
     
     @State private var selectionIndex = 1
@@ -46,7 +48,11 @@ struct HomeView2: View {
                 achievementView()
 //                Spacer()
             } else {
-                rankView()
+                if myController.getUserInfo().getIsLogIn() == false {
+                    AccountView(myController: myController)
+                } else {
+                    rankView()
+                }
             }
         }
     }
@@ -353,7 +359,7 @@ struct meProfileView: View {
 
 struct HomeView2_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView2(newController: StandZoneController())
+        HomeView2(newController: StandZoneController(), newHealthController: HealthViewController())
             .preferredColorScheme(.light)
     }
 }

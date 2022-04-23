@@ -13,9 +13,8 @@ class HealthViewController: ObservableObject {
     
     
 //    var statisticsData: [(dataTypeIdentifier: String, values: [Double])] = []
-    var statisticsData: [HealthDataTypeValue] = []
-    var statisticsDisplay: [(label: String, value: Double)] = []
-    
+    var standTimeStatisticsData: [HealthDataTypeValue] = []
+    var standFrequencyStatisticsData: [HealthDataTypeValue] = []
     var todayStandTime: [HealthDataTypeValue] = []
     var todayStandHour: [HealthDataTypeValue] = []
     var todayStandHourCount: Int = 0
@@ -40,8 +39,8 @@ class HealthViewController: ObservableObject {
         self.performTodayStandHourQuery(dataTypeIdentifier: standHourIdentifier)
         print(self.todayStandTime)
         print(self.todayStandHour)
-        self.performStatisticsQuery(type: StatisticsType.Day)
-        print(self.statisticsDisplay)
+        self.performTimeStatisticsQuery(type: StatisticsType.Day)
+        self.performFrequencyStatisticsQuery(type: StatisticsType.Day)
     }
     
     func getHealthAuthorizationRequestStatus() {
@@ -54,7 +53,6 @@ class HealthViewController: ObservableObject {
             
             return
         }
-        print("step1 complete")
         healthStore.getRequestStatusForAuthorization(toShare: shareTypes, read: readTypes) { (authorizationRequestStatus, error) in
             
             var status: String = ""
@@ -64,13 +62,12 @@ class HealthViewController: ObservableObject {
                 switch authorizationRequestStatus {
                 case .shouldRequest:
                     self.notRequestedHealthData = true
-                    
                     status = "The application has not yet requested authorization for all of the specified data types."
                 case .unknown:
+                    self.notRequestedHealthData = true
                     status = "The authorization request status could not be determined because an error occurred."
                 case .unnecessary:
                     self.notRequestedHealthData = false
-                    
                     status = "The application has already requested authorization for the specified data types. "
                     status += self.createAuthorizationStatusDescription(for: self.shareTypes)
                 default:
@@ -136,7 +133,6 @@ class HealthViewController: ObservableObject {
     
     
     func requestHealthAuthorization() {
-        objectWillChange.send()
         print("Requesting HealthKit authorization...")
         
         if !HKHealthStore.isHealthDataAvailable() {
@@ -152,15 +148,8 @@ class HealthViewController: ObservableObject {
                 status = "HealthKit Authorization Error: \(error.localizedDescription)"
             } else {
                 if success {
-                    if !self.notRequestedHealthData {
-                        status = "You've already requested access to health data. "
-                    } else {
-                        status = "HealthKit authorization request was successful! "
-                    }
-                    
+                    status = "HealthKit authorization request was successful! "
                     status += self.createAuthorizationStatusDescription(for: self.shareTypes)
-                    
-                    self.notRequestedHealthData = false
                 } else {
                     status = "HealthKit authorization did not complete successfully."
                 }
@@ -251,7 +240,7 @@ class HealthViewController: ObservableObject {
             for dataIndex in 0..<self.todayStandHour.count {
                 self.todayStandHour[dataIndex].id = dataIndex
             }
-            self.todayStandHourCount = self.todayStandHour.count - 1
+            self.todayStandHourCount = self.todayStandHour.count
             
         }
         
@@ -307,61 +296,11 @@ class HealthViewController: ObservableObject {
     
     
     
-    func produceStatistics(type: StatisticsType) ->  [(label: String, value: Double)] {
-        print("produce statistics")
-        print("statistics data len = ")
-        print(statisticsData.count)
-        statisticsDisplay = []
-        let dateFormatter = DateFormatter()
-        switch type {
-        case .Day:
-            for value in self.statisticsData {
-                let calendar = Calendar.current
-                let hour = calendar.component(.hour, from: value.startDate)
-                if hour % 4 == 0 {
-                    statisticsDisplay.append((String(hour), value.value))
-                } else {
-                    statisticsDisplay.append(("", value.value))
-                }
-            }
-        case .Week:
-            dateFormatter.dateFormat = "E"
-            for value in self.statisticsData {
-                statisticsDisplay.append((dateFormatter.string(from: value.startDate), value.value))
-            }
-        case .Month:
-            for value in self.statisticsData {
-                let calendar = Calendar.current
-                let components = calendar.dateComponents([.day], from: value.startDate)
-                let dayOfMonth = components.day
-                if dayOfMonth! % 5 == 0 {
-                    statisticsDisplay.append((String(dayOfMonth!), value.value))
-                } else {
-                    statisticsDisplay.append(("", value.value))
-                }
-            }
-
-        case .Year:
-            for value in self.statisticsData {
-                let calendar = Calendar.current
-                let month = calendar.component(.month, from: value.startDate)
-                if month % 2 == 0 {
-                    statisticsDisplay.append((String(month), value.value))
-                } else {
-                    statisticsDisplay.append(("", value.value))
-                }
-            }
-        }
-        
-        return statisticsDisplay
-
-    }
     
-    
-    func performStatisticsQuery(type: StatisticsType) {
+    func performTimeStatisticsQuery(type: StatisticsType) {
         self.objectWillChange.send()
-        statisticsData = []
-        print(" statistics query")
+
+        print(" time statistics query")
         // Create a query for each data type.
         let startDate: Date = getStartingDate(type: type)
             // Set dates
@@ -379,37 +318,84 @@ class HealthViewController: ObservableObject {
             dateInterval = DateComponents(month: 1)
         }
         
+
             // Process data.
-//            let statisticsOptions = getStatisticsOptions(for: item.dataTypeIdentifier)
+//            let statisticsOptions = getStatisticsOptions(for: standTimeIdentifier)
             let statisticsOptions: HKStatisticsOptions = .cumulativeSum
             let initialResultsHandler: (HKStatisticsCollection) -> Void = { (statisticsCollection) in
+                self.standTimeStatisticsData = []
                 statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { (statistics, stop) in
                     let statisticsQuantity = getStatisticsQuantity(for: statistics, with: statisticsOptions)
                     if let unit = preferredUnit(for: self.standTimeIdentifier),
                         let value = statisticsQuantity?.doubleValue(for: unit) {
-                        self.statisticsData.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: value))
+                            self.standTimeStatisticsData.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: value))
                     } else {
-                        self.statisticsData.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: 0))
+                            self.standTimeStatisticsData.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: 0))
+                        }
+
                     }
+                for dataIndex in 0..<self.standTimeStatisticsData.count {
+                    self.standTimeStatisticsData[dataIndex].id = dataIndex
                 }
-                for dataIndex in 0..<self.statisticsData.count {
-                    print("yes")
-                    self.statisticsData[dataIndex].id = dataIndex
+                // Results come back on a background thread. Dispatch UI updates to the main thread.
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
                 }
+
             }
             
             // Fetch statistics.
-            HealthData.fetchStatistics(with: HKQuantityTypeIdentifier(rawValue: self.standTimeIdentifier),
+            HealthData.fetchStatistics(with: HKQuantityTypeIdentifier(rawValue: standTimeIdentifier),
                                        predicate: predicate,
                                        options: statisticsOptions,
                                        startDate: startDate,
                                        interval: dateInterval,
                                        completion: initialResultsHandler)
 
-        // Results come back on a background thread. Dispatch UI updates to the main thread.
+    }
+
+    func performFrequencyStatisticsQuery(type: StatisticsType) {
+        self.objectWillChange.send()
+        let startDate: Date = getStartingDate(type: type)
+        let endDate = getEndDate()
+        let queryPredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+        let queryAnchor: HKQueryAnchor? = nil
+        let queryLimit: Int = HKObjectQueryNoLimit
+
+        guard let sampleType = getSampleType(for: standHourIdentifier) else { return }
+        
+        let anchoredObjectQuery = HKAnchoredObjectQuery(type: sampleType,
+                                                        predicate: queryPredicate,
+                                                        anchor: queryAnchor,
+                                                        limit: queryLimit) {
+            (query, samplesOrNil, deletedObjectsOrNil, anchor, errorOrNil) in
+            
+            guard let samples = samplesOrNil else { return }
+            
+            self.standFrequencyStatisticsData = samples.map { (sample) -> HealthDataTypeValue in
+                var dataValue = HealthDataTypeValue(id: 0, startDate: sample.startDate,
+                                                    endDate: sample.endDate,
+                                                    value: .zero)
+                if let quantitySample = sample as? HKQuantitySample,
+                   let unit = preferredUnit(for: quantitySample) {
+                    dataValue.value = quantitySample.quantity.doubleValue(for: unit)
+                }
+                
+                return dataValue
+            }
+            
+            for dataIndex in 0..<self.standFrequencyStatisticsData.count {
+                self.standFrequencyStatisticsData[dataIndex].id = dataIndex
+            }
+            
+            print("frequency query, len = " + String(self.standFrequencyStatisticsData.count))
+            
+        }
+        
+        HealthData.healthStore.execute(anchoredObjectQuery)
         DispatchQueue.main.async {
             self.objectWillChange.send()
         }
     }
-}
 
+}

@@ -15,12 +15,14 @@ import EventKit
     @Published private var user = UserModel()
     var healthController = HealthViewController()
     var eventStore = EKEventStore()
+    var statisticsDisplay: [(label: String, value: Double)] = []
+
     init() {
         // For testing purpose
-//        user.updateLogIn(newLogin: false)
+//        user.updateIsSetting(newSetting: false)
     }
     func getScreen() -> Screen{
-        if (user.getIsLogIn() == true) {
+        if (user.getIsSetting() == true) {
             return Screen.mainView
         }
         return Screen.initialView
@@ -34,6 +36,10 @@ import EventKit
     
     func updateLogIn(newLogIn: Bool) {
         user.updateLogIn(newLogin: newLogIn)
+    }
+    
+    func updateSetting(newSetting: Bool) {
+        user.updateIsSetting(newSetting: newSetting)
     }
     
     func getUserInfo() -> UserModel {
@@ -83,6 +89,34 @@ import EventKit
     
     func updateIsAppleWatchOnly(isAppleWatch: Bool) {
         user.updateIsAppleWatchOnly(isAppleWatch: isAppleWatch)
+    }
+    
+    func updateNoDisturbMode(newMode: NoDisturbMode) {
+        user.updateNoDisturbMode(newMode: newMode)
+    }
+    
+    func updateCustomMode(newMode: Int) {
+        user.updateCustomMode(newMode: newMode)
+    }
+    
+    func getNoDisturbModeText() -> String {
+        if user.getNoDisturbMode() == NoDisturbMode.NoMode {
+            return "Off"
+        }
+        if user.getNoDisturbMode() == NoDisturbMode.SystemMode {
+            return "Default"
+        }
+        if user.getCustomMode() == 0 {
+            return "Study"
+        }
+        if user.getCustomMode() == 1 {
+            return "Work"
+        }
+        return "Default"
+    }
+    
+    func updateCustomTime(name: String, value: Int) {
+        user.updateCustomTime(name: name, value: value)
     }
     
     func updateIsImportCalendar(isImportCalendar: Bool) {
@@ -147,25 +181,88 @@ import EventKit
         
     }
     
-    
-    func generateDataPoint(type: StatisticsType) -> [DataPoint]{
+    func generateDataPoint(type: StatisticsType, category: Category) -> [DataPoint]{
         //        let highIntensity = Legend(color: .orange, label: "High Intensity", order: 5)
         //        let buildFitness = Legend(color: .yellow, label: "Build Fitness", order: 4)
-                let fatBurning = Legend(color: .green, label: "Fat Burning", order: 3)
+                let fatBurning = Legend(color: .green, label: "Achieve goal", order: 3)
 //                let warmUp = Legend(color: .blue, label: "Warm Up", order: 2)
-        let low = Legend(color: .gray, label: "Low", order: 1)
+        let low = Legend(color: .gray, label: "Below goal", order: 1)
         var points: [DataPoint] = []
-        print("generateDataPoint")
-        let data = healthController.produceStatistics(type: type)
-        for point in data {
-            if (point.value >= Double(getUserInfo().getTimeGoal() * 5)) {
-                points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: fatBurning))
-            } else {
-                points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: low))
+        
+        if category == Category.Time {
+            print("generateTimeDataPoint")
+            let data = getTimeStatisticsData(type: type)
+            for point in data {
+                if (point.value >= Double(getUserInfo().getTimeGoal() * 5)) {
+                    points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: fatBurning))
+                } else {
+                    points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: low))
+                }
             }
         }
+
+
         return points
     }
+    
+    func getTimeStatisticsData(type: StatisticsType) ->  [(label: String, value: Double)] {
+        print("produce statistics")
+        print("statistics data len = ")
+        let statistics = healthController.standTimeStatisticsData
+        print(statistics.count)
+        statisticsDisplay = []
+        let dateFormatter = DateFormatter()
+        switch type {
+        case .Day:
+            for value in statistics {
+                let calendar = Calendar.current
+                let hour = calendar.component(.hour, from: value.startDate)
+                if hour % 4 == 0 {
+                    statisticsDisplay.append((String(hour), value.value))
+                } else {
+                    statisticsDisplay.append(("", value.value))
+                }
+            }
+        case .Week:
+            dateFormatter.dateFormat = "E"
+            for value in statistics {
+                statisticsDisplay.append((dateFormatter.string(from: value.startDate), value.value))
+            }
+        case .Month:
+            for value in statistics {
+                let calendar = Calendar.current
+                let components = calendar.dateComponents([.day], from: value.startDate)
+                let dayOfMonth = components.day
+                if dayOfMonth! % 5 == 0 {
+                    statisticsDisplay.append((String(dayOfMonth!), value.value))
+                } else {
+                    statisticsDisplay.append(("", value.value))
+                }
+            }
+
+        case .Year:
+            for value in statistics {
+                let calendar = Calendar.current
+                let month = calendar.component(.month, from: value.startDate)
+                
+                let dateComponents = DateComponents(year: 2022, month: month)
+                let date = calendar.date(from: dateComponents)!
+                let range = calendar.range(of: .day, in: .month, for: date)!
+                let numDays = range.count
+                
+                
+                if month % 2 == 0 {
+                    statisticsDisplay.append((String(month), value.value / Double(numDays)))
+                } else {
+                    statisticsDisplay.append(("", value.value / Double(numDays)))
+                }
+            }
+        }
+        
+        return statisticsDisplay
+
+    }
+    
     
     func AccessCalendar () -> (success: Bool, store: EKEventStore){
         // Initialize the store.
@@ -240,9 +337,20 @@ enum Gender: String {
     case Female = "Female"
 }
 
+enum Category: String {
+    case Time = "Time"
+    case Frequency = "Frequency"
+}
+
 enum StatisticsType: String {
     case Day = "Day"
     case Week = "Week"
     case Month = "Month"
     case Year = "Year"
+}
+
+enum NoDisturbMode: String {
+    case SystemMode = "System Mode"
+    case CustomMode = "Custom Mode"
+    case NoMode = "No Mode"
 }

@@ -32,16 +32,20 @@ struct HomeView1: View {
                     UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.green1)
                 }
                 .onChange(of: period) { type in
-                    healthController.performStatisticsQuery(type: type)
+                    healthController.performTimeStatisticsQuery(type: type)
                 }
-            HStack {
-                Text("Feb 28, 2022 to today").padding([.leading])
-                Spacer()
+            ScrollView {
+                HStack {
+                    Text(getStartingDate(type: period), style: .date).padding([.leading])
+                    Text(" to today")
+                    Spacer()
+                }
+                TimeGraph(myController: myController, healthController: healthController, type: $period)
+                    .padding()
+                FrequencyGraph()
+                    .padding()
             }
-            FrequencyGraph(myController: myController, healthController: healthController, type: $period)
-                .padding()
-            TimeGraph()
-                .padding()
+
         }
         .navigationBarTitle("4")
         .navigationBarHidden(true)
@@ -53,7 +57,7 @@ struct HomeView1: View {
 
 
 
-struct FrequencyGraph: View {
+struct TimeGraph: View {
     @ObservedObject var myController: StandZoneController
     @ObservedObject var healthController: HealthViewController
     @Binding var type: StatisticsType
@@ -65,12 +69,12 @@ struct FrequencyGraph: View {
 //        let low = Legend(color: .gray, label: "Low", order: 1)
 
 //        let limit = DataPoint(value: Double(myController.getUserInfo().getTimeGoal() * 5), label: "goal", legend: fatBurning)
-        let points = myController.generateDataPoint(type: type)
+            let points = myController.generateDataPoint(type: type, category: Category.Time)
         BarChartView(dataPoints: points, limit: nil)
     }
 }
 
-struct TimeGraph: View {
+struct FrequencyGraph: View {
     var body: some View {
         let highIntensity = Legend(color: .orange, label: "High Intensity", order: 5)
         let buildFitness = Legend(color: .yellow, label: "Build Fitness", order: 4)

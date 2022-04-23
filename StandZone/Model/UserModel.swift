@@ -8,6 +8,7 @@
 import Foundation
 
 struct UserModel {
+    private var isSetting = "IsSetting"
     private var isLogin = "IslogIn"
     private var password: String = "Password"
     private var email: String = "Email"
@@ -21,6 +22,15 @@ struct UserModel {
     private var isRepetitiveMode: String = "IsRepetitiveMode"
     private var isAppleWatchOnly: String = "IsAppleWatchOnly"
     private var isImportCalendar: String = "IsImportCalendar"
+    private var noDisturbMode: String = "NoDisturbMode"
+    private var customModes: String = "CustomModes"
+    private var calendarMode: String = "CalendarMode"
+    private var motivationMode: String = "MotivationMode"
+    private var reminderSount: String = "ReminderSound"
+    private var message: String = "Message"
+    private var isShowRank: String = "IsShowRank"
+    private var customTime: String = "CustomTime"
+    
     let defaults = UserDefaults.standard
 
     func getIsLogIn() -> Bool {
@@ -32,6 +42,17 @@ struct UserModel {
     
     func updateLogIn(newLogin: Bool) {
         defaults.set(newLogin, forKey: isLogin)
+    }
+    
+    func getIsSetting() -> Bool {
+        if (defaults.object(forKey:isSetting) == nil) {
+            defaults.set(false, forKey: isSetting)
+        }
+        return defaults.object(forKey:isSetting) as! Bool
+    }
+    
+    func updateIsSetting(newSetting: Bool) {
+        defaults.set(newSetting, forKey: isSetting)
     }
     
     func getEmail() -> String {
@@ -192,5 +213,49 @@ struct UserModel {
     
     mutating func updateIsImportCalendar(importCalendar: Bool) {
         defaults.set(importCalendar, forKey: isImportCalendar)
+    }
+    
+    func getNoDisturbMode() -> NoDisturbMode {
+        if (defaults.object(forKey:noDisturbMode) == nil) {
+            defaults.set(NoDisturbMode.SystemMode.rawValue, forKey: noDisturbMode)
+        }
+        let rawValue = defaults.object(forKey:noDisturbMode) as! String
+        return NoDisturbMode(rawValue: rawValue)!
+    }
+
+    mutating func updateNoDisturbMode(newMode: NoDisturbMode) {
+        defaults.set(newMode.rawValue, forKey: noDisturbMode)
+    }
+    
+    func getCustomMode() -> Int {
+        if (defaults.object(forKey: customModes) == nil) {
+            defaults.set(0, forKey: customModes)
+        }
+        return defaults.object(forKey:customModes) as! Int
+    }
+    
+    mutating func updateCustomMode(newMode: Int) {
+        defaults.set(newMode, forKey: customModes)
+    }
+    
+    func getCustomTime(name: String) -> Int {
+        if (defaults.object(forKey: customTime) == nil) {
+            defaults.set([:], forKey: customTime)
+            return 1
+        }
+        let times = defaults.object(forKey:customTime) as! [String: Int]
+        if times[name] == nil {
+            return 1
+        }
+        return times[name]!
+    }
+    
+    mutating func updateCustomTime(name: String, value: Int) {
+        if (defaults.object(forKey: customTime) == nil) {
+            defaults.set([:], forKey: customTime)
+        }
+        var times = defaults.object(forKey:customTime) as! [String: Int]
+        times[name] = value
+        defaults.set(times, forKey: customTime)
     }
 }

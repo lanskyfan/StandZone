@@ -115,7 +115,7 @@ func getEndDate() -> Date {
 
 /// Return the most preferred `HKStatisticsOptions` for a data type identifier. Defaults to `.discreteAverage`.
 func getStatisticsOptions(for dataTypeIdentifier: String) -> HKStatisticsOptions {
-    var options: HKStatisticsOptions = .discreteAverage
+    var options: HKStatisticsOptions = .cumulativeSum
     let sampleType = getSampleType(for: dataTypeIdentifier)
     
     if sampleType is HKQuantityType {
@@ -124,8 +124,14 @@ func getStatisticsOptions(for dataTypeIdentifier: String) -> HKStatisticsOptions
         switch quantityTypeIdentifier {
         case .stepCount, .distanceWalkingRunning:
             options = .cumulativeSum
-        case .sixMinuteWalkTestDistance:
-            options = .discreteAverage
+        default:
+            break
+        }
+    } else {
+        let categoryTypeIdentifier = HKCategoryTypeIdentifier(rawValue: dataTypeIdentifier)
+        switch categoryTypeIdentifier {
+        case .appleStandHour:
+            options = .cumulativeSum
         default:
             break
         }
