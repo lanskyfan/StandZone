@@ -26,16 +26,18 @@ class User {
 struct HomeView2: View {
     @ObservedObject var myController: StandZoneController
     @ObservedObject var healthController: HealthViewController
-    init(newController: StandZoneController, newHealthController: HealthViewController) {
+    @Binding var tabSelection: Int
+    init(newController: StandZoneController, newHealthController: HealthViewController, newTab: Binding<Int>) {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.green1)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.green1)], for: .normal)
         myController = newController
         healthController = newHealthController
+        _tabSelection = newTab
     }
     
     @State private var selectionIndex = 1
-    
+    @State private var screen = 0
     var body: some View {
         VStack (spacing: 0){
             Picker ("Title", selection: $selectionIndex){
@@ -48,11 +50,22 @@ struct HomeView2: View {
                 achievementView()
 //                Spacer()
             } else {
-                if myController.getUserInfo().getIsLogIn() == false {
+                if screen == 0 {
+                    NoRankView(myController: myController, tabSelection: $tabSelection)
+                } else if myController.getUserInfo().getIsLogIn() == false {
                     AccountView(myController: myController)
                 } else {
                     rankView()
                 }
+            }
+        }
+        .onAppear() {
+            if myController.getUserInfo().getIsShowRank() == false {
+                screen = 0
+            } else if myController.getUserInfo().getIsLogIn() == false {
+                screen = 1
+            } else {
+                screen = 2
             }
         }
     }
@@ -357,9 +370,16 @@ struct meProfileView: View {
     }
 }
 
+struct myPreviewView: View {
+    @State var tab = 2
+    var body: some View {
+        HomeView2(newController: StandZoneController(), newHealthController: HealthViewController(), newTab: $tab)
+            .preferredColorScheme(.light)
+    }
+}
+
 struct HomeView2_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView2(newController: StandZoneController(), newHealthController: HealthViewController())
-            .preferredColorScheme(.light)
+        myPreviewView()
     }
 }

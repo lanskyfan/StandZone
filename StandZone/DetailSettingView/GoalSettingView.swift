@@ -28,10 +28,12 @@ struct GoalSettingView: View {
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-            VStack {
-                SettingTopView(myController: myController)
-                BasicInfoView(myController: myController, name: $name, gender: $gender)
-                DailyGoalNoLinkView(myController: myController, frequency: $frequency, time: $time)
+            ScrollView {
+                VStack {
+                    SettingTopView(myController: myController)
+                    BasicInfoView(myController: myController, name: $name, gender: $gender)
+                    DailyGoalNoLinkView(myController: myController, frequency: $frequency, time: $time)
+                }
             }
         }
         .onDisappear {
@@ -51,7 +53,7 @@ struct BasicInfoView: View {
 
             ZStack {
                     let shape = RoundedRectangle(cornerRadius: 10)
-                    shape.fill().foregroundColor(.green2).frame(height: 160)
+                    shape.fill().foregroundColor(.green2).frame(height: 280)
                 VStack {
                     HStack {
                             Text("Basic Information").foregroundColor(.white)
@@ -86,6 +88,23 @@ struct BasicInfoView: View {
                             }
                         }
                         .padding()
+                    }
+                    
+                    Button(action:
+                            {
+                        myController.updateLogIn(newLogIn: false)
+                    }) {
+                        Label("Log out", systemImage: "person.badge.minus")
+                    }
+                    .padding(.bottom)
+                    
+                    Button(action:
+                            {
+                        myController.updateSetting(newSetting: false)
+                        myController.updateScreen(newScreen: .initialView)
+                        myController.clearUserDate()
+                    }) {
+                        Label("Clear setting", systemImage: "trash")
                     }
 
                 }

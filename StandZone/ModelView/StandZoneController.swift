@@ -24,6 +24,10 @@ import BackgroundTasks
 //        user.updateIsSetting(newSetting: false)
     }
     
+    func clearUserDate() {
+        user.clearData()
+    }
+    
     func register() {
         print("register background task")
         // MARK: Registering Launch Handlers for Tasks
@@ -144,6 +148,10 @@ import BackgroundTasks
     
     func updateCustomMode(newMode: Int) {
         user.updateCustomMode(newMode: newMode)
+    }
+    
+    func updateIsShowRank(newRank: Bool) {
+        user.updateIsShowRank(newRank: newRank)
     }
     
     func getNoDisturbModeText() -> String {
@@ -377,6 +385,7 @@ enum Screen {
     case homeView1
     case mainView
     case homeView2
+    case homeView3
 }
 
 enum Gender: String {
