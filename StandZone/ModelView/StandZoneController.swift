@@ -9,6 +9,8 @@ import SwiftUI
 import HealthKit
 import SwiftUICharts
 import EventKit
+import BackgroundTasks
+
 
 @MainActor class StandZoneController: ObservableObject {
     @Published private var screen = Screen.initialView
@@ -21,6 +23,51 @@ import EventKit
         // For testing purpose
 //        user.updateIsSetting(newSetting: false)
     }
+    
+    func register() {
+        print("register background task")
+        // MARK: Registering Launch Handlers for Tasks
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "edu.cmu.andrew.yifanlan.StandZone.refresh", using: nil) { task in
+            // Downcast the parameter to an app refresh task as this identifier is used for a refresh request.
+            self.handleAppRefresh(task: task as! BGProcessingTask)
+        }
+    }
+
+
+    // MARK: - Handling Launch for Tasks
+
+    // Fetch the latest feed entries from server.
+    func handleAppRefresh(task: BGProcessingTask) {
+        scheduleAppRefresh()
+        
+        task.expirationHandler = {
+            print("expired")
+            //task.setTaskCompleted(success: false)
+        }
+
+        print("background task handler execution")
+        healthController.updateHealthData()
+        
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+        }
+        task.setTaskCompleted(success: true)
+    }
+
+
+    func scheduleAppRefresh() {
+        let request = BGProcessingTaskRequest(identifier: "edu.cmu.andrew.yifanlan.StandZone.refresh")
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 30) // Fetch no earlier than 15 minutes from now
+        request.requiresNetworkConnectivity = false
+        request.requiresExternalPower = false
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("Could not schedule app refresh: \(error)")
+        }
+        print("background task schedule success")
+    }
+    
     func getScreen() -> Screen{
         if (user.getIsSetting() == true) {
             return Screen.mainView
@@ -353,4 +400,10 @@ enum NoDisturbMode: String {
     case SystemMode = "System Mode"
     case CustomMode = "Custom Mode"
     case NoMode = "No Mode"
+}
+
+enum NotificationType: String {
+    case No = "No"
+    case First = "First"
+    case Second = "Second"
 }
