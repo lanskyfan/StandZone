@@ -123,7 +123,7 @@ struct UserModel {
     
     func getFrequencyGoal() -> Int{
         if (defaults.object(forKey:frequencyGoal) == nil) {
-            defaults.set(0, forKey: frequencyGoal)
+            defaults.set(12, forKey: frequencyGoal)
         }
         return defaults.object(forKey:frequencyGoal) as! Int
     }
@@ -134,7 +134,7 @@ struct UserModel {
     
     func getTimeGoal() -> Int {
         if (defaults.object(forKey:timeGoal) == nil) {
-            defaults.set(0, forKey: timeGoal)
+            defaults.set(24, forKey: timeGoal)
         }
         return defaults.object(forKey:timeGoal) as! Int
     }

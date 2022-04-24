@@ -119,7 +119,7 @@ struct DailyGoalNoLinkView: View {
                             Spacer()
                             Picker("", selection: $frequency){
                                 ForEach(1...12, id:\.self){ i in
-                                    Text(String(i))
+                                    Text(String(i) + " hour")
                                 }
                             }.labelsHidden()
                             
