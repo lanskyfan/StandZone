@@ -28,6 +28,7 @@
 		A37BCEE127E43A5900CD629C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCEE027E43A5900CD629C /* UserModel.swift */; };
 		A394978A27E4E639003CE542 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A394978927E4E639003CE542 /* HomeView.swift */; };
 		A397181727E6E9C500A12479 /* GoalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A397181627E6E9C500A12479 /* GoalSettingView.swift */; };
+		A39E9F5B2816003D0081F8A6 /* NoRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E9F5A2816003C0081F8A6 /* NoRankView.swift */; };
 		A3BC6C8027E59CE200120DF7 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = A3BC6C7F27E59CE200120DF7 /* SwiftUICharts */; };
 		A3BC6C8227E652A800120DF7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC6C8127E652A800120DF7 /* MainView.swift */; };
 		A3BC6C8427E6E44500120DF7 /* HomeView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC6C8327E6E44500120DF7 /* HomeView3.swift */; };
@@ -149,6 +150,7 @@
 		A39146712814781A0012217A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A394978927E4E639003CE542 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A397181627E6E9C500A12479 /* GoalSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingView.swift; sourceTree = "<group>"; };
+		A39E9F5A2816003C0081F8A6 /* NoRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRankView.swift; sourceTree = "<group>"; };
 		A3BC6C8127E652A800120DF7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A3BC6C8327E6E44500120DF7 /* HomeView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView3.swift; sourceTree = "<group>"; };
 		A3CFBB1627E24E1900110D92 /* StandZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -429,6 +431,7 @@
 				A3CFBB1B27E24E1900110D92 /* InitialView.swift */,
 				A37BCED227E3936E00CD629C /* LoginView.swift */,
 				A37BCED427E3A0A200CD629C /* SwitchView.swift */,
+				A39E9F5A2816003C0081F8A6 /* NoRankView.swift */,
 			);
 			path = OtherView;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				A3712D502814A42E0082BFB6 /* StandZoneSupport.swift in Sources */,
 				849DA85827E8259D00DDC6DD /* HomeView2.swift in Sources */,
 				A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */,
+				A39E9F5B2816003D0081F8A6 /* NoRankView.swift in Sources */,
 				A3BC6C8427E6E44500120DF7 /* HomeView3.swift in Sources */,
 				A3DB2831280CCD69001B33F2 /* AccountView.swift in Sources */,
 				A37B262027F0D61A00DCDF70 /* HealthKitSupport.swift in Sources */,

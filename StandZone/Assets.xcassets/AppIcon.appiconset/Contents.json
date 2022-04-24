@@ -1,47 +1,49 @@
 {
   "images" : [
     {
+      "filename" : "real full noti small.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "real_full noti large.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "iphone setting small.png",
+      "filename" : "real_full setting small.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "iphone setting large.png",
+      "filename" : "real_full setting large.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "spotlight small.png",
+      "filename" : "real_full spot small.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "iphone small-1.png",
+      "filename" : "real_full iphone small-1.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "iphone small.png",
+      "filename" : "real_full iphone small.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "iphone large.png",
+      "filename" : "real_full iphone large.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"

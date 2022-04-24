@@ -19,16 +19,6 @@ struct AccountView: View {
                 VStack {
                     Text("If you want to compete with more friends, please create an account or log in with existing account")
                     VStack (spacing: 20){
-                        // Need to update
-                        NavigationLink(destination: LoginView(myController: myController)) {
-                            ButtonView(myController: myController, nextScreen: Screen.registerView, content: "LOG IN WITH FACEBOOK")
-                        }
-                        .buttonStyle(PlainButtonStyle())
-
-                        NavigationLink(destination: LoginView(myController: myController)) {
-                            ButtonView(myController: myController, nextScreen: Screen.registerView, content: "LOG IN WITH GOOGLE")
-                        }
-                        .buttonStyle(PlainButtonStyle())
 
                         NavigationLink(destination: RegisterView(myController: myController)) {
                             ButtonView(myController: myController, nextScreen: Screen.registerView, content: "CREATE AN ACCOUNT")

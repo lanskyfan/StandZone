@@ -258,4 +258,22 @@ struct UserModel {
         times[name] = value
         defaults.set(times, forKey: customTime)
     }
+    
+    func getIsShowRank() -> Bool {
+        if (defaults.object(forKey:isShowRank) == nil) {
+            defaults.set(false, forKey: isShowRank)
+        }
+        return defaults.object(forKey:isShowRank) as! Bool
+    }
+    
+    func updateIsShowRank(newRank: Bool) {
+        defaults.set(newRank, forKey: isShowRank)
+    }
+    
+    
+    mutating func clearData() {
+        let domain = Bundle.main.bundleIdentifier!
+        defaults.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+    }
 }
