@@ -97,7 +97,7 @@ func requestPermission() {
 func firstNotification() {
     let content = UNMutableNotificationContent()
     content.title = "Stand UP!"
-    content.subtitle = "Hey, it's time to stand up and move around!🚶🏻‍♂️"
+    content.body = "Hey, it's time to stand up and move around!🚶🏻‍♂️"
     content.sound = .default
 //        content.categoryIdentifier = "myCategory"
 //        let category = UNNotificationCategory(identifier: "myCategory", actions: [], intentIdentifiers: [], options: [])
@@ -116,7 +116,7 @@ func firstNotification() {
 func secondNotification(){
     let content = UNMutableNotificationContent()
     content.title = "Hey get up!"
-    content.subtitle = "You haven't stood up and moved around. Let's do it to make it a healthier day!😆"
+    content.body = "You haven't stood up and moved around. Let's do it to make it a healthier day!😆"
     content.sound = .default
 //        content.categoryIdentifier = "myCategory"
 //        let category = UNNotificationCategory(identifier: "myCategory", actions: [], intentIdentifiers: [], options: [])
