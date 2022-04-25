@@ -17,7 +17,7 @@ struct ContentView: View {
                 ZStack {
                     FrequencyCircle()
                     TimeCircle()
-                    CentralTimer()
+                    CentralMode()
                 }
                 HStack {
                     Text("Stand time")
@@ -58,6 +58,21 @@ struct CentralTimer: View {
             Text("next stand")
             Text("29:59")
         }
+    }
+}
+
+struct CentralMode: View {
+    var body: some View {
+        VStack {
+            Text ("Mode")
+                .foregroundColor(Color.yellow)
+            Image(systemName: "tv")
+                .resizable()
+    //            .frame(width: 25.0, height: 25.0)
+                .foregroundStyle(.yellow)
+        }
+        .frame(width: 40, height: 50)
+
     }
 }
 
