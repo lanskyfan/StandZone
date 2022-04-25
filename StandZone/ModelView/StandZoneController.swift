@@ -483,7 +483,7 @@ extension NotificationHandler {
         let content = UNMutableNotificationContent()
         let id = "First Alarm"
         let title = "Stand UP!"
-        let subtitle = "Hey, it's time to stand up and move around!"
+        let subtitle = "Hey, it's time to stand up and move around!🚶🏻‍♂️"
         let sound = UNNotificationSound.default
         let interval = 5.0
         content.title = title
@@ -500,15 +500,15 @@ extension NotificationHandler {
         print("Add Second notification")
         let content = UNMutableNotificationContent()
         let id = "Second Alarm"
-        let title = "Do not keep sitting!"
-        let subtitle = "It seems that you haven't stood up yet. If you wish not to be disturbed right now, please tap one button below to tell us how much time you don't want to be disturbed."
+        let title = "Hey get up!"
+        let subtitle = "You haven't stood up and moved around. Let's do it to make it a healthier day!😆"
         let sound = UNNotificationSound.default
         let interval = 20.0
         
         // Do not disturb options
-        let optionOne = UNNotificationAction(identifier: "First option", title: "15 minutes", options: [])
-        let optionTwo = UNNotificationAction(identifier: "Second option", title: "30 minutes", options: [.foreground])
-        let optionThree = UNNotificationAction(identifier: "Third option", title: "60 minutes", options: [])
+        let optionOne = UNNotificationAction(identifier: "First option", title: "Mute 1h", options: [])
+        let optionTwo = UNNotificationAction(identifier: "Second option", title: "Mute 2h", options: [.foreground])
+        let optionThree = UNNotificationAction(identifier: "Third option", title: "Mute 3h", options: [])
 
         // Define Category
         let tutorialCategory = UNNotificationCategory(identifier: "tutorial", actions: [optionOne, optionTwo, optionThree], intentIdentifiers: [], options: [])
