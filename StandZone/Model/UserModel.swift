@@ -123,7 +123,7 @@ struct UserModel {
     
     func getFrequencyGoal() -> Int{
         if (defaults.object(forKey:frequencyGoal) == nil) {
-            defaults.set(0, forKey: frequencyGoal)
+            defaults.set(12, forKey: frequencyGoal)
         }
         return defaults.object(forKey:frequencyGoal) as! Int
     }
@@ -134,7 +134,7 @@ struct UserModel {
     
     func getTimeGoal() -> Int {
         if (defaults.object(forKey:timeGoal) == nil) {
-            defaults.set(0, forKey: timeGoal)
+            defaults.set(24, forKey: timeGoal)
         }
         return defaults.object(forKey:timeGoal) as! Int
     }
@@ -257,5 +257,23 @@ struct UserModel {
         var times = defaults.object(forKey:customTime) as! [String: Int]
         times[name] = value
         defaults.set(times, forKey: customTime)
+    }
+    
+    func getIsShowRank() -> Bool {
+        if (defaults.object(forKey:isShowRank) == nil) {
+            defaults.set(false, forKey: isShowRank)
+        }
+        return defaults.object(forKey:isShowRank) as! Bool
+    }
+    
+    func updateIsShowRank(newRank: Bool) {
+        defaults.set(newRank, forKey: isShowRank)
+    }
+    
+    
+    mutating func clearData() {
+        let domain = Bundle.main.bundleIdentifier!
+        defaults.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
     }
 }

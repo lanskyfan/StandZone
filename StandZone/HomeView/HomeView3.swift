@@ -22,6 +22,7 @@ struct HomeView3: View {
                         SettingTopView(myController: myController)
                         DailyGoalView(myController: myController)
                         ReminderView(myController: myController)
+                        CustomizeView(myController: myController)
                     }
                 } .padding(.top, 50)
             }
@@ -42,6 +43,7 @@ struct SettingTopView: View {
         Text(myController.getUserInfo().getName())
     }
 }
+
 struct ReminderView: View {
     @ObservedObject var myController: StandZoneController
     @State private var isNotify: Bool
@@ -111,9 +113,7 @@ struct ReminderView: View {
                             .onChange(of: isImportCalendar) { value in
                                 myController.updateIsImportCalendar(isImportCalendar: isImportCalendar)
                             }
-                        Text("")
-                        Text("")
-                        Text("")
+
 
 
                     }
@@ -174,6 +174,51 @@ struct DailyGoalView: View {
             }
             .padding()
         }
+}
+
+struct CustomizeView: View {
+    @ObservedObject var myController: StandZoneController
+    @State private var rank: Bool
+    
+    init(myController: StandZoneController) {
+        self.myController = myController
+        _rank = State(initialValue:myController.getUserInfo().getIsShowRank())
+    }
+    
+    var body: some View {
+        ZStack {
+            let height = 150.0
+            let shape = RoundedRectangle(cornerRadius: 10)
+            shape.fill().foregroundColor(.green2).frame(height: height)
+            VStack {
+                HStack{
+                    Text("Customize").foregroundColor(.white)
+                    Spacer()
+                }
+                ZStack {
+                    let shape2 = RoundedRectangle(cornerRadius: 10)
+                    shape2.fill().foregroundColor(.white).frame(height: height - 60)
+                    VStack {
+                        Toggle("Rank", isOn: $rank)
+                            .onChange(of: rank) { value in
+                                myController.updateIsShowRank(newRank: rank)
+                            }
+                        
+                        Text("")
+                        Text("")
+                        Text("")
+
+                    }
+                    .padding()
+
+                }
+
+            }
+            .padding()
+
+        }
+        .padding()
+    }
 }
 
 

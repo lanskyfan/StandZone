@@ -16,7 +16,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
             endingLineNumber = "193"
-            landmarkName = "updateCustomTime(name:value:)"
+            landmarkName = "sendNotification()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

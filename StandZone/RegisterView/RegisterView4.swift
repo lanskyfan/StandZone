@@ -9,8 +9,8 @@ import SwiftUI
 
 struct RegisterView4: View {
     @ObservedObject var myController: StandZoneController
-    @State private var frequency: Int = 0;
-    @State private var time: Int = 0;
+    @State private var frequency: Int = 12;
+    @State private var time: Int = 24;
     var body: some View {
 
         ZStack (alignment: .top) {
@@ -25,14 +25,14 @@ struct RegisterView4: View {
                     .frame(height: 40)
                 Text("Set Daily Goal").bold().font(.title)
                 Spacer()
-                    .frame(height: 40)
+                    .frame(height: 20)
                 frequencyStepperView(frequency: $frequency, time: $time)
 //                timeStepperView(time: $time)
                 Spacer()
                     .frame(height: 40)
                 ContinueButton(content: "Continue")
                     .onTapGesture {
-                        myController.updateGoal(newFrequency: frequency, newTime: time * 5)
+                        myController.updateGoal(newFrequency: frequency, newTime: time)
                         myController.updateScreen(newScreen: Screen.mainView)
                         myController.updateSetting(newSetting: true)
                     }
@@ -64,29 +64,31 @@ struct frequencyStepperView: View {
                 Spacer()
                 Picker("", selection: $frequency){
                     ForEach(1...12, id:\.self){ i in
-                        Text(String(i))
+                        Text(String(i) + " hour")
                     }
                 }.labelsHidden()
                 
             }
             .padding()
         }
-
+        Text("Hours of standing up per day. Please stand up at heast 1 time per hour")
         ZStack {
             let shape = RoundedRectangle(cornerRadius: 10)
             shape.fill().foregroundColor(.white).frame(height: 40)
             HStack {
-                Text("Standing time (minutes)")
+                Text("Standing time")
                 Spacer()
                 Picker("", selection: $time){
                     ForEach(1...24, id:\.self){ i in
-                        Text(String(i * 5))
+                        Text(String(i * 5) + " min")
                     }
                 }.labelsHidden()
                 
             }
             .padding()
         }
+        .padding(.top)
+        Text("Your daily standing minutes goal. The range of healthy standing time per day is 120 to 240 minutes")
 
     }
 }

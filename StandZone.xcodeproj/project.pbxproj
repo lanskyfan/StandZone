@@ -10,6 +10,7 @@
 		849DA85827E8259D00DDC6DD /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DA85727E8259C00DDC6DD /* HomeView2.swift */; };
 		A3682DF528105D1800E9F8BF /* NoDisturbSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3682DF428105D1800E9F8BF /* NoDisturbSettingView.swift */; };
 		A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3706CF227E5887C006F9C33 /* HomeView1.swift */; };
+		A3712D502814A42E0082BFB6 /* StandZoneSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3712D4F2814A42E0082BFB6 /* StandZoneSupport.swift */; };
 		A37B261D27F0D5D700DCDF70 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B261C27F0D5D700DCDF70 /* HealthData.swift */; };
 		A37B262027F0D61A00DCDF70 /* HealthKitSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B261F27F0D61A00DCDF70 /* HealthKitSupport.swift */; };
 		A37B262227F0D89E00DCDF70 /* HealthKitSupport+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37B262127F0D89E00DCDF70 /* HealthKitSupport+Strings.swift */; };
@@ -27,6 +28,7 @@
 		A37BCEE127E43A5900CD629C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BCEE027E43A5900CD629C /* UserModel.swift */; };
 		A394978A27E4E639003CE542 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A394978927E4E639003CE542 /* HomeView.swift */; };
 		A397181727E6E9C500A12479 /* GoalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A397181627E6E9C500A12479 /* GoalSettingView.swift */; };
+		A39E9F5B2816003D0081F8A6 /* NoRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39E9F5A2816003C0081F8A6 /* NoRankView.swift */; };
 		A3BC6C8027E59CE200120DF7 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = A3BC6C7F27E59CE200120DF7 /* SwiftUICharts */; };
 		A3BC6C8227E652A800120DF7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC6C8127E652A800120DF7 /* MainView.swift */; };
 		A3BC6C8427E6E44500120DF7 /* HomeView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BC6C8327E6E44500120DF7 /* HomeView3.swift */; };
@@ -128,6 +130,7 @@
 		849DA85727E8259C00DDC6DD /* HomeView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView2.swift; sourceTree = "<group>"; };
 		A3682DF428105D1800E9F8BF /* NoDisturbSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDisturbSettingView.swift; sourceTree = "<group>"; };
 		A3706CF227E5887C006F9C33 /* HomeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView1.swift; sourceTree = "<group>"; };
+		A3712D4F2814A42E0082BFB6 /* StandZoneSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneSupport.swift; sourceTree = "<group>"; };
 		A37B261C27F0D5D700DCDF70 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		A37B261F27F0D61A00DCDF70 /* HealthKitSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSupport.swift; sourceTree = "<group>"; };
 		A37B262127F0D89E00DCDF70 /* HealthKitSupport+Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthKitSupport+Strings.swift"; sourceTree = "<group>"; };
@@ -144,8 +147,10 @@
 		A37BCEDC27E3DDEF00CD629C /* RegisterView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView4.swift; sourceTree = "<group>"; };
 		A37BCEDE27E433A200CD629C /* StandZoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandZoneController.swift; sourceTree = "<group>"; };
 		A37BCEE027E43A5900CD629C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		A39146712814781A0012217A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A394978927E4E639003CE542 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A397181627E6E9C500A12479 /* GoalSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingView.swift; sourceTree = "<group>"; };
+		A39E9F5A2816003C0081F8A6 /* NoRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRankView.swift; sourceTree = "<group>"; };
 		A3BC6C8127E652A800120DF7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A3BC6C8327E6E44500120DF7 /* HomeView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView3.swift; sourceTree = "<group>"; };
 		A3CFBB1627E24E1900110D92 /* StandZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StandZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +254,7 @@
 			children = (
 				A37B261F27F0D61A00DCDF70 /* HealthKitSupport.swift */,
 				A37B262127F0D89E00DCDF70 /* HealthKitSupport+Strings.swift */,
+				A3712D4F2814A42E0082BFB6 /* StandZoneSupport.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 		A3CFBB1827E24E1900110D92 /* StandZone */ = {
 			isa = PBXGroup;
 			children = (
+				A39146712814781A0012217A /* Info.plist */,
 				A3682DF328105CC400E9F8BF /* DetailSettingView */,
 				A3DB2832280CCD81001B33F2 /* OtherView */,
 				A37B262B27F1387400DCDF70 /* Model */,
@@ -424,6 +431,7 @@
 				A3CFBB1B27E24E1900110D92 /* InitialView.swift */,
 				A37BCED227E3936E00CD629C /* LoginView.swift */,
 				A37BCED427E3A0A200CD629C /* SwitchView.swift */,
+				A39E9F5A2816003C0081F8A6 /* NoRankView.swift */,
 			);
 			path = OtherView;
 			sourceTree = "<group>";
@@ -702,8 +710,10 @@
 				A37BCEDB27E3D62E00CD629C /* RegisterView3.swift in Sources */,
 				A3682DF528105D1800E9F8BF /* NoDisturbSettingView.swift in Sources */,
 				A37B261D27F0D5D700DCDF70 /* HealthData.swift in Sources */,
+				A3712D502814A42E0082BFB6 /* StandZoneSupport.swift in Sources */,
 				849DA85827E8259D00DDC6DD /* HomeView2.swift in Sources */,
 				A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */,
+				A39E9F5B2816003D0081F8A6 /* NoRankView.swift in Sources */,
 				A3BC6C8427E6E44500120DF7 /* HomeView3.swift in Sources */,
 				A3DB2831280CCD69001B33F2 /* AccountView.swift in Sources */,
 				A37B262027F0D61A00DCDF70 /* HealthKitSupport.swift in Sources */,
@@ -855,6 +865,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -907,6 +918,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1045,6 +1057,7 @@
 				DEVELOPMENT_TEAM = G3X3AF8BFZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StandZone/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "";
 				INFOPLIST_KEY_NSContactsUsageDescription = "";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow this app to share your Health data to doctors and clinicians.";
@@ -1084,6 +1097,7 @@
 				DEVELOPMENT_TEAM = G3X3AF8BFZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StandZone/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "";
 				INFOPLIST_KEY_NSContactsUsageDescription = "";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow this app to share your Health data to doctors and clinicians.";
@@ -1158,6 +1172,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G3X3AF8BFZ;
@@ -1178,6 +1193,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G3X3AF8BFZ;

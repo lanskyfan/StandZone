@@ -31,10 +31,12 @@ struct SwitchView: View {
         case Screen.homeView1:
             HomeView1(myController: myController, healthController: HealthViewController())
         case Screen.homeView2:
-            HomeView2(newController: myController, newHealthController: HealthViewController())
+            HomeView1(myController: myController, healthController: HealthViewController())
         case Screen.mainView:
             MainView(newController: myController, newHealthController: myController.healthController)
                 .transition(AnyTransition.opacity.animation(.linear(duration: 1)))
+        case Screen.homeView3:
+            HomeView3(myController: myController)
         }
     }
 }

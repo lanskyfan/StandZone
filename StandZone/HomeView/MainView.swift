@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @ObservedObject var myController: StandZoneController
     @ObservedObject var healthController: HealthViewController
+    @State private var tabSelection = 0
     init(newController: StandZoneController, newHealthController: HealthViewController) {
         UITabBar.appearance().backgroundColor = UIColor(Color.green1)
         UITabBar.appearance().unselectedItemTintColor = UIColor.white
@@ -18,28 +19,32 @@ struct MainView: View {
         healthController = newHealthController
     }
     var body: some View {
-        TabView {
+        TabView (selection: $tabSelection){
             HomeView(myController: myController, healthController: healthController)
                 .tabItem {
                         Label("Overview", systemImage: "person.badge.clock")
                         .foregroundColor(Color.white)
                     }
+                .tag(0)
 
             HomeView1(myController: myController, healthController: healthController)
                 .tabItem {
                     Label("Data", systemImage: "waveform.path.ecg.rectangle")
                 }
-        
-            HomeView2(newController: myController, newHealthController: healthController)
+                .tag(1)
+
+            HomeView2(newController: myController, newHealthController: healthController, newTab: $tabSelection)
                 .badge(10)
                 .tabItem {
-                    Label("Friends", systemImage: "gamecontroller")
+                    Label("Achievements", systemImage: "gamecontroller")
                 }
-    
+                .tag(2)
+
             HomeView3(myController: myController)
                 .tabItem {
                     Label("Setting", systemImage: "gearshape")
                 }
+                .tag(3)
         }
         .onAppear{
             print("enter main view")
