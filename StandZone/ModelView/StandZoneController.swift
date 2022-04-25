@@ -10,6 +10,7 @@ import HealthKit
 import SwiftUICharts
 import EventKit
 import UserNotifications
+import BackgroundTasks
 
 @MainActor class StandZoneController: ObservableObject {
     @Published private var screen = Screen.initialView
@@ -127,11 +128,10 @@ import UserNotifications
     func updateIsNotify(isNotify: Bool) {
         user.updateIsNotify(newNotify: isNotify)
         if (isNotify) {
-            requestNotificationAuthorization();
+            NotificationHandler.shared.requestPermission()
         } else {
             print("User denies the notification authorization")
         }
-        sendNotification()
     }
     
     // Notification center property
@@ -149,28 +149,6 @@ import UserNotifications
         }
     }
     
-    class NotificationHandler : NSObject, UNUserNotificationCenterDelegate{
-        static let shared = NotificationHandler()
-       
-        /** Handle notification when app is in background */
-        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response:
-            UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-            
-            let notiName = Notification.Name(response.notification.request.identifier)
-            NotificationCenter.default.post(name:notiName , object: response.notification.request.content)
-            completionHandler()
-        }
-        
-        /** Handle notification when the app is in foreground */
-        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
-                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-            
-            let notiName = Notification.Name( notification.request.identifier )
-            NotificationCenter.default.post(name:notiName , object: notification.request.content)
-            completionHandler(.sound)
-        }
-    }
-    
     // Send Notification
     func sendNotification() {
         print("notficatioon")
@@ -179,7 +157,7 @@ import UserNotifications
         notificationContent.title = "Stand Up!"
         notificationContent.body = "Hey, it's time to stand up and move around!"
         notificationContent.sound = UNNotificationSound.default
-        notificationContent.badge = NSNumber(value: 3)
+//        notificationContent.badge = NSNumber(value: 3)
         
         // Add attachment
 //        if let url = Bundle.main.url(forResource: "dune",
@@ -485,4 +463,100 @@ enum NotificationType: String {
     case No = "No"
     case First = "First"
     case Second = "Second"
+}
+
+class NotificationHandler : NSObject, UNUserNotificationCenterDelegate{
+    static let shared = NotificationHandler()
+   
+    /** Handle notification when app is in background */
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response:
+        UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let notiName = Notification.Name(response.notification.request.identifier)
+        NotificationCenter.default.post(name:notiName , object: response.notification.request.content)
+        completionHandler()
+    }
+    
+    /** Handle notification when the app is in foreground */
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+             withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let notiName = Notification.Name( notification.request.identifier )
+        NotificationCenter.default.post(name:notiName , object: notification.request.content)
+        completionHandler(.banner)
+    }
+}
+
+extension NotificationHandler  {
+    func requestPermission(_ delegate : UNUserNotificationCenterDelegate? = nil ,
+        onDeny handler :  (()-> Void)? = nil){  // an optional onDeny handler is better here,
+                                                // so there is an option not to provide one, have one only when needed
+        let center = UNUserNotificationCenter.current()
+        
+        center.getNotificationSettings(completionHandler: { settings in
+        
+            if settings.authorizationStatus == .denied {
+                if let handler = handler {
+                    handler()
+                }
+                return
+            }
+            
+            if settings.authorizationStatus != .authorized  {
+                center.requestAuthorization(options: [.alert, .sound, .badge]) {
+                    _ , error in
+                    
+                    if let error = error {
+                        print("error handling \(error)")
+                    }
+                }
+            }
+            
+        })
+        center.delegate = delegate ?? self
+    }
+}
+
+extension NotificationHandler {
+    func addFirstNotification() {
+        print("Add Fisrt notification")
+        let content = UNMutableNotificationContent()
+        let id = "First Alarm"
+        let title = "Stand UP!"
+        let subtitle = "Hey, it's time to stand up and move around!"
+        let sound = UNNotificationSound.default
+        let interval = 5.0
+        content.title = title
+        content.subtitle = subtitle
+        
+        content.sound = sound
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    func addSecondNotification() {
+        print("Add Second notification")
+        let content = UNMutableNotificationContent()
+        let id = "Second Alarm"
+        let title = "Do not keep sitting!"
+        let subtitle = "It seems that you haven't stood up yet. If you wish not to be disturbed right now, please tap one button below to tell us what you are busy with"
+        let sound = UNNotificationSound.default
+        let interval = 20.0
+        content.title = title
+        content.subtitle = subtitle
+        
+        content.sound = sound
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+
+    func removeNotifications(_ ids : [String]){
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ids)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ids)
+    }
+
 }

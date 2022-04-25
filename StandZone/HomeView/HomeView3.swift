@@ -82,10 +82,17 @@ struct ReminderView: View {
                                 myController.updateIsNotify(isNotify: isNotify)
                             }
                         Toggle("Repetitive Mode", isOn: $isRepetitiveMode)
+                            .onReceive(NotificationCenter.default.publisher(
+                                for: Notification.Name("First"))) { data in
+                                    if let content = (data.object as? UNNotificationContent){
+                                             print("title:\(content.title), subtitle:\(content.subtitle)")
+                                         }
+                                }
                             .onChange(of: isRepetitiveMode) { value in
                                 myController.updateIsRepetitiveMode(newMode: isRepetitiveMode)
-                                myController.sendNotification()
-                            }
+                                NotificationHandler.shared.addFirstNotification()
+                                NotificationHandler.shared.addSecondNotification()
+                                }
                         Toggle("Apple Watch Only", isOn: $isAppleWatchOnly)
                             .onChange(of: isAppleWatchOnly) { value in
                                 myController.updateIsAppleWatchOnly(isAppleWatch: isAppleWatchOnly)
