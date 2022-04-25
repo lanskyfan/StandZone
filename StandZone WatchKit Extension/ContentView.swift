@@ -82,7 +82,7 @@ struct FrequencyCircle : View {
             Circle()
                .trim(from: 0.25, to: 1.0)
                .rotation(.degrees(-90))
-               .stroke(Color.green ,style: StrokeStyle(lineWidth: 8, lineCap: .butt))
+               .stroke(Color.green ,style: StrokeStyle(lineWidth: 12, lineCap: .butt))
                .frame(width: 110, height: 110)
         }
         .padding()
@@ -96,8 +96,8 @@ struct TimeCircle : View {
             Circle()
                .trim(from: 0.4, to: 1.0)
                .rotation(.degrees(-90))
-               .stroke(Color.blue ,style: StrokeStyle(lineWidth: 8, lineCap: .butt))
-               .frame(width: 94, height: 94)
+               .stroke(Color.blue ,style: StrokeStyle(lineWidth: 12, lineCap: .butt))
+               .frame(width: 87, height: 87)
         }
         .padding()
     }
