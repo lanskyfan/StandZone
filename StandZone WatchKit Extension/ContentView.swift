@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftUICharts
+import UserNotifications
 
 struct ContentView: View {
     var body: some View {
@@ -64,15 +65,70 @@ struct CentralTimer: View {
 struct CentralMode: View {
     var body: some View {
         VStack {
-            Text ("Mode")
-                .foregroundColor(Color.yellow)
-            Image(systemName: "tv")
-                .resizable()
-    //            .frame(width: 25.0, height: 25.0)
+            Text("Mode")
                 .foregroundStyle(.yellow)
+            Button {
+                requestPermission()
+                firstNotification()
+                secondNotification()
+            } label: {
+                Image(systemName: "tv")
+                    .resizable()
+        //            .frame(width: 25.0, height: 25.0)
+                    .foregroundStyle(.yellow)
+            }
+            .frame(width: 50, height: 40)
         }
-        .frame(width: 40, height: 50)
+        .frame(width: 60, height: 70)
 
+    }
+}
+
+func requestPermission() {
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge]) { (success, error) in
+        if success{
+        print("All set")
+        } else if let error = error {
+            print(error.localizedDescription)
+        }
+    }
+}
+
+func firstNotification() {
+    let content = UNMutableNotificationContent()
+    content.title = "Stand UP!"
+    content.subtitle = "Hey, it's time to stand up and move around!🚶🏻‍♂️"
+    content.sound = .default
+//        content.categoryIdentifier = "myCategory"
+//        let category = UNNotificationCategory(identifier: "myCategory", actions: [], intentIdentifiers: [], options: [])
+//        UNUserNotificationCenter.current().setNotificationCategories([category])
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+    let request = UNNotificationRequest(identifier: "first", content: content, trigger: trigger)
+    UNUserNotificationCenter.current().add(request) { (error) in
+        if let error = error{
+        print(error.localizedDescription)
+        }else{
+        print("scheduled successfully 1")
+        }
+    }
+}
+
+func secondNotification(){
+    let content = UNMutableNotificationContent()
+    content.title = "Hey get up!"
+    content.subtitle = "You haven't stood up and moved around. Let's do it to make it a healthier day!😆"
+    content.sound = .default
+//        content.categoryIdentifier = "myCategory"
+//        let category = UNNotificationCategory(identifier: "myCategory", actions: [], intentIdentifiers: [], options: [])
+//        UNUserNotificationCenter.current().setNotificationCategories([category])
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
+    let request = UNNotificationRequest(identifier: "second", content: content, trigger: trigger)
+    UNUserNotificationCenter.current().add(request) { (error) in
+        if let error = error{
+        print(error.localizedDescription)
+        }else{
+        print("scheduled successfully 2")
+        }
     }
 }
 
