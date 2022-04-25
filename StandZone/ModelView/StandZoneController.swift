@@ -162,24 +162,20 @@ import BackgroundTasks
         user.updateCustomMode(newMode: newMode)
     }
     
+    func deleteCustomTime(name: String) {
+        user.deleteCustomTime(name: name)
+    }
+
+    
     func updateIsShowRank(newRank: Bool) {
         user.updateIsShowRank(newRank: newRank)
     }
     
     func getNoDisturbModeText() -> String {
-        if user.getNoDisturbMode() == NoDisturbMode.NoMode {
-            return "Off"
-        }
         if user.getNoDisturbMode() == NoDisturbMode.SystemMode {
             return "Default"
         }
-        if user.getCustomMode() == 0 {
-            return "Study"
-        }
-        if user.getCustomMode() == 1 {
-            return "Work"
-        }
-        return "Default"
+        return "Custom"
     }
     
     func updateCustomTime(name: String, value: Int) {
