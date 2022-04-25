@@ -52,7 +52,7 @@ struct ReminderView: View {
     @State private var wakeUpTime: Date
     @State private var sleepTime: Date
     @State private var isImportCalendar: Bool
-    
+    @State private var showRepetitiveInstruction = false
     init(myController: StandZoneController) {
         self.myController = myController
         _isNotify = State(initialValue: myController.getUserInfo().getIsNotify())
@@ -81,17 +81,27 @@ struct ReminderView: View {
                             .onChange(of: isNotify) { value in
                                 myController.updateIsNotify(isNotify: isNotify)
                             }
-                        Toggle("Repetitive Mode", isOn: $isRepetitiveMode)
-                            .onReceive(NotificationCenter.default.publisher(
-                                for: Notification.Name("First"))) { data in
-                                    if let content = (data.object as? UNNotificationContent){
-                                             print("title:\(content.title), subtitle:\(content.subtitle)")
-                                         }
+                        HStack {
+                            Text("Repetitive Mode")
+                            Image(systemName: "questionmark.circle").font(.system(size: 20))
+                                .onTapGesture {
+                                    showRepetitiveInstruction = true
                                 }
-                            .onChange(of: isRepetitiveMode) { value in
-                                myController.updateIsRepetitiveMode(newMode: isRepetitiveMode)
-                                myController.sendNotification()
-                                }
+                            Spacer()
+                            Toggle("Repetitive Mode", isOn: $isRepetitiveMode)
+                                .onReceive(NotificationCenter.default.publisher(
+                                    for: Notification.Name("First"))) { data in
+                                        if let content = (data.object as? UNNotificationContent){
+                                                 print("title:\(content.title), subtitle:\(content.subtitle)")
+                                             }
+                                    }
+                                    .labelsHidden()
+                                .onChange(of: isRepetitiveMode) { value in
+                                    myController.updateIsRepetitiveMode(newMode: isRepetitiveMode)
+                                    myController.sendNotification()
+                                    }
+                        }
+
                         Toggle("Apple Watch Only", isOn: $isAppleWatchOnly)
                             .onChange(of: isAppleWatchOnly) { value in
                                 myController.updateIsAppleWatchOnly(isAppleWatch: isAppleWatchOnly)
@@ -132,6 +142,9 @@ struct ReminderView: View {
 
         }
         .padding()
+        .alert( isPresented: $showRepetitiveInstruction) {
+            Alert(title: Text("Repetitive Reminder"), message: Text("A second reminder will be sent if we find you still not stand 10 minutes after the first reminder"), dismissButton: .default(Text("I Know")))
+        }
     }
 }
 
