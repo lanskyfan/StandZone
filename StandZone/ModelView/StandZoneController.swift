@@ -9,8 +9,8 @@ import SwiftUI
 import HealthKit
 import SwiftUICharts
 import EventKit
+import UserNotifications
 import BackgroundTasks
-
 
 @MainActor class StandZoneController: ObservableObject {
     @Published private var screen = Screen.initialView
@@ -124,15 +124,27 @@ import BackgroundTasks
         user.updateFrequencyGoal(newGoal: newFrequency)
         user.updateTimeGoal(newGoal: newTime)
     }
-    
+    // Notification
     func updateIsNotify(isNotify: Bool) {
         user.updateIsNotify(newNotify: isNotify)
+        if (isNotify) {
+            NotificationHandler.shared.requestPermission()
+        } else {
+            print("User denies the notification authorization")
+        }
     }
     
-    
-    func updateIsNotify(newNotify: Bool) {
-        user.updateIsNotify(newNotify: newNotify)
+    func sendNotification() {
+        if (!hasEvent()) {
+            print("No event in Calendar")
+            NotificationHandler.shared.addFirstNotification()
+            NotificationHandler.shared.addSecondNotification()
+        } else {
+            print("There are events in Calendar")
+        }
+        
     }
+    
     
     func updateIsRepetitiveMode(newMode: Bool) {
         user.updateIsRepetitiveMode(newMode: newMode)
@@ -321,7 +333,6 @@ import BackgroundTasks
     
     func AccessCalendar () -> (success: Bool, store: EKEventStore){
         // Initialize the store.
-        let eventStore = EKEventStore()
         var success: Bool = false
         
         let handler: (Bool, Error?) -> Void = {
@@ -342,7 +353,7 @@ import BackgroundTasks
         return (success, eventStore)
     }
     
-    func hasEvent(store: EKEventStore) -> Bool {
+    func hasEvent() -> Bool {
         // Get the appropriate calendar.
         let calendar = Calendar.current
         
@@ -359,18 +370,17 @@ import BackgroundTasks
         // Create the predicate from the event store's instance method.
         var predicate: NSPredicate? = nil
         if let aNow = thisMinute, let aLater = tenMinuteLater {
-            predicate = store.predicateForEvents(withStart: aNow, end: aLater, calendars: nil)
+            predicate = eventStore.predicateForEvents(withStart: aNow, end: aLater, calendars: nil)
         }
 
         // Fetch all events that match the predicate.
         var events: [EKEvent]? = nil
         if let aPredicate = predicate {
-            events = store.events(matching: aPredicate)
+            events = eventStore.events(matching: aPredicate)
         }
         
-        return events != nil
+        return events?.count != 0
     }
-
 }
 
 enum Screen {
@@ -415,4 +425,112 @@ enum NotificationType: String {
     case No = "No"
     case First = "First"
     case Second = "Second"
+}
+// NotificationHandler class
+class NotificationHandler : NSObject, UNUserNotificationCenterDelegate{
+    static let shared = NotificationHandler()
+   
+    /** Handle notification when app is in background */
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response:
+        UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let notiName = Notification.Name(response.notification.request.identifier)
+        NotificationCenter.default.post(name:notiName , object: response.notification.request.content)
+        completionHandler()
+    }
+    
+    /** Handle notification when the app is in foreground */
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+             withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let notiName = Notification.Name( notification.request.identifier )
+        NotificationCenter.default.post(name:notiName , object: notification.request.content)
+        completionHandler(.banner)
+    }
+}
+
+extension NotificationHandler  {
+    func requestPermission(_ delegate : UNUserNotificationCenterDelegate? = nil ,
+        onDeny handler :  (()-> Void)? = nil){  // an optional onDeny handler is better here,
+                                                // so there is an option not to provide one, have one only when needed
+        let center = UNUserNotificationCenter.current()
+        
+        center.getNotificationSettings(completionHandler: { settings in
+        
+            if settings.authorizationStatus == .denied {
+                if let handler = handler {
+                    handler()
+                }
+                return
+            }
+            
+            if settings.authorizationStatus != .authorized  {
+                center.requestAuthorization(options: [.alert, .sound, .badge]) {
+                    _ , error in
+                    
+                    if let error = error {
+                        print("error handling \(error)")
+                    }
+                }
+            }
+            
+        })
+        center.delegate = delegate ?? self
+    }
+}
+
+extension NotificationHandler {
+    func addFirstNotification() {
+        print("Add Fisrt notification")
+        let content = UNMutableNotificationContent()
+        let id = "First Alarm"
+        let title = "Stand UP!"
+        let subtitle = "Hey, it's time to stand up and move around!"
+        let sound = UNNotificationSound.default
+        let interval = 5.0
+        content.title = title
+        content.subtitle = subtitle
+        content.sound = sound
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    func addSecondNotification() {
+        print("Add Second notification")
+        let content = UNMutableNotificationContent()
+        let id = "Second Alarm"
+        let title = "Do not keep sitting!"
+        let subtitle = "It seems that you haven't stood up yet. If you wish not to be disturbed right now, please tap one button below to tell us how much time you don't want to be disturbed."
+        let sound = UNNotificationSound.default
+        let interval = 20.0
+        
+        // Do not disturb options
+        let optionOne = UNNotificationAction(identifier: "First option", title: "15 minutes", options: [])
+        let optionTwo = UNNotificationAction(identifier: "Second option", title: "30 minutes", options: [.foreground])
+        let optionThree = UNNotificationAction(identifier: "Third option", title: "60 minutes", options: [])
+
+        // Define Category
+        let tutorialCategory = UNNotificationCategory(identifier: "tutorial", actions: [optionOne, optionTwo, optionThree], intentIdentifiers: [], options: [])
+
+        // Register Category
+        UNUserNotificationCenter.current().setNotificationCategories([tutorialCategory])
+        
+        content.title = title
+        content.subtitle = subtitle
+        content.sound = sound
+        content.categoryIdentifier = "tutorial"
+        
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+
+    func removeNotifications(_ ids : [String]){
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ids)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ids)
+    }
+
 }
