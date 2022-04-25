@@ -9,6 +9,7 @@ import SwiftUI
 import HealthKit
 import SwiftUICharts
 import EventKit
+import UserNotifications
 
 @MainActor class StandZoneController: ObservableObject {
     @Published private var screen = Screen.initialView
@@ -73,15 +74,87 @@ import EventKit
         user.updateFrequencyGoal(newGoal: newFrequency)
         user.updateTimeGoal(newGoal: newTime)
     }
-    
+    // Notification
     func updateIsNotify(isNotify: Bool) {
         user.updateIsNotify(newNotify: isNotify)
+        if (isNotify) {
+            requestNotificationAuthorization();
+        } else {
+            print("User denies the notification authorization")
+        }
+        sendNotification()
     }
     
+    // Notification center property
+    let userNotificationCenter = UNUserNotificationCenter.current()
     
-    func updateIsNotify(newNotify: Bool) {
-        user.updateIsNotify(newNotify: newNotify)
+    func requestNotificationAuthorization() {
+        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
+        
+        self.userNotificationCenter.requestAuthorization(options: authOptions) { (success, error) in
+            if let error = error {
+                print("Error: ", error)
+            } else {
+                print("Success request notification authorization!")
+            }
+        }
     }
+    
+    class NotificationHandler : NSObject, UNUserNotificationCenterDelegate{
+        static let shared = NotificationHandler()
+       
+        /** Handle notification when app is in background */
+        func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response:
+            UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+            
+            let notiName = Notification.Name(response.notification.request.identifier)
+            NotificationCenter.default.post(name:notiName , object: response.notification.request.content)
+            completionHandler()
+        }
+        
+        /** Handle notification when the app is in foreground */
+        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            
+            let notiName = Notification.Name( notification.request.identifier )
+            NotificationCenter.default.post(name:notiName , object: notification.request.content)
+            completionHandler(.sound)
+        }
+    }
+    
+    // Send Notification
+    func sendNotification() {
+        print("notficatioon")
+        // Create new notifcation content instance
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Stand Up!"
+        notificationContent.body = "Hey, it's time to stand up and move around!"
+        notificationContent.sound = UNNotificationSound.default
+        notificationContent.badge = NSNumber(value: 3)
+        
+        // Add attachment
+//        if let url = Bundle.main.url(forResource: "dune",
+//                                    withExtension: "png") {
+//            if let attachment = try? UNNotificationAttachment(identifier: "dune",
+//                                                            url: url,
+//                                                            options: nil) {
+//                notificationContent.attachments = [attachment]
+//            }
+//        }
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3,
+                                                        repeats: false)
+        let request = UNNotificationRequest(identifier: UUID().uuidString,
+                                            content: notificationContent,
+                                            trigger: trigger)
+        
+        userNotificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Notification Error: ", error)
+            }
+        }
+    }
+    
     
     func updateIsRepetitiveMode(newMode: Bool) {
         user.updateIsRepetitiveMode(newMode: newMode)
@@ -315,7 +388,6 @@ import EventKit
         
         return events != nil
     }
-
 }
 
 enum Screen {

@@ -82,6 +82,7 @@ struct ReminderView: View {
                         Toggle("Repetitive Mode", isOn: $isRepetitiveMode)
                             .onChange(of: isRepetitiveMode) { value in
                                 myController.updateIsRepetitiveMode(newMode: isRepetitiveMode)
+                                myController.sendNotification()
                             }
                         Toggle("Apple Watch Only", isOn: $isAppleWatchOnly)
                             .onChange(of: isAppleWatchOnly) { value in
