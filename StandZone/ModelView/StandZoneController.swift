@@ -135,8 +135,14 @@ import BackgroundTasks
     }
     
     func sendNotification() {
-        NotificationHandler.shared.addFirstNotification()
-        NotificationHandler.shared.addSecondNotification()
+        if (!hasEvent()) {
+            print("No event in Calendar")
+            NotificationHandler.shared.addFirstNotification()
+            NotificationHandler.shared.addSecondNotification()
+        } else {
+            print("There are events in Calendar")
+        }
+        
     }
     
     
@@ -327,7 +333,6 @@ import BackgroundTasks
     
     func AccessCalendar () -> (success: Bool, store: EKEventStore){
         // Initialize the store.
-        let eventStore = EKEventStore()
         var success: Bool = false
         
         let handler: (Bool, Error?) -> Void = {
@@ -348,7 +353,7 @@ import BackgroundTasks
         return (success, eventStore)
     }
     
-    func hasEvent(store: EKEventStore) -> Bool {
+    func hasEvent() -> Bool {
         // Get the appropriate calendar.
         let calendar = Calendar.current
         
@@ -365,16 +370,16 @@ import BackgroundTasks
         // Create the predicate from the event store's instance method.
         var predicate: NSPredicate? = nil
         if let aNow = thisMinute, let aLater = tenMinuteLater {
-            predicate = store.predicateForEvents(withStart: aNow, end: aLater, calendars: nil)
+            predicate = eventStore.predicateForEvents(withStart: aNow, end: aLater, calendars: nil)
         }
 
         // Fetch all events that match the predicate.
         var events: [EKEvent]? = nil
         if let aPredicate = predicate {
-            events = store.events(matching: aPredicate)
+            events = eventStore.events(matching: aPredicate)
         }
         
-        return events != nil
+        return events?.count != 0
     }
 }
 
