@@ -90,8 +90,7 @@ struct ReminderView: View {
                                 }
                             .onChange(of: isRepetitiveMode) { value in
                                 myController.updateIsRepetitiveMode(newMode: isRepetitiveMode)
-                                NotificationHandler.shared.addFirstNotification()
-                                NotificationHandler.shared.addSecondNotification()
+                                myController.sendNotification()
                                 }
                         Toggle("Apple Watch Only", isOn: $isAppleWatchOnly)
                             .onChange(of: isAppleWatchOnly) { value in

@@ -134,52 +134,9 @@ import BackgroundTasks
         }
     }
     
-    // Notification center property
-    let userNotificationCenter = UNUserNotificationCenter.current()
-    
-    func requestNotificationAuthorization() {
-        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
-        
-        self.userNotificationCenter.requestAuthorization(options: authOptions) { (success, error) in
-            if let error = error {
-                print("Error: ", error)
-            } else {
-                print("Success request notification authorization!")
-            }
-        }
-    }
-    
-    // Send Notification
     func sendNotification() {
-        print("notficatioon")
-        // Create new notifcation content instance
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "Stand Up!"
-        notificationContent.body = "Hey, it's time to stand up and move around!"
-        notificationContent.sound = UNNotificationSound.default
-//        notificationContent.badge = NSNumber(value: 3)
-        
-        // Add attachment
-//        if let url = Bundle.main.url(forResource: "dune",
-//                                    withExtension: "png") {
-//            if let attachment = try? UNNotificationAttachment(identifier: "dune",
-//                                                            url: url,
-//                                                            options: nil) {
-//                notificationContent.attachments = [attachment]
-//            }
-//        }
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3,
-                                                        repeats: false)
-        let request = UNNotificationRequest(identifier: UUID().uuidString,
-                                            content: notificationContent,
-                                            trigger: trigger)
-        
-        userNotificationCenter.add(request) { (error) in
-            if let error = error {
-                print("Notification Error: ", error)
-            }
-        }
+        NotificationHandler.shared.addFirstNotification()
+        NotificationHandler.shared.addSecondNotification()
     }
     
     
@@ -464,7 +421,7 @@ enum NotificationType: String {
     case First = "First"
     case Second = "Second"
 }
-
+// NotificationHandler class
 class NotificationHandler : NSObject, UNUserNotificationCenterDelegate{
     static let shared = NotificationHandler()
    
@@ -526,7 +483,6 @@ extension NotificationHandler {
         let interval = 5.0
         content.title = title
         content.subtitle = subtitle
-        
         content.sound = sound
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
@@ -540,13 +496,26 @@ extension NotificationHandler {
         let content = UNMutableNotificationContent()
         let id = "Second Alarm"
         let title = "Do not keep sitting!"
-        let subtitle = "It seems that you haven't stood up yet. If you wish not to be disturbed right now, please tap one button below to tell us what you are busy with"
+        let subtitle = "It seems that you haven't stood up yet. If you wish not to be disturbed right now, please tap one button below to tell us how much time you don't want to be disturbed."
         let sound = UNNotificationSound.default
         let interval = 20.0
+        
+        // Do not disturb options
+        let optionOne = UNNotificationAction(identifier: "First option", title: "15 minutes", options: [])
+        let optionTwo = UNNotificationAction(identifier: "Second option", title: "30 minutes", options: [.foreground])
+        let optionThree = UNNotificationAction(identifier: "Third option", title: "60 minutes", options: [])
+
+        // Define Category
+        let tutorialCategory = UNNotificationCategory(identifier: "tutorial", actions: [optionOne, optionTwo, optionThree], intentIdentifiers: [], options: [])
+
+        // Register Category
+        UNUserNotificationCenter.current().setNotificationCategories([tutorialCategory])
+        
         content.title = title
         content.subtitle = subtitle
-        
         content.sound = sound
+        content.categoryIdentifier = "tutorial"
+        
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
