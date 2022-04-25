@@ -1,6 +1,5 @@
-
-.DS_Store
-Info.plist
-project.pbxproj
-Breakpoints_v2.xcbkptlist
-UserInterfaceState.xcuserstate
+*.DS_Store
+*.plist
+*.pbxproj
+*.xcbkptlist
+*.xcuserstate
