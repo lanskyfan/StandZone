@@ -30,10 +30,10 @@ struct ContentView: View {
 
             }
 //            }
-                HStack {
-                    Text("Stand time")
-                        .foregroundColor(Color.blue)
-                }
+//                HStack {
+//                    Text("Stand time")
+//                        .foregroundColor(Color.blue)
+//                }
                 HStack {
                     Text("Stand frequency")
                         .foregroundColor(Color.green)
@@ -65,7 +65,6 @@ struct ContentView_Previews: PreviewProvider {
 struct CusModeButton: View {
     @State private var selection: String? = nil
     var body: some View {
-//        NavigationView{
             NavigationLink(destination: SelectionView(), tag: "Cus", selection: $selection) {
                 Button(action:{
                     print("Custom Button tapped!")
@@ -79,12 +78,9 @@ struct CusModeButton: View {
                 .font(.system(size: 15, design: .default))
                 .frame(width: 60, height: 20)
                 .foregroundColor(Color.yellow)
-//        }
-//        .frame(width: 60, height: 20)
         }
         .navigationBarTitle("Navigation")
         .frame(width:60, height: 20)
-//        .foregroundColor(.white)
 }
 }
 
