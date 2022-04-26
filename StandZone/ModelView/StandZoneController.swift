@@ -200,16 +200,10 @@ import BackgroundTasks
     
     func updateIsImportCalendar(isImportCalendar: Bool) {
         self.objectWillChange.send()
-        var isPermitted: Bool = false
         if (isImportCalendar) {
-            let accessResult = AccessCalendar()
-            isPermitted = accessResult.success
-            eventStore = accessResult.store
-            if (isPermitted) {
-                user.updateIsImportCalendar(importCalendar: isImportCalendar)
-            } else {
-                user.updateIsImportCalendar(importCalendar: false)
-            }
+            AccessCalendar()
+        } else {
+            user.updateIsImportCalendar(importCalendar: false)
         }
     }
     
@@ -359,26 +353,27 @@ import BackgroundTasks
     }
     
     
-    func AccessCalendar () -> (success: Bool, store: EKEventStore){
-        // Initialize the store.
-        var success: Bool = false
-        
+    func AccessCalendar () {
         let handler: (Bool, Error?) -> Void = {
             (granted, error) in
                 // Handle the response to the request.
                 if (granted) && (error == nil) {
                     print("Permission allowed")
-                    success = true
+                    DispatchQueue.main.async {
+                        self.user.updateIsImportCalendar(importCalendar: true)
+                    }
+
                     
                 } else{
                     print("failed to save event with error : \(String(describing: error)) or access not granted")
-                    success = false
+                    DispatchQueue.main.async {
+                        self.user.updateIsImportCalendar(importCalendar: false)
+                    }
                 }
         }
 
         // Request access to reminders.
         eventStore.requestAccess(to: .event, completion: handler)
-        return (success, eventStore)
     }
     
     func hasEvent() -> Bool {
