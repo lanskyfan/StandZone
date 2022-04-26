@@ -53,6 +53,28 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+struct MuteModeButton: View {
+    @State private var isMute = true
+    var body: some View {
+        VStack {
+            Toggle(isOn: $isMute) {
+                Text("Do not disturb")
+            }
+            .onChange(of: isMute) { _isMute in
+                if _isMute {
+                    print("Mute Button: Mute Mode")
+                }else{
+                    print("Mute Button: Send Notification")
+                    requestPermission()
+                    firstNotification()
+                    secondNotification()
+                }
+            }
+        }
+        .frame(width: 145)
+    }
+}
+
 struct SelectionView: View {
     var modeNames = ["Work", "Study", "Sleep", "Mute", "User1", "User2"]
     var imgName = ["person.text.rectangle","brain.head.profile",
