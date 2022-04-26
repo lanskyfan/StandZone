@@ -11,9 +11,11 @@ import SwiftUI
 struct StandZoneApp: App {
     @SceneBuilder var body: some Scene {
         WindowGroup {
-            NavigationView {
+            TabView {
                 ContentView()
+                SelectionView()
             }
+            .tabViewStyle(PageTabViewStyle())
         }
 
         WKNotificationScene(controller: NotificationController.self, category: "myCategory")

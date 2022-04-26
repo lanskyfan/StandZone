@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84486B9F281754A1007E062B /* StandZone WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = A3CFBB3A27E24E1B00110D92 /* StandZone WatchKit App.app */; };
 		849DA85827E8259D00DDC6DD /* HomeView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DA85727E8259C00DDC6DD /* HomeView2.swift */; };
 		A3682DF528105D1800E9F8BF /* NoDisturbSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3682DF428105D1800E9F8BF /* NoDisturbSettingView.swift */; };
 		A3706CF327E5887C006F9C33 /* HomeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3706CF227E5887C006F9C33 /* HomeView1.swift */; };
@@ -39,7 +40,6 @@
 		A3CFBB2B27E24E1A00110D92 /* StandZoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB2A27E24E1A00110D92 /* StandZoneTests.swift */; };
 		A3CFBB3527E24E1B00110D92 /* StandZoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB3427E24E1B00110D92 /* StandZoneUITests.swift */; };
 		A3CFBB3727E24E1B00110D92 /* StandZoneUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB3627E24E1B00110D92 /* StandZoneUITestsLaunchTests.swift */; };
-		A3CFBB3B27E24E1B00110D92 /* StandZone WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A3CFBB3A27E24E1B00110D92 /* StandZone WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A3CFBB4027E24E1C00110D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3CFBB3F27E24E1C00110D92 /* Assets.xcassets */; };
 		A3CFBB4627E24E1C00110D92 /* StandZone WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A3CFBB4527E24E1C00110D92 /* StandZone WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A3CFBB4B27E24E1C00110D92 /* StandZoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CFBB4A27E24E1C00110D92 /* StandZoneApp.swift */; };
@@ -119,7 +119,6 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				A3CFBB3B27E24E1B00110D92 /* StandZone WatchKit App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +646,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84486B9F281754A1007E062B /* StandZone WatchKit App.app in Resources */,
 				A3CFBB2127E24E1A00110D92 /* Preview Assets.xcassets in Resources */,
 				A3CFBB1E27E24E1A00110D92 /* Assets.xcassets in Resources */,
 			);

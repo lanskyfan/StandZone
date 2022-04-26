@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "imgonline-com-ua-resize-h1B0MjHIN0s.jpg",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -34,6 +35,7 @@
       "subtype" : "45mm"
     },
     {
+      "filename" : "3842.jpg",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -69,6 +71,7 @@
       "subtype" : "45mm"
     },
     {
+      "filename" : "172.jpg",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -97,6 +100,7 @@
       "subtype" : "45mm"
     },
     {
+      "filename" : "1024.jpg",
       "idiom" : "watch-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
