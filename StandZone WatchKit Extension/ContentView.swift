@@ -12,15 +12,24 @@ import UserNotifications
 struct ContentView: View {
     var body: some View {
         ScrollView {
+//            NavigationView {
+
             VStack {
                 Text("Stand frequency")
                     .foregroundColor(Color.green)
                 ZStack {
                     FrequencyCircle()
                     TimeCircle()
-                    CentralMode()
+                    CusModeButton()
+
+//                    NavigationView{
+//                        CusModeButton()
+//                    }
                 }
                 MuteModeButton()
+
+            }
+//            }
                 HStack {
                     Text("Stand time")
                         .foregroundColor(Color.blue)
@@ -46,12 +55,37 @@ struct ContentView: View {
             }
         }
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
+
+struct CusModeButton: View {
+    @State private var selection: String? = nil
+    var body: some View {
+//        NavigationView{
+            NavigationLink(destination: SelectionView(), tag: "Cus", selection: $selection) {
+                Button(action:{
+                    print("Custom Button tapped!")
+                    selection = "Cus"
+                }) {
+                    VStack {
+                        Text("Mode")
+                        Image(systemName: "tv")
+                    }
+                }
+                .font(.system(size: 15, design: .default))
+                .frame(width: 60, height: 20)
+                .foregroundColor(Color.yellow)
+//        }
+//        .frame(width: 60, height: 20)
+        }
+        .navigationBarTitle("Navigation")
+        .frame(width:60, height: 20)
+//        .foregroundColor(.white)
+}
 }
 
 struct MuteModeButton: View {
