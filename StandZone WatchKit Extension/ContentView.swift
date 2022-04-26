@@ -202,7 +202,7 @@ func firstNotification() {
 //        content.categoryIdentifier = "myCategory"
 //        let category = UNNotificationCategory(identifier: "myCategory", actions: [], intentIdentifiers: [], options: [])
 //        UNUserNotificationCenter.current().setNotificationCategories([category])
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
     let request = UNNotificationRequest(identifier: "first", content: content, trigger: trigger)
     UNUserNotificationCenter.current().add(request) { (error) in
         if let error = error{
@@ -218,10 +218,10 @@ func secondNotification(){
     content.title = "Hey get up!"
     content.body = "You haven't stood up and moved around. Let's do it to make it a healthier day!😆"
     content.sound = .default
-//        content.categoryIdentifier = "myCategory"
-//        let category = UNNotificationCategory(identifier: "myCategory", actions: [], intentIdentifiers: [], options: [])
-//        UNUserNotificationCenter.current().setNotificationCategories([category])
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
+    content.categoryIdentifier = "myCategory"
+    let category = UNNotificationCategory(identifier: "myCategory", actions: [], intentIdentifiers: [], options: [])
+    UNUserNotificationCenter.current().setNotificationCategories([category])
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
     let request = UNNotificationRequest(identifier: "second", content: content, trigger: trigger)
     UNUserNotificationCenter.current().add(request) { (error) in
         if let error = error{

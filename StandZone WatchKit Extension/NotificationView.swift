@@ -10,12 +10,15 @@ import SwiftUI
 struct NotificationView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var ringAnimation: CGFloat = 0
-    @State private var counter = 10
-    var count = 10
+    @State private var counter = 30
+    var count = 30
     var body: some View {
         VStack{
-            Text("Stand UP!")
-            .font(.subheadline)
+            Text("Hey get up!")
+            .font(.title3)
+            .fontWeight(.bold)
+            Text("You haven't stood up and moved around. Let's do it to make it a healthier day!😆")
+            .font(.body)
             ZStack{
             //MARK: - Background Circle
             Circle()
@@ -23,7 +26,7 @@ struct NotificationView: View {
             //MARK: - Progress Circle
             Circle()
             .trim(from: ringAnimation, to: 1.0)
-            .stroke(LinearGradient(gradient: Gradient(colors: [.white, .red]), startPoint: .topTrailing, endPoint: .bottomLeading),
+            .stroke(LinearGradient(gradient: Gradient(colors: [.white, .green]), startPoint: .topTrailing, endPoint: .bottomLeading),
             style: StrokeStyle(lineWidth: 15, lineCap: .round))
             .rotationEffect(Angle(degrees: 90))
             .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
