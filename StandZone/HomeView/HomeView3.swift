@@ -52,6 +52,7 @@ struct ReminderView: View {
     @State private var wakeUpTime: Date
     @State private var sleepTime: Date
     @State private var isImportCalendar: Bool
+    @State private var isTest: Bool
     @State private var showRepetitiveInstruction = false
     init(myController: StandZoneController) {
         self.myController = myController
@@ -61,6 +62,7 @@ struct ReminderView: View {
         _wakeUpTime = State(initialValue: myController.getUserInfo().getWakeUpTime())
         _sleepTime = State(initialValue: myController.getUserInfo().getSleepTime())
         _isImportCalendar = State(initialValue:myController.getUserInfo().getIsImportCalendar())
+        _isTest = State(initialValue: myController.getUserInfo().getIsTest())
     }
     
     var body: some View {
@@ -81,11 +83,13 @@ struct ReminderView: View {
                             .onChange(of: isNotify) { value in
                                 myController.updateIsNotify(isNotify: isNotify)
                             }
+
                         HStack {
                             Text("Repetitive Mode")
                             Image(systemName: "questionmark.circle").font(.system(size: 20))
                                 .onTapGesture {
                                     showRepetitiveInstruction = true
+
                                 }
                             Spacer()
                             Toggle("Repetitive Mode", isOn: $isRepetitiveMode)
@@ -129,7 +133,17 @@ struct ReminderView: View {
                             .onChange(of: isImportCalendar) { value in
                                 myController.updateIsImportCalendar(isImportCalendar: isImportCalendar)
                             }
-
+                        Toggle("Test Notification", isOn: $isTest)
+                            .onReceive(NotificationCenter.default.publisher(
+                                for: Notification.Name("First"))) { data in
+                                    if let content = (data.object as? UNNotificationContent){
+                                             print("title:\(content.title), subtitle:\(content.subtitle)")
+                                         }
+                                }
+                            .onChange(of: isTest) { value in
+                                myController.updateIsTest(test: isTest)
+                                myController.sendNotification()
+                                }
 
 
                     }

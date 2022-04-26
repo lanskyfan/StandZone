@@ -22,6 +22,7 @@ struct UserModel {
     private var isRepetitiveMode: String = "IsRepetitiveMode"
     private var isAppleWatchOnly: String = "IsAppleWatchOnly"
     private var isImportCalendar: String = "IsImportCalendar"
+    private var isTest: String = "IsTest"
     private var noDisturbMode: String = "NoDisturbMode"
     private var customModes: String = "CustomModes"
     private var calendarMode: String = "CalendarMode"
@@ -213,6 +214,17 @@ struct UserModel {
     
     mutating func updateIsImportCalendar(importCalendar: Bool) {
         defaults.set(importCalendar, forKey: isImportCalendar)
+    }
+    
+    func getIsTest() -> Bool {
+        if (defaults.object(forKey: isTest) == nil) {
+            defaults.set(false, forKey: isTest)
+        }
+        return defaults.object(forKey: isTest) as! Bool
+    }
+    
+    mutating func updateIsTest(Test: Bool) {
+        defaults.set(Test, forKey: isTest)
     }
     
     func getNoDisturbMode() -> NoDisturbMode {
