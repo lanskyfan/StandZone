@@ -22,6 +22,7 @@ struct UserModel {
     private var isRepetitiveMode: String = "IsRepetitiveMode"
     private var isAppleWatchOnly: String = "IsAppleWatchOnly"
     private var isImportCalendar: String = "IsImportCalendar"
+    private var isTest: String = "IsTest"
     private var noDisturbMode: String = "NoDisturbMode"
     private var customModes: String = "CustomModes"
     private var calendarMode: String = "CalendarMode"
@@ -215,6 +216,17 @@ struct UserModel {
         defaults.set(importCalendar, forKey: isImportCalendar)
     }
     
+    func getIsTest() -> Bool {
+        if (defaults.object(forKey: isTest) == nil) {
+            defaults.set(false, forKey: isTest)
+        }
+        return defaults.object(forKey: isTest) as! Bool
+    }
+    
+    mutating func updateIsTest(Test: Bool) {
+        defaults.set(Test, forKey: isTest)
+    }
+    
     func getNoDisturbMode() -> NoDisturbMode {
         if (defaults.object(forKey:noDisturbMode) == nil) {
             defaults.set(NoDisturbMode.SystemMode.rawValue, forKey: noDisturbMode)
@@ -248,6 +260,31 @@ struct UserModel {
             return 1
         }
         return times[name]!
+    }
+    
+    mutating func deleteCustomTime(name: String) {
+        if (defaults.object(forKey: customTime) == nil) {
+            defaults.set([:], forKey: customTime)
+        }
+        var times = defaults.object(forKey:customTime) as! [String: Int]
+        times[name] = nil
+        defaults.set(times, forKey: customTime)
+    }
+    
+    func getCustomFull() -> [String] {
+        if (defaults.object(forKey: customTime) == nil) {
+            var times: [String: Int] = [:]
+            times["Work"] = 12
+            times["Study"] = 18
+            defaults.set(times, forKey: customTime)
+        }
+        let times = defaults.object(forKey:customTime) as! [String: Int]
+        let partialResult = times.sorted( by: { $0.0 < $1.0 })
+        var result : [String] = []
+        for (key, _) in partialResult {
+            result.append(key)
+        }
+        return result
     }
     
     mutating func updateCustomTime(name: String, value: Int) {

@@ -135,6 +135,9 @@ import BackgroundTasks
     }
     
     func sendNotification() {
+        if (!getIsTest()) {
+            return
+        }
         if (!hasEvent()) {
             print("No event in Calendar")
             NotificationHandler.shared.addFirstNotification()
@@ -145,6 +148,19 @@ import BackgroundTasks
         
     }
     
+    func updateIsTest(test: Bool) {
+        if (!test) {
+            print("Close test notification")
+        } else {
+            print("Trigger test notification")
+        }
+        
+        user.updateIsTest(Test: test)
+    }
+    
+    func getIsTest() -> Bool {
+        return user.getIsTest()
+    }
     
     func updateIsRepetitiveMode(newMode: Bool) {
         user.updateIsRepetitiveMode(newMode: newMode)
@@ -162,24 +178,20 @@ import BackgroundTasks
         user.updateCustomMode(newMode: newMode)
     }
     
+    func deleteCustomTime(name: String) {
+        user.deleteCustomTime(name: name)
+    }
+
+    
     func updateIsShowRank(newRank: Bool) {
         user.updateIsShowRank(newRank: newRank)
     }
     
     func getNoDisturbModeText() -> String {
-        if user.getNoDisturbMode() == NoDisturbMode.NoMode {
-            return "Off"
-        }
         if user.getNoDisturbMode() == NoDisturbMode.SystemMode {
             return "Default"
         }
-        if user.getCustomMode() == 0 {
-            return "Study"
-        }
-        if user.getCustomMode() == 1 {
-            return "Work"
-        }
-        return "Default"
+        return "Custom"
     }
     
     func updateCustomTime(name: String, value: Int) {
@@ -188,16 +200,10 @@ import BackgroundTasks
     
     func updateIsImportCalendar(isImportCalendar: Bool) {
         self.objectWillChange.send()
-        var isPermitted: Bool = false
         if (isImportCalendar) {
-            let accessResult = AccessCalendar()
-            isPermitted = accessResult.success
-            eventStore = accessResult.store
-            if (isPermitted) {
-                user.updateIsImportCalendar(importCalendar: isImportCalendar)
-            } else {
-                user.updateIsImportCalendar(importCalendar: false)
-            }
+            AccessCalendar()
+        } else {
+            user.updateIsImportCalendar(importCalendar: false)
         }
     }
     
@@ -258,9 +264,19 @@ import BackgroundTasks
         
         if category == Category.Time {
             print("generateTimeDataPoint")
-            let data = getTimeStatisticsData(type: type)
+            let data = getTimeStatisticsData(type: type, category: category)
             for point in data {
                 if (point.value >= Double(getUserInfo().getTimeGoal() * 5)) {
+                    points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: fatBurning))
+                } else {
+                    points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: low))
+                }
+            }
+        } else {
+            print("generateFrequencyPoint")
+            let data = getTimeStatisticsData(type: type, category: category)
+            for point in data {
+                if (point.value >= Double(getUserInfo().getFrequencyGoal())) {
                     points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: fatBurning))
                 } else {
                     points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: low))
@@ -272,10 +288,16 @@ import BackgroundTasks
         return points
     }
     
-    func getTimeStatisticsData(type: StatisticsType) ->  [(label: String, value: Double)] {
+    func getTimeStatisticsData(type: StatisticsType, category: Category) ->  [(label: String, value: Double)] {
         print("produce statistics")
         print("statistics data len = ")
-        let statistics = healthController.standTimeStatisticsData
+        
+        let statistics : [HealthDataTypeValue]
+        if category == .Time{
+            statistics = healthController.standTimeStatisticsData
+        } else {
+            statistics = healthController.standFrequencyStatisticsData
+        }
         print(statistics.count)
         statisticsDisplay = []
         let dateFormatter = DateFormatter()
@@ -331,26 +353,27 @@ import BackgroundTasks
     }
     
     
-    func AccessCalendar () -> (success: Bool, store: EKEventStore){
-        // Initialize the store.
-        var success: Bool = false
-        
+    func AccessCalendar () {
         let handler: (Bool, Error?) -> Void = {
             (granted, error) in
                 // Handle the response to the request.
                 if (granted) && (error == nil) {
                     print("Permission allowed")
-                    success = true
+                    DispatchQueue.main.async {
+                        self.user.updateIsImportCalendar(importCalendar: true)
+                    }
+
                     
                 } else{
                     print("failed to save event with error : \(String(describing: error)) or access not granted")
-                    success = false
+                    DispatchQueue.main.async {
+                        self.user.updateIsImportCalendar(importCalendar: false)
+                    }
                 }
         }
 
         // Request access to reminders.
         eventStore.requestAccess(to: .event, completion: handler)
-        return (success, eventStore)
     }
     
     func hasEvent() -> Bool {

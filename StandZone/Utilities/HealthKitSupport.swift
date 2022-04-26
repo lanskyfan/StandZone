@@ -89,7 +89,8 @@ func createAnchorDate() -> Date {
 
 func getStartingDate(from date: Date = Date(), type: StatisticsType) -> Date{
     var result: Date = Date()
-    let calendar = Calendar.current
+    var calendar = Calendar.current
+    calendar.timeZone =  NSTimeZone(name: "GMT-4")! as TimeZone
     switch type {
     case .Day:
         result = calendar.startOfDay(for: date)
@@ -108,7 +109,8 @@ func getStartingDate(from date: Date = Date(), type: StatisticsType) -> Date{
 
 func getEndDate() -> Date {
     let today: Date = Date()
-    let calendar = Calendar.current
+    var calendar = Calendar.current
+    calendar.timeZone =  NSTimeZone(name: "GMT-4")! as TimeZone
     return calendar.date(bySettingHour: 23, minute: 59, second: 59, of: today)!
 }
 

@@ -33,16 +33,31 @@ struct HomeView1: View {
                 }
                 .onChange(of: period) { type in
                     healthController.performTimeStatisticsQuery(type: type)
+                    healthController.performFrequencyStatisticsQuery(type: type)
                 }
             ScrollView {
+
                 HStack {
-                    Text(getStartingDate(type: period), style: .date).padding([.leading])
-                    Text(" to today")
+                    Text(getStartingDate(type: period), style: .date).bold().padding([.leading])
+                    Text("to today").bold()
                     Spacer()
                 }
+                TextView()
+                    .padding([.top, .leading, .trailing])
+
+                Text("Stand Time")
+                    .foregroundColor(.green1)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 22))
+                    .padding([.top, .leading])
                 TimeGraph(myController: myController, healthController: healthController, type: $period)
                     .padding()
-                FrequencyGraph()
+                Text("Stand Frequency")
+                    .foregroundColor(.green1)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.system(size: 22))
+                    .padding(.leading)
+                FrequencyGraphV2(myController: myController, healthController: healthController, type: $period)
                     .padding()
             }
 
@@ -53,9 +68,50 @@ struct HomeView1: View {
 
  
     }
+    
 }
 
+struct TextView: View {
+    var body: some View {
+ 
+            Text("Last week, you achieved your goals")
+        +    Text(" 2 times. ")
+            .foregroundColor(.green1)
+            .bold()
 
+
+            + Text("Your average stand frequency is")
+            + Text(" 8 times, ")
+                .bold()
+                .foregroundColor(.green1)
+
+            + Text("2 times ")
+                .bold()
+                .foregroundColor(.green1)
+            + Text("higher than previous week, ")
+        
+            + Text("your average daily standing time is")
+
+            + Text(" 65 min, ")
+                .bold()
+                .foregroundColor(.green1)
+            + Text("5 min ")
+                .bold()
+                .foregroundColor(.green1)
+            + Text("higher than previous week, ")
+        HStack {
+            Text("Excellent!")
+                .bold()
+                .foregroundColor(.green1)
+                .font(.system(size: 26))
+            Spacer()
+        }
+        .padding(.vertical)
+        
+        Text("However, the frequency of standing per day is not average enough. Pay attention to sticking to it every day is more beneficial to your health")
+            .multilineTextAlignment(.leading)
+    }
+}
 
 struct TimeGraph: View {
     @ObservedObject var myController: StandZoneController
@@ -70,6 +126,23 @@ struct TimeGraph: View {
 
 //        let limit = DataPoint(value: Double(myController.getUserInfo().getTimeGoal() * 5), label: "goal", legend: fatBurning)
             let points = myController.generateDataPoint(type: type, category: Category.Time)
+        BarChartView(dataPoints: points, limit: nil)
+    }
+}
+
+struct FrequencyGraphV2: View {
+    @ObservedObject var myController: StandZoneController
+    @ObservedObject var healthController: HealthViewController
+    @Binding var type: StatisticsType
+        var body: some View {
+//        let highIntensity = Legend(color: .orange, label: "High Intensity", order: 5)
+//        let buildFitness = Legend(color: .yellow, label: "Build Fitness", order: 4)
+//        let fatBurning = Legend(color: .green, label: "Fat Burning", order: 3)
+//        let warmUp = Legend(color: .blue, label: "Warm Up", order: 2)
+//        let low = Legend(color: .gray, label: "Low", order: 1)
+
+//        let limit = DataPoint(value: Double(myController.getUserInfo().getTimeGoal() * 5), label: "goal", legend: fatBurning)
+            let points = myController.generateDataPoint(type: type, category: Category.Frequency)
         BarChartView(dataPoints: points, limit: nil)
     }
 }

@@ -29,7 +29,7 @@ struct RegisterView2: View {
                 TimeView(myController: myController, wakeUpTime: $wakeUpTime, sleepTime: $sleepTime)
                 Toggle("Import Calendar", isOn: $isImportCalendar)
                     .onChange(of: isImportCalendar) { value in
-                        myController.updateIsImportCalendar(isImportCalendar: isImportCalendar)
+                        myController.updateIsImportCalendar(isImportCalendar: value)
                     }
                     .padding(.horizontal, 45.0)
                 Text("Turn on this function, you will not receive a standing reminder when you have a schedule on your calendar")
@@ -40,7 +40,6 @@ struct RegisterView2: View {
                     ContinueButton(content: "Continue")
                 }
                 .simultaneousGesture(TapGesture().onEnded{
-                    myController.updateIsImportCalendar(isImportCalendar: isImportCalendar)
                     myController.updateWakeUpTime(newWakeUpTime: wakeUpTime)
                     myController.updateSleepTime(newSleepTime: sleepTime)
                 })
