@@ -52,6 +52,7 @@ struct ReminderView: View {
     @State private var wakeUpTime: Date
     @State private var sleepTime: Date
     @State private var isImportCalendar: Bool
+    @State private var isTest: Bool
     
     init(myController: StandZoneController) {
         self.myController = myController
@@ -61,6 +62,7 @@ struct ReminderView: View {
         _wakeUpTime = State(initialValue: myController.getUserInfo().getWakeUpTime())
         _sleepTime = State(initialValue: myController.getUserInfo().getSleepTime())
         _isImportCalendar = State(initialValue:myController.getUserInfo().getIsImportCalendar())
+        _isTest = State(initialValue: myController.getUserInfo().getIsTest())
     }
     
     var body: some View {
@@ -82,15 +84,8 @@ struct ReminderView: View {
                                 myController.updateIsNotify(isNotify: isNotify)
                             }
                         Toggle("Repetitive Mode", isOn: $isRepetitiveMode)
-                            .onReceive(NotificationCenter.default.publisher(
-                                for: Notification.Name("First"))) { data in
-                                    if let content = (data.object as? UNNotificationContent){
-                                             print("title:\(content.title), subtitle:\(content.subtitle)")
-                                         }
-                                }
                             .onChange(of: isRepetitiveMode) { value in
                                 myController.updateIsRepetitiveMode(newMode: isRepetitiveMode)
-                                myController.sendNotification()
                                 }
                         Toggle("Apple Watch Only", isOn: $isAppleWatchOnly)
                             .onChange(of: isAppleWatchOnly) { value in
@@ -119,7 +114,17 @@ struct ReminderView: View {
                             .onChange(of: isImportCalendar) { value in
                                 myController.updateIsImportCalendar(isImportCalendar: isImportCalendar)
                             }
-
+                        Toggle("Test Notification", isOn: $isTest)
+                            .onReceive(NotificationCenter.default.publisher(
+                                for: Notification.Name("First"))) { data in
+                                    if let content = (data.object as? UNNotificationContent){
+                                             print("title:\(content.title), subtitle:\(content.subtitle)")
+                                         }
+                                }
+                            .onChange(of: isTest) { value in
+                                myController.updateIsTest(test: isTest)
+                                myController.sendNotification()
+                                }
 
 
                     }

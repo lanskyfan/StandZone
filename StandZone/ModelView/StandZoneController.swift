@@ -135,6 +135,9 @@ import BackgroundTasks
     }
     
     func sendNotification() {
+        if (!getIsTest()) {
+            return
+        }
         if (!hasEvent()) {
             print("No event in Calendar")
             NotificationHandler.shared.addFirstNotification()
@@ -145,6 +148,19 @@ import BackgroundTasks
         
     }
     
+    func updateIsTest(test: Bool) {
+        if (!test) {
+            print("Close test notification")
+        } else {
+            print("Trigger test notification")
+        }
+        
+        user.updateIsTest(Test: test)
+    }
+    
+    func getIsTest() -> Bool {
+        return user.getIsTest()
+    }
     
     func updateIsRepetitiveMode(newMode: Bool) {
         user.updateIsRepetitiveMode(newMode: newMode)
