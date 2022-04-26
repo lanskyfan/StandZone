@@ -262,6 +262,31 @@ struct UserModel {
         return times[name]!
     }
     
+    mutating func deleteCustomTime(name: String) {
+        if (defaults.object(forKey: customTime) == nil) {
+            defaults.set([:], forKey: customTime)
+        }
+        var times = defaults.object(forKey:customTime) as! [String: Int]
+        times[name] = nil
+        defaults.set(times, forKey: customTime)
+    }
+    
+    func getCustomFull() -> [String] {
+        if (defaults.object(forKey: customTime) == nil) {
+            var times: [String: Int] = [:]
+            times["Work"] = 12
+            times["Study"] = 18
+            defaults.set(times, forKey: customTime)
+        }
+        let times = defaults.object(forKey:customTime) as! [String: Int]
+        let partialResult = times.sorted( by: { $0.0 < $1.0 })
+        var result : [String] = []
+        for (key, _) in partialResult {
+            result.append(key)
+        }
+        return result
+    }
+    
     mutating func updateCustomTime(name: String, value: Int) {
         if (defaults.object(forKey: customTime) == nil) {
             defaults.set([:], forKey: customTime)
