@@ -36,7 +36,7 @@ class HealthViewController: ObservableObject {
     func updateHealthData() {
         print("updateHealthDate")
         self.performTodayStandTimeQuery(dataTypeIdentifier: standTimeIdentifier)
-        self.performTodayStandHourQuery(dataTypeIdentifier: standHourIdentifier)
+        self.performTodayStandHourQueryV2()
         print(self.todayStandTime)
         print(self.todayStandHour)
         self.performTimeStatisticsQuery(type: StatisticsType.Day)
@@ -208,7 +208,6 @@ class HealthViewController: ObservableObject {
 //    }
     
     func performTodayStandHourQuery(dataTypeIdentifier: String) {
-        self.objectWillChange.send()
         let startDate: Date = getStartingDate(type: StatisticsType.Day)
         let endDate = getEndDate()
         let queryPredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
@@ -226,13 +225,10 @@ class HealthViewController: ObservableObject {
             guard let samples = samplesOrNil else { return }
             
             self.todayStandHour = samples.map { (sample) -> HealthDataTypeValue in
-                var dataValue = HealthDataTypeValue(id: 0, startDate: sample.startDate,
-                                                    endDate: sample.endDate,
-                                                    value: .zero)
-                if let quantitySample = sample as? HKQuantitySample,
-                   let unit = preferredUnit(for: quantitySample) {
-                    dataValue.value = quantitySample.quantity.doubleValue(for: unit)
-                }
+                let realSample: HKCategorySample = sample as! HKCategorySample
+                let dataValue = HealthDataTypeValue(id: 0, startDate: realSample.startDate,
+                                                    endDate: realSample.endDate,
+                                                    value: Double(realSample.value))
                 
                 return dataValue
             }
@@ -240,6 +236,9 @@ class HealthViewController: ObservableObject {
             for dataIndex in 0..<self.todayStandHour.count {
                 self.todayStandHour[dataIndex].id = dataIndex
             }
+            print(startDate)
+            print(endDate)
+            print(self.todayStandHour)
             self.todayStandHourCount = self.todayStandHour.count
             
         }
@@ -252,7 +251,6 @@ class HealthViewController: ObservableObject {
     
     
     func performTodayStandTimeQuery(dataTypeIdentifier: String) {
-        self.objectWillChange.send()
         let startDate: Date = getStartingDate(type: StatisticsType.Day)
         let endDate = getEndDate()
         let queryPredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
@@ -354,48 +352,162 @@ class HealthViewController: ObservableObject {
 
     }
 
+    func performTodayStandHourQueryV2 () {
+        self.objectWillChange.send()
+        // Create a query for each data type.
+        let startDate: Date = getStartingDate(type: .Day)
+            // Set dates
+        let endDate = getEndDate()
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+        let dateInterval = DateComponents(hour: 1)
+        
+
+        // Process data.
+        let statisticsOptions: HKStatisticsOptions = .cumulativeSum
+        let initialResultsHandler: (HKStatisticsCollection) -> Void = { (statisticsCollection) in
+            self.todayStandHour = []
+            statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { (statistics, stop) in
+                let statisticsQuantity = getStatisticsQuantity(for: statistics, with: statisticsOptions)
+                if let unit = preferredUnit(for: self.standTimeIdentifier),
+                    let value = statisticsQuantity?.doubleValue(for: unit) {
+                        self.todayStandHour.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: value))
+                }
+
+            }
+            for dataIndex in 0..<self.todayStandHour.count {
+                self.todayStandHour[dataIndex].id = dataIndex
+            }
+            self.todayStandHourCount = self.todayStandHour.count
+
+            // Results come back on a background thread. Dispatch UI updates to the main thread.
+            DispatchQueue.main.async {
+                self.objectWillChange.send()
+            }
+
+        }
+        
+        // Fetch statistics.
+        HealthData.fetchStatistics(with: HKQuantityTypeIdentifier(rawValue: standTimeIdentifier),
+                                   predicate: predicate,
+                                   options: statisticsOptions,
+                                   startDate: startDate,
+                                   interval: dateInterval,
+                                   completion: initialResultsHandler)
+    }
+    
     func performFrequencyStatisticsQuery(type: StatisticsType) {
         self.objectWillChange.send()
-        let startDate: Date = getStartingDate(type: type)
-        let endDate = getEndDate()
-        let queryPredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
-        let queryAnchor: HKQueryAnchor? = nil
-        let queryLimit: Int = HKObjectQueryNoLimit
 
-        guard let sampleType = getSampleType(for: standHourIdentifier) else { return }
+        print(" time statistics query")
+        // Create a query for each data type.
+        let startDate: Date = getStartingDate(type: type)
+            // Set dates
+        let endDate = getEndDate()
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+        let dateInterval: DateComponents
+        switch type {
+        case .Day:
+            dateInterval = DateComponents(hour: 1)
+        case .Week:
+            dateInterval = DateComponents(hour: 1)
+        case .Month:
+            dateInterval = DateComponents(hour: 1)
+        case .Year:
+            dateInterval = DateComponents(hour: 1)
+        }
         
-        let anchoredObjectQuery = HKAnchoredObjectQuery(type: sampleType,
-                                                        predicate: queryPredicate,
-                                                        anchor: queryAnchor,
-                                                        limit: queryLimit) {
-            (query, samplesOrNil, deletedObjectsOrNil, anchor, errorOrNil) in
-            
-            guard let samples = samplesOrNil else { return }
-            
-            self.standFrequencyStatisticsData = samples.map { (sample) -> HealthDataTypeValue in
-                var dataValue = HealthDataTypeValue(id: 0, startDate: sample.startDate,
-                                                    endDate: sample.endDate,
-                                                    value: .zero)
-                if let quantitySample = sample as? HKQuantitySample,
-                   let unit = preferredUnit(for: quantitySample) {
-                    dataValue.value = quantitySample.quantity.doubleValue(for: unit)
+
+            // Process data.
+//            let statisticsOptions = getStatisticsOptions(for: standTimeIdentifier)
+            let statisticsOptions: HKStatisticsOptions = .cumulativeSum
+            let initialResultsHandler: (HKStatisticsCollection) -> Void = { (statisticsCollection) in
+                self.standFrequencyStatisticsData = []
+
+                if type == .Day {
+                    statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { (statistics, stop) in
+                        let statisticsQuantity = getStatisticsQuantity(for: statistics, with: statisticsOptions)
+                        if let unit = preferredUnit(for: self.standTimeIdentifier),
+                           let _ = statisticsQuantity?.doubleValue(for: unit) {
+                                self.standFrequencyStatisticsData.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: 1))
+                        } else {
+                                self.standFrequencyStatisticsData.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: 0))
+                            }
+
+                        }
+                } else if type == .Week || type == .Month {
+                    var count = 0
+                    statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { (statistics, stop) in
+                        let statisticsQuantity = getStatisticsQuantity(for: statistics, with: statisticsOptions)
+                        count += 1
+                        var realValue = 0.0
+                        if let unit = preferredUnit(for: self.standTimeIdentifier),
+                           let _ = statisticsQuantity?.doubleValue(for: unit) {
+                            realValue += 1.0
+                        } else {
+                            realValue += 0
+                        }
+                        
+                        if count % 24 == 1 {
+                            self.standFrequencyStatisticsData.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: realValue))
+                        } else {
+                            self.standFrequencyStatisticsData[self.standFrequencyStatisticsData.count - 1].endDate = statistics.endDate
+                            self.standFrequencyStatisticsData[self.standFrequencyStatisticsData.count - 1].value += realValue
+                        }
+
+                        }
+                } else {
+                    var byDay: [HealthDataTypeValue] = []
+                    var count = 0
+                    statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { (statistics, stop) in
+                        let statisticsQuantity = getStatisticsQuantity(for: statistics, with: statisticsOptions)
+                        count += 1
+                        var realValue = 0.0
+                        if let unit = preferredUnit(for: self.standTimeIdentifier),
+                           let _ = statisticsQuantity?.doubleValue(for: unit) {
+                            realValue += 1.0
+                        } else {
+                            realValue += 0
+                        }
+                        
+                        if count % 24 == 1 {
+                            byDay.append(HealthDataTypeValue(id: 0, startDate: statistics.startDate, endDate: statistics.endDate, value: realValue))
+                        } else {
+                            byDay[byDay.count - 1].endDate = statistics.endDate
+                            byDay[byDay.count - 1].value += realValue
+                        }
+                        }
+                    
+                    var currentMonth = 0
+                    let calendar = Calendar.current
+                    for data in byDay {
+                        let month = calendar.component(.month, from: data.startDate)
+                        if month != currentMonth {
+                            self.standFrequencyStatisticsData.append(data)
+                            currentMonth = month
+                        } else {
+                            self.standFrequencyStatisticsData[self.standFrequencyStatisticsData.count - 1].value += data.value
+                        }
+                    }
+                    
                 }
-                
-                return dataValue
+
+                for dataIndex in 0..<self.standFrequencyStatisticsData.count {
+                    self.standFrequencyStatisticsData[dataIndex].id = dataIndex
+                }
+                // Results come back on a background thread. Dispatch UI updates to the main thread.
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                }
+
             }
             
-            for dataIndex in 0..<self.standFrequencyStatisticsData.count {
-                self.standFrequencyStatisticsData[dataIndex].id = dataIndex
-            }
-            
-            print("frequency query, len = " + String(self.standFrequencyStatisticsData.count))
-            
-        }
-        
-        HealthData.healthStore.execute(anchoredObjectQuery)
-        DispatchQueue.main.async {
-            self.objectWillChange.send()
-        }
+            // Fetch statistics.
+            HealthData.fetchStatistics(with: HKQuantityTypeIdentifier(rawValue: standTimeIdentifier),
+                                       predicate: predicate,
+                                       options: statisticsOptions,
+                                       startDate: startDate,
+                                       interval: dateInterval,
+                                       completion: initialResultsHandler)
     }
 
 }

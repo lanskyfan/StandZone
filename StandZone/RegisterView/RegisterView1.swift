@@ -25,7 +25,7 @@ struct RegisterView1: View {
                 Spacer()
                     .frame(height: 40)
                 Text("Simple settings are required for initial use").bold().font(.title)
-                    .alert("We'll get your steps and standing time from Apple Health", isPresented: $healthController.notRequestedHealthData) {
+                    .alert("We'll get your standing time from Apple Health", isPresented: $healthController.notRequestedHealthData) {
                         Button("Allow") {
                             print("Requesting HealthKit authorization...")
                             myController.healthController.requestHealthAuthorization()
