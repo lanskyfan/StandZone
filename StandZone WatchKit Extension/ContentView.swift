@@ -20,6 +20,7 @@ struct ContentView: View {
                     TimeCircle()
                     CentralMode()
                 }
+                MuteModeButton()
                 HStack {
                     Text("Stand time")
                         .foregroundColor(Color.blue)
@@ -71,7 +72,7 @@ struct MuteModeButton: View {
                 }
             }
         }
-        .frame(width: 145)
+        .frame(width: 130)
     }
 }
 
