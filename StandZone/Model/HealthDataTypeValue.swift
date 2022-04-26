@@ -11,7 +11,7 @@ import Foundation
 struct HealthDataTypeValue : Identifiable {
     var id: Int
     let startDate: Date
-    let endDate: Date
+    var endDate: Date
     var value: Double
     
     func getDate() -> String{

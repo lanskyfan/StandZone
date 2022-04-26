@@ -118,15 +118,17 @@ struct DataView: View {
                             HStack {
                                 Text(data.getDate())
                                     .foregroundColor(.white)
+                                    .font(.system(size: 20))
                                 Spacer()
                                 Text(String(format:" %.1f minutes", data.value))
                                     .foregroundColor(.white)
+                                    .font(.system(size: 20))
                             }
 
                         }
                     }
+                    .padding(.horizontal, 40.0)
                 }
-                .padding(.horizontal, 30.0)
             }
         }
         .frame(height: 250)

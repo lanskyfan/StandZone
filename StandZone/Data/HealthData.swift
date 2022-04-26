@@ -24,8 +24,7 @@ class HealthData {
     
     private static var allHealthDataTypesShare: [HKSampleType] {
         let typeIdentifiers: [String] = [
-            HKQuantityTypeIdentifier.stepCount.rawValue,
-            HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue,
+
         ]
         
         return typeIdentifiers.compactMap { getSampleType(for: $0) }
@@ -33,8 +32,6 @@ class HealthData {
     
     private static var allHealthDataTypesRead: [HKSampleType] {
         let typeIdentifiers: [String] = [
-            HKQuantityTypeIdentifier.stepCount.rawValue,
-            HKQuantityTypeIdentifier.distanceWalkingRunning.rawValue,
             HKQuantityTypeIdentifier.appleStandTime.rawValue,
             HKCategoryTypeIdentifier.appleStandHour.rawValue
         ]

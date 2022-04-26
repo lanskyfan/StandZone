@@ -270,9 +270,19 @@ import BackgroundTasks
         
         if category == Category.Time {
             print("generateTimeDataPoint")
-            let data = getTimeStatisticsData(type: type)
+            let data = getTimeStatisticsData(type: type, category: category)
             for point in data {
                 if (point.value >= Double(getUserInfo().getTimeGoal() * 5)) {
+                    points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: fatBurning))
+                } else {
+                    points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: low))
+                }
+            }
+        } else {
+            print("generateFrequencyPoint")
+            let data = getTimeStatisticsData(type: type, category: category)
+            for point in data {
+                if (point.value >= Double(getUserInfo().getFrequencyGoal())) {
                     points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: fatBurning))
                 } else {
                     points.append(.init(value: point.value, label: LocalizedStringKey(point.label), legend: low))
@@ -284,10 +294,16 @@ import BackgroundTasks
         return points
     }
     
-    func getTimeStatisticsData(type: StatisticsType) ->  [(label: String, value: Double)] {
+    func getTimeStatisticsData(type: StatisticsType, category: Category) ->  [(label: String, value: Double)] {
         print("produce statistics")
         print("statistics data len = ")
-        let statistics = healthController.standTimeStatisticsData
+        
+        let statistics : [HealthDataTypeValue]
+        if category == .Time{
+            statistics = healthController.standTimeStatisticsData
+        } else {
+            statistics = healthController.standFrequencyStatisticsData
+        }
         print(statistics.count)
         statisticsDisplay = []
         let dateFormatter = DateFormatter()
