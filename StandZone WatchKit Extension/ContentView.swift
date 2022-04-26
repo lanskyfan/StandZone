@@ -53,6 +53,49 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+struct SelectionView: View {
+    var modeNames = ["Work", "Study", "Sleep", "Mute", "User1", "User2"]
+    var imgName = ["person.text.rectangle","brain.head.profile",
+                   "bed.double.circle",
+                   "bell.slash",
+                   "person.crop.circle.fill",
+                   "person.crop.circle.fill"]
+    @State var selectedMode: String? = nil
+
+    var body: some View {
+        List {
+            ForEach(0..<6, id:\.self) { i in
+                SelectionCell(modeName: modeNames[i],
+                              imgName: imgName[i],
+                              selectedMode: self.$selectedMode)
+            }
+        }
+    }
+}
+
+struct SelectionCell: View {
+
+    let modeName: String
+    let imgName: String
+    @Binding var selectedMode: String?
+
+    var body: some View {
+        HStack {
+            HStack {
+                Label(modeName, systemImage: imgName)
+            }
+            Spacer()
+            if modeName == selectedMode {
+                Image(systemName: "checkmark.circle.fill")
+                    .symbolVariant(.circle.fill)
+                    .foregroundStyle(.white, .green)
+            }
+        }.onTapGesture {
+            self.selectedMode = self.modeName
+        }
+    }
+}
+
 struct CentralTimer: View {
     var body: some View {
         VStack {
