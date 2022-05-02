@@ -1,10 +1,8 @@
 /*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-A collection of HealthKit properties, functions, and utilities.
+ This code was adapted from Apple Developer Sample
+ https://developer.apple.com/documentation/healthkit/creating_a_mobility_health_app
+ (Source: https://docs-assets.developer.apple.com/published/ae09943a8b/CreatingAMobilityHealthApp.zip retrieved in April 2022)
 */
-
 import Foundation
 import HealthKit
 
