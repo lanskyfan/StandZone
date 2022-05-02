@@ -31,8 +31,8 @@ struct GoalSettingView: View {
             ScrollView {
                 VStack {
                     SettingTopView(myController: myController)
-                    BasicInfoView(myController: myController, name: $name, gender: $gender)
                     DailyGoalNoLinkView(myController: myController, frequency: $frequency, time: $time)
+                    BasicInfoView(myController: myController, name: $name, gender: $gender)
                 }
             }
         }
@@ -53,7 +53,7 @@ struct BasicInfoView: View {
 
             ZStack {
                     let shape = RoundedRectangle(cornerRadius: 10)
-                    shape.fill().foregroundColor(.green2).frame(height: 280)
+                    shape.fill().foregroundColor(.green2).frame(height: 240)
                 VStack {
                     HStack {
                             Text("Basic Information").foregroundColor(.white)
@@ -98,14 +98,14 @@ struct BasicInfoView: View {
                     }
                     .padding(.bottom)
                     
-                    Button(action:
-                            {
-                        myController.updateSetting(newSetting: false)
-                        myController.updateScreen(newScreen: .initialView)
-                        myController.clearUserDate()
-                    }) {
-                        Label("Clear setting", systemImage: "trash")
-                    }
+//                    Button(action:
+//                            {
+//                        myController.updateSetting(newSetting: false)
+//                        myController.updateScreen(newScreen: .initialView)
+//                        myController.clearUserDate()
+//                    }) {
+//                        Label("Clear setting", systemImage: "trash")
+//                    }
 
                 }
                 .padding()

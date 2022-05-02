@@ -9,6 +9,7 @@
 ## _Sit Less, Move More！_
 
 Stand Zone is a sedentary break reminder. Stand up and light up the maps and badges!
+ - Work seamlessly with your Apple Watch
  - Customize your standing period
  - Open up more badges and map
  - Compete with your fiends
@@ -20,21 +21,22 @@ Stand Zone is a sedentary break reminder. Stand up and light up the maps and bad
 <img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen4.png" width="200" >
 <img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen5.png" width="200" >
 <img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen6.png" width="200" >
-<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen7.png" width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen7.png" 
+width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen8.png" width="200" >
 <img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/watch1.png" width="200" >
 <img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/watch2.png" width="200" >
+<img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/watch3.png" width="200" >
 </p>
 
 ## Features
-- Completely customizable to your work/sit/stand schedule
-- Intelligently analyze the length of sitting time each day
-- Give appropriate health guidance according with your sitting data
-- Interactive notifications, acknowledge the reminder from the lock screen
-- Provide a variety of sedentary soothing exercises to relax your muscle
-- Step count statistics, check the daily walking situation
+- Intelligently collect and analyze the length of standing time each day with Apple Watch
 - Customize and set flexible and scientific standing goals
-- Walk virtually on the magic map and open up more lands
-- Parental feature to help you keep track and handle the reminders of your loved ones remotely
+- Completely customizable to your work/sit/stand schedule
+- Give appropriate health guidance according with your standing data
+- Interactive notifications, acknowledge the reminder from the lock screen (under development)
+- Provide a variety of sedentary soothing exercises to relax your muscle (under development)
+- Walk virtually on the magic map and open up more lands (under development)
 
 ## Requirements
  - Xcode 13.3 (suggested)

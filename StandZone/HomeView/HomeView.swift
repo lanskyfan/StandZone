@@ -12,7 +12,7 @@ struct HomeView: View {
     @ObservedObject var healthController: HealthViewController
     var body: some View {
         VStack {
-            HStack {
+            HStack {        
                 Text("Hello " + myController.getUserInfo().getName()).bold()
                 Spacer()
             }
