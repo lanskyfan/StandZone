@@ -1,3 +1,8 @@
+/*
+ This code was adapted from SwiftUICharts sample code
+ https://github.com/mecid/SwiftUICharts
+ (Source: https://github.com/mecid/SwiftUICharts retrieved in April 2022)
+*/
 //
 //  ContentView.swift
 //  StandZone WatchKit Extension
