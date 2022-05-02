@@ -12,7 +12,7 @@ Stand Zone is a sedentary break reminder. Stand up and light up the maps and bad
  - Work seamlessly with your Apple Watch
  - Customize your standing period
  - Open up more badges and map
- - Compete with your fiends
+ - Compete with your friends
 
 <p align="row">
 <img src= "https://github.com/lanskyfan/StandZone/blob/main/ScreenShot/screen1.png" width="200" >
